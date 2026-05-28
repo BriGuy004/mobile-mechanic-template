@@ -1,0 +1,147 @@
+{
+  "nav": {
+    "home": "Home",
+    "services": "Services",
+    "serviceArea": "Service Area",
+    "about": "About",
+    "reviews": "Reviews",
+    "specials": "Specials",
+    "contact": "Contact",
+    "emergency": "Emergency",
+    "financing": "Financing",
+    "membership": "Maintenance Plan",
+    "scheduleService": "Schedule Service",
+    "callNow": "Call Now",
+    "getFreeEstimate": "Get Free Estimate"
+  },
+  "topBar": {
+    "emergencyPill": "24/7 Emergency Service",
+    "spanishBadge": "Se Habla Español"
+  },
+  "homepage": {
+    "hero": {
+      "eyebrow": "{primaryCity}, {state} • Licensed & Insured",
+      "headline": "{primaryCity}'s Trusted HVAC Pros",
+      "subheadline": "Same-day repairs, expert installations, and honest pricing from a {localFamily} team your neighbors trust.",
+      "primaryCta": "Get Free Estimate",
+      "secondaryCta": "Call {phone}",
+      "trustStrip": "{rating}★ from {reviewCount}+ reviews • {years} years serving {primaryCity} • License #{license}"
+    },
+    "services": {
+      "eyebrow": "What We Do",
+      "heading": "Complete HVAC Service for Every Home",
+      "subheading": "From emergency repair to whole-system replacement, our certified technicians handle it all.",
+      "viewAll": "View all services"
+    },
+    "why": {
+      "eyebrow": "Why {businessName}",
+      "heading": "Trusted by {primaryCity} families for over {years} years"
+    },
+    "serviceArea": {
+      "eyebrow": "Where We Work",
+      "heading": "Proudly serving {primaryCity} & surrounding cities",
+      "subheading": "Click your city for local service details, pricing, and reviews.",
+      "radiusNote": "Within {radius} miles of {primaryCity}"
+    },
+    "reviews": {
+      "eyebrow": "What Customers Say",
+      "heading": "{rating}★ across {reviewCount}+ verified reviews",
+      "readMore": "Read all reviews"
+    },
+    "specials": {
+      "eyebrow": "Current Offers",
+      "heading": "Save on service this season",
+      "validThrough": "Valid through {date}"
+    },
+    "brands": {
+      "eyebrow": "Brands We Service",
+      "heading": "Every major brand, expertly serviced"
+    },
+    "finalCta": {
+      "heading": "Ready for reliable comfort?",
+      "subheading": "Schedule online or call {phone} — we answer 24/7."
+    }
+  },
+  "services": {
+    "indexTitle": "HVAC Services",
+    "indexDescription": "Complete HVAC services for {primaryCity} homes and businesses — repair, installation, and maintenance.",
+    "emergencyBadge": "24/7",
+    "featuredBadge": "Popular",
+    "learnMore": "Learn more",
+    "scheduleThis": "Schedule this service",
+    "faqHeading": "Frequently asked questions",
+    "relatedHeading": "Other services you might need"
+  },
+  "serviceArea": {
+    "indexTitle": "Service Area",
+    "indexDescription": "{businessName} provides HVAC service to {primaryCity} and surrounding cities throughout the {state} metro area.",
+    "cityTitle": "HVAC Service in {city}, {stateAbbr}",
+    "cityIntro": "Trusted {city} HVAC repair, installation, and maintenance from {businessName}. Same-day service, licensed technicians, and upfront pricing."
+  },
+  "about": {
+    "title": "About {businessName}",
+    "description": "Family-owned HVAC company serving {primaryCity} since {foundedYear}.",
+    "heading": "Comfort you can count on",
+    "body": "{businessName} has been keeping {primaryCity}-area homes comfortable since {foundedYear}. We're {localFamily}, fully licensed and insured, and committed to doing the job right the first time — at a fair, upfront price."
+  },
+  "reviews": {
+    "title": "Customer Reviews",
+    "description": "Read what {primaryCity} homeowners are saying about {businessName}.",
+    "heading": "{rating}★ from {reviewCount}+ verified reviews"
+  },
+  "specials": {
+    "title": "Current Specials & Offers",
+    "description": "Save on HVAC service in {primaryCity} with these limited-time offers from {businessName}.",
+    "heading": "This season's offers",
+    "noOffers": "No active specials right now. Call {phone} for current pricing."
+  },
+  "contact": {
+    "title": "Contact {businessName}",
+    "description": "Schedule HVAC service in {primaryCity}. Call {phone} or send a request — we respond within one business hour.",
+    "heading": "Schedule service",
+    "subheading": "{sla}",
+    "hoursHeading": "Hours",
+    "addressHeading": "Address",
+    "phoneHeading": "Phone",
+    "emailHeading": "Email"
+  },
+  "emergency": {
+    "title": "24/7 Emergency HVAC Service",
+    "description": "No-heat or no-cooling emergency in {primaryCity}? Call {phone} — we answer 24/7.",
+    "heading": "{emergencyText}",
+    "body": "Heat or AC out? Don't wait. We answer the phone day and night, and our technicians are on call 24/7 across the {primaryCity} metro.",
+    "callCta": "Call now: {phone}"
+  },
+  "financing": {
+    "title": "HVAC Financing",
+    "description": "Flexible monthly payments on new HVAC systems and major repairs in {primaryCity}.",
+    "heading": "Comfort now, pay over time",
+    "body": "{financingDetails} Apply in minutes through our financing partner."
+  },
+  "membership": {
+    "title": "{membershipName} Maintenance Plan",
+    "description": "Annual HVAC maintenance plan with priority service, repair discounts, and tune-ups.",
+    "heading": "Join the {membershipName} — ${price}/month",
+    "benefitsHeading": "Member benefits"
+  },
+  "footer": {
+    "tagline": "{primaryCity}'s trusted HVAC team since {foundedYear}.",
+    "servicesHeading": "Services",
+    "serviceAreaHeading": "Service Area",
+    "contactHeading": "Get in touch",
+    "followHeading": "Follow us",
+    "copyright": "© {year} {legalName}. All rights reserved."
+  },
+  "form": {
+    "submit": "Request Service",
+    "submitting": "Sending…",
+    "required": "Required"
+  },
+  "common": {
+    "callNow": "Call Now",
+    "scheduleNow": "Schedule Now",
+    "getQuote": "Get a Quote",
+    "back": "Back",
+    "viewMore": "View More"
+  }
+}
