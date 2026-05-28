@@ -9,11 +9,53 @@
 // Additionally, you should also exclude this file from your linter and/or formatter to prevent it from being checked or modified.
 
 import { Route as rootRouteImport } from './routes/__root'
+import { Route as SpecialsRouteImport } from './routes/specials'
+import { Route as SitemapDotxmlRouteImport } from './routes/sitemap[.]xml'
+import { Route as ReviewsRouteImport } from './routes/reviews'
+import { Route as MaintenancePlanRouteImport } from './routes/maintenance-plan'
+import { Route as FinancingRouteImport } from './routes/financing'
+import { Route as EmergencyRouteImport } from './routes/emergency'
+import { Route as ContactRouteImport } from './routes/contact'
 import { Route as AboutRouteImport } from './routes/about'
 import { Route as IndexRouteImport } from './routes/index'
 import { Route as ServicesIndexRouteImport } from './routes/services/index'
 import { Route as ServiceAreaIndexRouteImport } from './routes/service-area/index'
 
+const SpecialsRoute = SpecialsRouteImport.update({
+  id: '/specials',
+  path: '/specials',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const SitemapDotxmlRoute = SitemapDotxmlRouteImport.update({
+  id: '/sitemap.xml',
+  path: '/sitemap.xml',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const ReviewsRoute = ReviewsRouteImport.update({
+  id: '/reviews',
+  path: '/reviews',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const MaintenancePlanRoute = MaintenancePlanRouteImport.update({
+  id: '/maintenance-plan',
+  path: '/maintenance-plan',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const FinancingRoute = FinancingRouteImport.update({
+  id: '/financing',
+  path: '/financing',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const EmergencyRoute = EmergencyRouteImport.update({
+  id: '/emergency',
+  path: '/emergency',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const ContactRoute = ContactRouteImport.update({
+  id: '/contact',
+  path: '/contact',
+  getParentRoute: () => rootRouteImport,
+} as any)
 const AboutRoute = AboutRouteImport.update({
   id: '/about',
   path: '/about',
@@ -38,12 +80,26 @@ const ServiceAreaIndexRoute = ServiceAreaIndexRouteImport.update({
 export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
   '/about': typeof AboutRoute
+  '/contact': typeof ContactRoute
+  '/emergency': typeof EmergencyRoute
+  '/financing': typeof FinancingRoute
+  '/maintenance-plan': typeof MaintenancePlanRoute
+  '/reviews': typeof ReviewsRoute
+  '/sitemap.xml': typeof SitemapDotxmlRoute
+  '/specials': typeof SpecialsRoute
   '/service-area/': typeof ServiceAreaIndexRoute
   '/services/': typeof ServicesIndexRoute
 }
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
   '/about': typeof AboutRoute
+  '/contact': typeof ContactRoute
+  '/emergency': typeof EmergencyRoute
+  '/financing': typeof FinancingRoute
+  '/maintenance-plan': typeof MaintenancePlanRoute
+  '/reviews': typeof ReviewsRoute
+  '/sitemap.xml': typeof SitemapDotxmlRoute
+  '/specials': typeof SpecialsRoute
   '/service-area': typeof ServiceAreaIndexRoute
   '/services': typeof ServicesIndexRoute
 }
@@ -51,26 +107,123 @@ export interface FileRoutesById {
   __root__: typeof rootRouteImport
   '/': typeof IndexRoute
   '/about': typeof AboutRoute
+  '/contact': typeof ContactRoute
+  '/emergency': typeof EmergencyRoute
+  '/financing': typeof FinancingRoute
+  '/maintenance-plan': typeof MaintenancePlanRoute
+  '/reviews': typeof ReviewsRoute
+  '/sitemap.xml': typeof SitemapDotxmlRoute
+  '/specials': typeof SpecialsRoute
   '/service-area/': typeof ServiceAreaIndexRoute
   '/services/': typeof ServicesIndexRoute
 }
 export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
-  fullPaths: '/' | '/about' | '/service-area/' | '/services/'
+  fullPaths:
+    | '/'
+    | '/about'
+    | '/contact'
+    | '/emergency'
+    | '/financing'
+    | '/maintenance-plan'
+    | '/reviews'
+    | '/sitemap.xml'
+    | '/specials'
+    | '/service-area/'
+    | '/services/'
   fileRoutesByTo: FileRoutesByTo
-  to: '/' | '/about' | '/service-area' | '/services'
-  id: '__root__' | '/' | '/about' | '/service-area/' | '/services/'
+  to:
+    | '/'
+    | '/about'
+    | '/contact'
+    | '/emergency'
+    | '/financing'
+    | '/maintenance-plan'
+    | '/reviews'
+    | '/sitemap.xml'
+    | '/specials'
+    | '/service-area'
+    | '/services'
+  id:
+    | '__root__'
+    | '/'
+    | '/about'
+    | '/contact'
+    | '/emergency'
+    | '/financing'
+    | '/maintenance-plan'
+    | '/reviews'
+    | '/sitemap.xml'
+    | '/specials'
+    | '/service-area/'
+    | '/services/'
   fileRoutesById: FileRoutesById
 }
 export interface RootRouteChildren {
   IndexRoute: typeof IndexRoute
   AboutRoute: typeof AboutRoute
+  ContactRoute: typeof ContactRoute
+  EmergencyRoute: typeof EmergencyRoute
+  FinancingRoute: typeof FinancingRoute
+  MaintenancePlanRoute: typeof MaintenancePlanRoute
+  ReviewsRoute: typeof ReviewsRoute
+  SitemapDotxmlRoute: typeof SitemapDotxmlRoute
+  SpecialsRoute: typeof SpecialsRoute
   ServiceAreaIndexRoute: typeof ServiceAreaIndexRoute
   ServicesIndexRoute: typeof ServicesIndexRoute
 }
 
 declare module '@tanstack/react-router' {
   interface FileRoutesByPath {
+    '/specials': {
+      id: '/specials'
+      path: '/specials'
+      fullPath: '/specials'
+      preLoaderRoute: typeof SpecialsRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/sitemap.xml': {
+      id: '/sitemap.xml'
+      path: '/sitemap.xml'
+      fullPath: '/sitemap.xml'
+      preLoaderRoute: typeof SitemapDotxmlRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/reviews': {
+      id: '/reviews'
+      path: '/reviews'
+      fullPath: '/reviews'
+      preLoaderRoute: typeof ReviewsRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/maintenance-plan': {
+      id: '/maintenance-plan'
+      path: '/maintenance-plan'
+      fullPath: '/maintenance-plan'
+      preLoaderRoute: typeof MaintenancePlanRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/financing': {
+      id: '/financing'
+      path: '/financing'
+      fullPath: '/financing'
+      preLoaderRoute: typeof FinancingRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/emergency': {
+      id: '/emergency'
+      path: '/emergency'
+      fullPath: '/emergency'
+      preLoaderRoute: typeof EmergencyRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/contact': {
+      id: '/contact'
+      path: '/contact'
+      fullPath: '/contact'
+      preLoaderRoute: typeof ContactRouteImport
+      parentRoute: typeof rootRouteImport
+    }
     '/about': {
       id: '/about'
       path: '/about'
@@ -105,6 +258,13 @@ declare module '@tanstack/react-router' {
 const rootRouteChildren: RootRouteChildren = {
   IndexRoute: IndexRoute,
   AboutRoute: AboutRoute,
+  ContactRoute: ContactRoute,
+  EmergencyRoute: EmergencyRoute,
+  FinancingRoute: FinancingRoute,
+  MaintenancePlanRoute: MaintenancePlanRoute,
+  ReviewsRoute: ReviewsRoute,
+  SitemapDotxmlRoute: SitemapDotxmlRoute,
+  SpecialsRoute: SpecialsRoute,
   ServiceAreaIndexRoute: ServiceAreaIndexRoute,
   ServicesIndexRoute: ServicesIndexRoute,
 }
