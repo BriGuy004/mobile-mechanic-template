@@ -70,13 +70,24 @@
     "learnMore": "Learn more",
     "scheduleThis": "Schedule this service",
     "faqHeading": "Frequently asked questions",
-    "relatedHeading": "Other services you might need"
+    "relatedHeading": "Other services you might need",
+    "detailWhyHeading": "Why {businessName} for this",
+    "detailIncludedHeading": "What's included",
+    "notFound": "Service not found",
+    "notFoundBody": "We couldn't find that service. Browse all services or call us at {phone} and we'll help."
   },
   "serviceArea": {
     "indexTitle": "Service Area",
     "indexDescription": "{businessName} provides HVAC service to {primaryCity} and surrounding cities throughout the {state} metro area.",
     "cityTitle": "HVAC Service in {city}, {stateAbbr}",
-    "cityIntro": "Trusted {city} HVAC repair, installation, and maintenance from {businessName}. Same-day service, licensed technicians, and upfront pricing."
+    "cityIntro": "Trusted {city} HVAC repair, installation, and maintenance from {businessName}. Same-day service, licensed technicians, and upfront pricing.",
+    "servicesInCity": "HVAC services in {city}",
+    "zipsHeading": "ZIPs we serve in {city}",
+    "nearbyHeading": "Nearby cities we also serve",
+    "whyHeading": "Why {city} chooses {businessName}",
+    "whyBody": "{technicianCount} certified technicians, serving {city} for over {years} years. Licensed, insured, and locally owned.",
+    "notFound": "City not found",
+    "notFoundBody": "We couldn't find that city in our service area. See all cities we serve or call us at {phone}."
   },
   "about": {
     "title": "About {businessName}",

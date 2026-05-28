@@ -20,6 +20,8 @@ import { Route as AboutRouteImport } from './routes/about'
 import { Route as IndexRouteImport } from './routes/index'
 import { Route as ServicesIndexRouteImport } from './routes/services/index'
 import { Route as ServiceAreaIndexRouteImport } from './routes/service-area/index'
+import { Route as ServicesSlugRouteImport } from './routes/services/$slug'
+import { Route as ServiceAreaCitySlugRouteImport } from './routes/service-area/$citySlug'
 
 const SpecialsRoute = SpecialsRouteImport.update({
   id: '/specials',
@@ -76,6 +78,16 @@ const ServiceAreaIndexRoute = ServiceAreaIndexRouteImport.update({
   path: '/service-area/',
   getParentRoute: () => rootRouteImport,
 } as any)
+const ServicesSlugRoute = ServicesSlugRouteImport.update({
+  id: '/services/$slug',
+  path: '/services/$slug',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const ServiceAreaCitySlugRoute = ServiceAreaCitySlugRouteImport.update({
+  id: '/service-area/$citySlug',
+  path: '/service-area/$citySlug',
+  getParentRoute: () => rootRouteImport,
+} as any)
 
 export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
@@ -87,6 +99,8 @@ export interface FileRoutesByFullPath {
   '/reviews': typeof ReviewsRoute
   '/sitemap.xml': typeof SitemapDotxmlRoute
   '/specials': typeof SpecialsRoute
+  '/service-area/$citySlug': typeof ServiceAreaCitySlugRoute
+  '/services/$slug': typeof ServicesSlugRoute
   '/service-area/': typeof ServiceAreaIndexRoute
   '/services/': typeof ServicesIndexRoute
 }
@@ -100,6 +114,8 @@ export interface FileRoutesByTo {
   '/reviews': typeof ReviewsRoute
   '/sitemap.xml': typeof SitemapDotxmlRoute
   '/specials': typeof SpecialsRoute
+  '/service-area/$citySlug': typeof ServiceAreaCitySlugRoute
+  '/services/$slug': typeof ServicesSlugRoute
   '/service-area': typeof ServiceAreaIndexRoute
   '/services': typeof ServicesIndexRoute
 }
@@ -114,6 +130,8 @@ export interface FileRoutesById {
   '/reviews': typeof ReviewsRoute
   '/sitemap.xml': typeof SitemapDotxmlRoute
   '/specials': typeof SpecialsRoute
+  '/service-area/$citySlug': typeof ServiceAreaCitySlugRoute
+  '/services/$slug': typeof ServicesSlugRoute
   '/service-area/': typeof ServiceAreaIndexRoute
   '/services/': typeof ServicesIndexRoute
 }
@@ -129,6 +147,8 @@ export interface FileRouteTypes {
     | '/reviews'
     | '/sitemap.xml'
     | '/specials'
+    | '/service-area/$citySlug'
+    | '/services/$slug'
     | '/service-area/'
     | '/services/'
   fileRoutesByTo: FileRoutesByTo
@@ -142,6 +162,8 @@ export interface FileRouteTypes {
     | '/reviews'
     | '/sitemap.xml'
     | '/specials'
+    | '/service-area/$citySlug'
+    | '/services/$slug'
     | '/service-area'
     | '/services'
   id:
@@ -155,6 +177,8 @@ export interface FileRouteTypes {
     | '/reviews'
     | '/sitemap.xml'
     | '/specials'
+    | '/service-area/$citySlug'
+    | '/services/$slug'
     | '/service-area/'
     | '/services/'
   fileRoutesById: FileRoutesById
@@ -169,6 +193,8 @@ export interface RootRouteChildren {
   ReviewsRoute: typeof ReviewsRoute
   SitemapDotxmlRoute: typeof SitemapDotxmlRoute
   SpecialsRoute: typeof SpecialsRoute
+  ServiceAreaCitySlugRoute: typeof ServiceAreaCitySlugRoute
+  ServicesSlugRoute: typeof ServicesSlugRoute
   ServiceAreaIndexRoute: typeof ServiceAreaIndexRoute
   ServicesIndexRoute: typeof ServicesIndexRoute
 }
@@ -252,6 +278,20 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof ServiceAreaIndexRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/services/$slug': {
+      id: '/services/$slug'
+      path: '/services/$slug'
+      fullPath: '/services/$slug'
+      preLoaderRoute: typeof ServicesSlugRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/service-area/$citySlug': {
+      id: '/service-area/$citySlug'
+      path: '/service-area/$citySlug'
+      fullPath: '/service-area/$citySlug'
+      preLoaderRoute: typeof ServiceAreaCitySlugRouteImport
+      parentRoute: typeof rootRouteImport
+    }
   }
 }
 
@@ -265,6 +305,8 @@ const rootRouteChildren: RootRouteChildren = {
   ReviewsRoute: ReviewsRoute,
   SitemapDotxmlRoute: SitemapDotxmlRoute,
   SpecialsRoute: SpecialsRoute,
+  ServiceAreaCitySlugRoute: ServiceAreaCitySlugRoute,
+  ServicesSlugRoute: ServicesSlugRoute,
   ServiceAreaIndexRoute: ServiceAreaIndexRoute,
   ServicesIndexRoute: ServicesIndexRoute,
 }
