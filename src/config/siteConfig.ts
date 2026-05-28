@@ -94,8 +94,8 @@ export interface SiteConfig {
 }
 
 export const siteConfig: SiteConfig = {
-  businessName: "Brian's HVAC",
-  legalName: "Brian's HVAC LLC",
+  businessName: "Acme Service Co",
+  legalName: "Acme Service Co LLC",
   tagline: "Dallas's Trusted HVAC Specialists",
   logoPath: "/logo.svg",
   logoAlt: "Brian's HVAC logo",

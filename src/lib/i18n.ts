@@ -1,8 +1,16 @@
 import en from "@/locales/en.json";
+import es from "@/locales/es.json";
 import { siteConfig, yearsInBusiness } from "@/config/siteConfig";
 
 type LocaleDict = Record<string, unknown>;
-const dicts: Record<string, LocaleDict> = { en: en as LocaleDict };
+// English is the fallback. The `get` helper below falls back to dicts.en when
+// a key is missing from the active locale, so any [ES: ...] markers in es.json
+// show through verbatim until a translator fills them in, and any truly
+// missing es.json key falls back to English silently.
+const dicts: Record<string, LocaleDict> = {
+  en: en as LocaleDict,
+  es: es as LocaleDict,
+};
 
 const get = (dict: LocaleDict, path: string): string | undefined => {
   const parts = path.split(".");
