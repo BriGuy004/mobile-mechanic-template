@@ -1,0 +1,120 @@
+@import "tailwindcss" source(none);
+@source "../src";
+@import "tw-animate-css";
+
+@custom-variant dark (&:is(.dark *));
+
+/*
+ * Design tokens are sourced from src/config/siteConfig.ts at runtime
+ * via inline CSS variables injected on <html> in __root.tsx.
+ * Tailwind utilities reference these tokens via the @theme block below.
+ */
+
+@theme inline {
+  --radius-sm: calc(var(--radius) - 4px);
+  --radius-md: calc(var(--radius) - 2px);
+  --radius-lg: var(--radius);
+  --radius-xl: calc(var(--radius) + 4px);
+  --radius-2xl: calc(var(--radius) + 8px);
+  --color-background: var(--background);
+  --color-foreground: var(--foreground);
+  --color-card: var(--card);
+  --color-card-foreground: var(--card-foreground);
+  --color-popover: var(--popover);
+  --color-popover-foreground: var(--popover-foreground);
+  --color-primary: var(--brand-primary);
+  --color-primary-foreground: var(--brand-text-light);
+  --color-secondary: var(--secondary);
+  --color-secondary-foreground: var(--secondary-foreground);
+  --color-muted: var(--muted);
+  --color-muted-foreground: var(--muted-foreground);
+  --color-accent: var(--brand-accent);
+  --color-accent-foreground: var(--brand-text-light);
+  --color-destructive: var(--destructive);
+  --color-destructive-foreground: var(--destructive-foreground);
+  --color-border: var(--border);
+  --color-input: var(--input);
+  --color-ring: var(--brand-primary);
+  --color-ring-offset-background: var(--background);
+  --color-brand-primary: var(--brand-primary);
+  --color-brand-accent: var(--brand-accent);
+  --color-brand-dark: var(--brand-dark-bg);
+  --color-brand-light: var(--brand-light-bg);
+  --font-headline: var(--font-headline);
+  --font-body: var(--font-body);
+}
+
+:root {
+  --radius: 0.5rem;
+  /* Brand tokens — overridden at runtime from siteConfig in __root.tsx */
+  --brand-primary: #1E3A8A;
+  --brand-accent: #EF4444;
+  --brand-dark-bg: #0B1B3F;
+  --brand-light-bg: #F8FAFC;
+  --brand-text-dark: #0F172A;
+  --brand-text-light: #FFFFFF;
+  --font-headline: "Inter", system-ui, sans-serif;
+  --font-body: "Inter", system-ui, sans-serif;
+
+  --background: #FFFFFF;
+  --foreground: var(--brand-text-dark);
+  --card: #FFFFFF;
+  --card-foreground: var(--brand-text-dark);
+  --popover: #FFFFFF;
+  --popover-foreground: var(--brand-text-dark);
+  --secondary: #F1F5F9;
+  --secondary-foreground: var(--brand-text-dark);
+  --muted: #F1F5F9;
+  --muted-foreground: #64748B;
+  --destructive: #DC2626;
+  --destructive-foreground: #FFFFFF;
+  --border: #E2E8F0;
+  --input: #E2E8F0;
+}
+
+@layer base {
+  * { border-color: var(--color-border); }
+  html { font-family: var(--font-body); -webkit-text-size-adjust: 100%; }
+  body {
+    background-color: var(--color-background);
+    color: var(--color-foreground);
+    font-feature-settings: "ss01", "cv11";
+  }
+  h1, h2, h3, h4, h5, h6 {
+    font-family: var(--font-headline);
+    font-weight: 700;
+    letter-spacing: -0.02em;
+    color: var(--brand-text-dark);
+  }
+  /* 44px minimum tap targets on mobile interactive elements */
+  @media (max-width: 640px) {
+    a, button, [role="button"] { min-height: 44px; }
+  }
+}
+
+@layer utilities {
+  .bg-brand-primary { background-color: var(--brand-primary); }
+  .bg-brand-accent  { background-color: var(--brand-accent); }
+  .bg-brand-dark    { background-color: var(--brand-dark-bg); }
+  .bg-brand-light   { background-color: var(--brand-light-bg); }
+  .text-brand-primary { color: var(--brand-primary); }
+  .text-brand-accent  { color: var(--brand-accent); }
+  .text-brand-dark    { color: var(--brand-text-dark); }
+  .text-brand-light   { color: var(--brand-text-light); }
+  .border-brand-primary { border-color: var(--brand-primary); }
+  .border-brand-accent  { border-color: var(--brand-accent); }
+  .hero-gradient {
+    background:
+      radial-gradient(ellipse at top right, color-mix(in oklab, var(--brand-accent) 20%, transparent), transparent 60%),
+      linear-gradient(135deg, var(--brand-dark-bg) 0%, var(--brand-primary) 100%);
+  }
+  .ring-brand {
+    box-shadow: 0 0 0 3px color-mix(in oklab, var(--brand-primary) 30%, transparent);
+  }
+  .card-shadow {
+    box-shadow: 0 1px 2px rgba(15,23,42,.04), 0 8px 24px -8px rgba(15,23,42,.08);
+  }
+  .card-shadow-lg {
+    box-shadow: 0 4px 8px -2px rgba(15,23,42,.06), 0 16px 40px -12px rgba(15,23,42,.15);
+  }
+}
