@@ -17,7 +17,7 @@ export const Route = createFileRoute("/service-area/$citySlug")({
   head: ({ loaderData }) => {
     if (!loaderData) return {};
     const city = loaderData;
-    const title = `HVAC Service in ${city.name}, ${siteConfig.stateAbbr} | ${siteConfig.businessName}`;
+    const title = `${siteConfig.verticalNoun} Service in ${city.name}, ${siteConfig.stateAbbr} | ${siteConfig.businessName}`;
     const desc = t("serviceArea.cityIntro", { city: city.name });
     return {
       meta: [
@@ -96,7 +96,7 @@ function CityPage() {
 
       <section className="bg-white py-12 md:py-16">
         <div className="mx-auto max-w-7xl px-6">
-          <h2 className="text-2xl md:text-3xl font-bold mb-6">HVAC services in {city.name}</h2>
+          <h2 className="text-2xl md:text-3xl font-bold mb-6">{siteConfig.verticalNoun} services in {city.name}</h2>
           <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-5">
             {featured.map((s) => <ServiceCard key={s.slug} service={s} />)}
           </div>

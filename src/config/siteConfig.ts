@@ -30,6 +30,11 @@ export interface DayHours { open: string; close: string; closed?: boolean; }
 
 export interface SiteConfig {
   businessName: string; legalName: string; tagline: string;
+  // Vertical noun used in route-level page titles / H1s where the vertical
+  // appears as plain text (e.g. "HVAC Service in Plano" / "Plumbing Service
+  // in Plano"). Forks override per vertical: "HVAC", "Plumbing", "Mobile
+  // Mechanic", "Roofing", etc.
+  verticalNoun: string;
   logoPath: string; logoAlt: string; foundedYear: number;
   licenseNumbers: string[]; bbbAccreditation: { accredited: boolean; rating: string };
   certifications: string[]; insuranceCarrier: string; awardsList: string[];
@@ -97,6 +102,7 @@ export const siteConfig: SiteConfig = {
   businessName: "Acme Service Co",
   legalName: "Acme Service Co LLC",
   tagline: "Dallas's Trusted HVAC Specialists",
+  verticalNoun: "HVAC",
   logoPath: "/logo.svg",
   logoAlt: "Brian's HVAC logo",
   foundedYear: 2018,
@@ -425,13 +431,17 @@ export const siteConfig: SiteConfig = {
     { icon: "ThumbsUp", title: "Upfront Pricing", description: "Flat-rate pricing approved before any work begins. No surprises." },
   ],
 
+  // Per-fork: replace each entry with a real client review pulled from the
+  // shop's GBP. Keep [EDITOR:] markers until a real review is available — a
+  // testimonial with the wrong vertical (e.g. AC quotes on a plumbing site)
+  // is worse than a placeholder.
   testimonials: [
-    { author: "Sarah M.", city: "Plano", rating: 5, text: "AC died on the hottest day of July. A tech was at my door in under three hours and we were cooling by dinnertime. Honest pricing and the tech explained everything.", service: "AC Repair", date: "2025-07-18" },
-    { author: "Mike R.", city: "Dallas", rating: 5, text: "Replaced our 22-year-old system. Crew was on time, clean, and respectful of the house. New system runs quieter and our electric bill dropped by a third.", service: "AC Installation", date: "2025-06-02" },
-    { author: "Jennifer K.", city: "Frisco", rating: 5, text: "Comfort Club member for two years. Worth every penny — priority scheduling alone has saved me twice during heatwaves.", service: "Maintenance", date: "2025-05-14" },
-    { author: "David L.", city: "McKinney", rating: 5, text: "Got three quotes for a new furnace. They weren't the cheapest, but they did a real load calculation while the others just measured the old unit. Glad I went with them.", service: "Furnace Installation", date: "2025-10-22" },
-    { author: "Maria G.", city: "Garland", rating: 5, text: "Hablan español, lo cual fue de gran ayuda para mis padres. Servicio profesional y precios justos.", service: "AC Repair", date: "2025-08-09" },
-    { author: "Tom B.", city: "Richardson", rating: 5, text: "Installed a UV light and media filter — allergies have noticeably improved. Great recommendation from the tech.", service: "Indoor Air Quality", date: "2025-04-30" },
+    { author: "[EDITOR: customer name]", city: "[EDITOR: city]", rating: 5, text: "[EDITOR: replace with a real client review from the shop's Google Business Profile]", service: "[EDITOR: service name]", date: "[EDITOR: YYYY-MM-DD]" },
+    { author: "[EDITOR: customer name]", city: "[EDITOR: city]", rating: 5, text: "[EDITOR: replace with a real client review from the shop's Google Business Profile]", service: "[EDITOR: service name]", date: "[EDITOR: YYYY-MM-DD]" },
+    { author: "[EDITOR: customer name]", city: "[EDITOR: city]", rating: 5, text: "[EDITOR: replace with a real client review from the shop's Google Business Profile]", service: "[EDITOR: service name]", date: "[EDITOR: YYYY-MM-DD]" },
+    { author: "[EDITOR: customer name]", city: "[EDITOR: city]", rating: 5, text: "[EDITOR: replace with a real client review from the shop's Google Business Profile]", service: "[EDITOR: service name]", date: "[EDITOR: YYYY-MM-DD]" },
+    { author: "[EDITOR: customer name]", city: "[EDITOR: city]", rating: 5, text: "[EDITOR: replace with a real client review from the shop's Google Business Profile]", service: "[EDITOR: service name]", date: "[EDITOR: YYYY-MM-DD]" },
+    { author: "[EDITOR: customer name]", city: "[EDITOR: city]", rating: 5, text: "[EDITOR: replace with a real client review from the shop's Google Business Profile]", service: "[EDITOR: service name]", date: "[EDITOR: YYYY-MM-DD]" },
   ],
 
   siteUrl: "",
