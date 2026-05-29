@@ -21,7 +21,7 @@
   "homepage": {
     "hero": {
       "eyebrow": "[ES: {primaryCity}, {state} • Licensed & Insured]",
-      "headline": "[ES: {primaryCity}'s Trusted HVAC Pros]",
+      "headline": "[ES: {primaryCity}'s Trusted Mobile Mechanics]",
       "subheadline": "[ES: Same-day repairs, expert installations, and honest pricing from a {localFamily} team your neighbors trust.]",
       "primaryCta": "Cotización Gratis",
       "secondaryCta": "[ES: Call {phone}]",
@@ -29,7 +29,7 @@
     },
     "services": {
       "eyebrow": "[ES: What We Do]",
-      "heading": "[ES: Complete HVAC Service for Every Home]",
+      "heading": "[ES: Mobile Auto Repair for Every Driveway]",
       "subheading": "[ES: From emergency repair to whole-system replacement, our certified technicians handle it all.]",
       "viewAll": "[ES: View all services]"
     },
@@ -63,8 +63,8 @@
     }
   },
   "services": {
-    "indexTitle": "[ES: HVAC Services]",
-    "indexDescription": "[ES: Complete HVAC services for {primaryCity} homes and businesses — repair, installation, and maintenance.]",
+    "indexTitle": "[ES: Mobile Auto Services]",
+    "indexDescription": "[ES: Complete mobile auto services across {primaryCity} driveways, offices, and parking lots — repair, installation, and maintenance.]",
     "emergencyBadge": "24/7",
     "featuredBadge": "[ES: Popular]",
     "learnMore": "Más información",
@@ -78,10 +78,10 @@
   },
   "serviceArea": {
     "indexTitle": "Área de Servicio",
-    "indexDescription": "[ES: {businessName} provides HVAC service to {primaryCity} and surrounding cities throughout the {state} metro area.]",
-    "cityTitle": "[ES: HVAC Service in {city}, {stateAbbr}]",
-    "cityIntro": "[ES: Trusted {city} HVAC repair, installation, and maintenance from {businessName}. Same-day service, licensed technicians, and upfront pricing.]",
-    "servicesInCity": "[ES: HVAC services in {city}]",
+    "indexDescription": "[ES: {businessName} provides mobile auto service to {primaryCity} and surrounding cities throughout the {state} metro area.]",
+    "cityTitle": "[ES: Mobile Auto Service in {city}, {stateAbbr}]",
+    "cityIntro": "[ES: Trusted {city} mobile auto repair, diagnostics, and maintenance from {businessName}. Same-day service, licensed technicians, and upfront pricing.]",
+    "servicesInCity": "[ES: mobile auto services in {city}]",
     "zipsHeading": "[ES: ZIPs we serve in {city}]",
     "nearbyHeading": "[ES: Nearby cities we also serve]",
     "whyHeading": "[ES: Why {city} chooses {businessName}]",
@@ -91,7 +91,7 @@
   },
   "about": {
     "title": "[ES: About {businessName}]",
-    "description": "[ES: Family-owned HVAC company serving {primaryCity} since {foundedYear}.]",
+    "description": "[ES: Family-owned mobile mechanic serving {primaryCity} since {foundedYear}.]",
     "heading": "[ES: Comfort you can count on]",
     "body": "[ES: {businessName} has been keeping {primaryCity}-area homes comfortable since {foundedYear}. We're {localFamily}, fully licensed and insured, and committed to doing the job right the first time — at a fair, upfront price.]"
   },
@@ -102,13 +102,13 @@
   },
   "specials": {
     "title": "[ES: Current Specials & Offers]",
-    "description": "[ES: Save on HVAC service in {primaryCity} with these limited-time offers from {businessName}.]",
+    "description": "[ES: Save on mobile auto service in {primaryCity} with these limited-time offers from {businessName}.]",
     "heading": "[ES: This season's offers]",
     "noOffers": "[ES: No active specials right now. Call {phone} for current pricing.]"
   },
   "contact": {
     "title": "[ES: Contact {businessName}]",
-    "description": "[ES: Schedule HVAC service in {primaryCity}. Call {phone} or send a request — we respond within one business hour.]",
+    "description": "[ES: Schedule mobile auto service in {primaryCity}. Call {phone} or send a request — we respond within one business hour.]",
     "heading": "[ES: Schedule service]",
     "subheading": "[ES: {sla}]",
     "hoursHeading": "Horarios",
@@ -117,26 +117,26 @@
     "emailHeading": "Correo"
   },
   "emergency": {
-    "title": "[ES: 24/7 Emergency HVAC Service]",
-    "description": "[ES: No-heat or no-cooling emergency in {primaryCity}? Call {phone} — we answer 24/7.]",
+    "title": "[ES: Emergency Roadside Service]",
+    "description": "[ES: Stranded in {primaryCity}? Won't start, dead battery, or flat tire? Call {phone} — we answer 24/7.]",
     "heading": "[ES: {emergencyText}]",
     "body": "[ES: Heat or AC out? Don't wait. We answer the phone day and night, and our technicians are on call 24/7 across the {primaryCity} metro.]",
     "callCta": "[ES: Call now: {phone}]"
   },
   "financing": {
-    "title": "[ES: HVAC Financing]",
-    "description": "[ES: Flexible monthly payments on new HVAC systems and major repairs in {primaryCity}.]",
+    "title": "[ES: Auto Repair Financing]",
+    "description": "[ES: Flexible monthly payments on major repairs and roadside emergencies in {primaryCity}.]",
     "heading": "[ES: Comfort now, pay over time]",
     "body": "[ES: {financingDetails} Apply in minutes through our financing partner.]"
   },
   "membership": {
     "title": "[ES: {membershipName} Maintenance Plan]",
-    "description": "[ES: Annual HVAC maintenance plan with priority service, repair discounts, and tune-ups.]",
+    "description": "[ES: Mobile Maintenance Club with priority service, repair discounts, and on-the-spot diagnostics.]",
     "heading": "[ES: Join the {membershipName} — ${price}/month]",
     "benefitsHeading": "[ES: Member benefits]"
   },
   "footer": {
-    "tagline": "[ES: {primaryCity}'s trusted HVAC team since {foundedYear}.]",
+    "tagline": "[ES: {primaryCity}'s trusted mobile mechanics since {foundedYear}.]",
     "servicesHeading": "Servicios",
     "serviceAreaHeading": "Área de Servicio",
     "contactHeading": "[ES: Get in touch]",
