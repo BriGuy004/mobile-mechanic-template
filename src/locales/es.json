@@ -46,7 +46,12 @@
     "reviews": {
       "eyebrow": "[ES: What Customers Say]",
       "heading": "[ES: {rating}★ across {reviewCount}+ verified reviews]",
-      "readMore": "[ES: Read all reviews]"
+      "readMore": "[ES: Read all reviews]",
+      "prevReview": "[ES: Previous review]",
+      "nextReview": "[ES: Next review]",
+      "goToReview": "[ES: Go to review {n}]",
+      "viewOnGoogle": "[ES: View all reviews on Google]",
+      "googleBadgeAria": "[ES: {rating} stars from {reviewCount}+ Google reviews — open Google Business Profile in a new tab]"
     },
     "specials": {
       "eyebrow": "[ES: Current Offers]",

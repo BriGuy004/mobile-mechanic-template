@@ -51,11 +51,37 @@ function Home() {
             </div>
 
             <div className="mt-10 flex flex-wrap items-center gap-x-6 gap-y-3 text-sm text-white/85">
-              <div className="inline-flex items-center gap-1.5">
-                {Array.from({ length: 5 }).map((_, i) => <Star key={i} className="w-4 h-4 fill-amber-400 text-amber-400" />)}
-                <span className="ml-1 font-semibold">{c.googleAverageRating}</span>
-                <span className="text-white/60">({c.googleReviewCount}+ reviews)</span>
-              </div>
+              {(() => {
+                const gbpUrl = c.googleBusinessProfileUrl;
+                const hasGbp =
+                  typeof gbpUrl === "string" &&
+                  /^https?:\/\//i.test(gbpUrl) &&
+                  !gbpUrl.includes("[EDITOR");
+                const inner = (
+                  <>
+                    {Array.from({ length: 5 }).map((_, i) => (
+                      <Star key={i} className="w-4 h-4 fill-amber-400 text-amber-400" />
+                    ))}
+                    <span className="ml-1 font-semibold">{c.googleAverageRating}</span>
+                    <span className="text-white/60">
+                      ({c.googleReviewCount}+ Google reviews)
+                    </span>
+                  </>
+                );
+                return hasGbp ? (
+                  <a
+                    href={gbpUrl}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    aria-label={t("homepage.reviews.googleBadgeAria")}
+                    className="inline-flex items-center gap-1.5 rounded-full bg-white/10 hover:bg-white/15 px-3 py-1 transition-colors"
+                  >
+                    {inner}
+                  </a>
+                ) : (
+                  <div className="inline-flex items-center gap-1.5">{inner}</div>
+                );
+              })()}
               <span className="text-white/30">|</span>
               <span>{yearsInBusiness()}+ years in {c.primaryCity}</span>
               <span className="text-white/30">|</span>
