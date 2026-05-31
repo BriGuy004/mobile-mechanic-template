@@ -36,6 +36,12 @@ export interface SiteConfig {
   // Mechanic", "Roofing", etc.
   verticalNoun: string;
   logoPath: string; logoAlt: string; foundedYear: number;
+  // Hero photo slot — drop a real shop / truck / team photo here. Aspect
+  // ratio is enforced by the hero container (4:5 portrait on mobile, 4:3 on
+  // desktop). If empty or "[EDITOR:]", the hero falls back to the original
+  // quick-contact card layout — no broken image, no awkward placeholder.
+  heroImage?: string;
+  heroImageAlt?: string;
   licenseNumbers: string[]; bbbAccreditation: { accredited: boolean; rating: string };
   certifications: string[]; insuranceCarrier: string; awardsList: string[];
 
@@ -104,6 +110,8 @@ export const siteConfig: SiteConfig = {
   tagline: "Dallas's Trusted HVAC Specialists",
   verticalNoun: "HVAC",
   logoPath: "/logo.svg",
+  heroImage: "[EDITOR: drop a real photo of the team / truck / shop at /public/hero.jpg and set this to /hero.jpg]",
+  heroImageAlt: "[EDITOR: alt text describing the photo — e.g. 'Our service truck in front of the shop']",
   logoAlt: "Brian's HVAC logo",
   foundedYear: 2018,
   licenseNumbers: ["TACLA00123456C"],

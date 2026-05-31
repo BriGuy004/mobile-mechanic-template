@@ -1,5 +1,5 @@
 import { createFileRoute, Link, notFound } from "@tanstack/react-router";
-import { MapPin, Phone } from "lucide-react";
+import { MapPin, Phone, Star } from "lucide-react";
 import { siteConfig } from "@/config/siteConfig";
 import { t, pageTitle } from "@/lib/i18n";
 import { ServiceCard } from "@/components/site/ServiceCard";
@@ -172,7 +172,7 @@ function CityPage() {
             <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-5">
               {c.trustPillars.slice(0, 4).map((tp) => (
                 <div key={tp.title} className="bg-white rounded-xl p-5 border border-slate-200 card-shadow">
-                  <div className="w-10 h-10 rounded-lg bg-brand-primary/10 text-brand-primary grid place-items-center mb-3">
+                  <div className="w-10 h-10 rounded-xl bg-brand-primary/10 text-brand-primary grid place-items-center mb-3">
                     <Icon name={tp.icon} className="w-5 h-5" />
                   </div>
                   <h3 className="font-bold text-brand-dark mb-1">{tp.title}</h3>
@@ -216,7 +216,7 @@ function CityPage() {
                     <Link
                       to="/service-area/$citySlug"
                       params={{ citySlug: n.slug }}
-                      className="flex items-center gap-2 p-2 rounded-lg border border-slate-200 hover:border-brand-primary hover:bg-brand-light transition-colors text-sm"
+                      className="flex items-center gap-2 p-2 rounded-xl border border-slate-200 hover:border-brand-primary hover:bg-brand-light transition-colors text-sm"
                     >
                       <MapPin className="w-4 h-4 text-brand-primary" /> {n.name}, {c.stateAbbr}
                     </Link>
@@ -240,8 +240,10 @@ function CityPage() {
             <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-5">
               {testimonialsToShow.map((tm, i) => (
                 <div key={i} className="bg-white rounded-xl p-5 border border-slate-200 card-shadow">
-                  <div className="flex items-center gap-1 text-brand-accent mb-3">
-                    {"★".repeat(tm.rating)}
+                  <div className="flex items-center gap-0.5 mb-3" aria-label={`Rating: ${tm.rating} out of 5 stars`}>
+                    {Array.from({ length: tm.rating }).map((_, k) => (
+                      <Star key={k} className="w-4 h-4 fill-amber-400 text-amber-400" />
+                    ))}
                   </div>
                   <p className="text-slate-700 italic leading-relaxed">"{tm.text}"</p>
                   <p className="mt-3 text-sm font-semibold text-brand-dark">

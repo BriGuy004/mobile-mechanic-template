@@ -1,4 +1,4 @@
-import { Phone, MessageCircle } from "lucide-react";
+import { Phone, MessageCircle, Star } from "lucide-react";
 import { siteConfig } from "@/config/siteConfig";
 import { t } from "@/lib/i18n";
 
@@ -24,8 +24,9 @@ export function TopBar() {
               {t("topBar.emergencyPill")}
             </span>
           )}
-          <span className="opacity-80">
-            ★ {c.googleAverageRating} · {c.googleReviewCount}+ reviews
+          <span className="inline-flex items-center gap-1 opacity-80">
+            <Star className="w-3.5 h-3.5 fill-amber-400 text-amber-400" />
+            {c.googleAverageRating} · {c.googleReviewCount}+ reviews
           </span>
         </div>
       </div>

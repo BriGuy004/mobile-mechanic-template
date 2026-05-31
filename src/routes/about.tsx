@@ -1,5 +1,5 @@
 import { createFileRoute } from "@tanstack/react-router";
-import { Award, Heart, Users, Wrench } from "lucide-react";
+import { Award, Star, Users, Wrench } from "lucide-react";
 import { siteConfig, yearsInBusiness } from "@/config/siteConfig";
 import { t, pageTitle } from "@/lib/i18n";
 import { CtaBand } from "@/components/site/CtaBand";
@@ -35,7 +35,7 @@ function About() {
             { Icon: Award, label: "Years in business", value: `${yearsInBusiness()}+` },
             { Icon: Wrench, label: "Jobs completed", value: `${c.completedJobs.toLocaleString()}+` },
             { Icon: Users, label: "Technicians", value: c.technicianCount },
-            { Icon: Heart, label: "Avg. rating", value: `${c.googleAverageRating}★` },
+            { Icon: Star, label: "Avg. rating", value: c.googleAverageRating },
           ].map(({ Icon, label, value }) => (
             <div key={label} className="bg-brand-light rounded-xl p-6 text-center">
               <Icon className="w-7 h-7 mx-auto text-brand-primary mb-3" />

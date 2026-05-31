@@ -68,7 +68,7 @@ function ServiceDetail() {
           <div className="grid lg:grid-cols-3 gap-8 items-start">
             <div className="lg:col-span-2">
               <div className="flex items-center gap-3 mb-4">
-                <div className="w-12 h-12 rounded-lg bg-brand-primary text-white grid place-items-center">
+                <div className="w-12 h-12 rounded-xl bg-brand-primary text-white grid place-items-center">
                   <Icon name={svc.icon} className="w-6 h-6" />
                 </div>
                 {svc.emergency && (
@@ -124,7 +124,7 @@ function ServiceDetail() {
         <section className="bg-brand-light py-12 md:py-16">
           <div className="mx-auto max-w-3xl px-6">
             <h2 className="text-2xl md:text-3xl font-bold mb-6">{t("services.faqHeading")}</h2>
-            <div className="divide-y divide-slate-200 bg-white rounded-2xl border border-slate-200 overflow-hidden">
+            <div className="divide-y divide-slate-200 bg-white rounded-xl border border-slate-200 overflow-hidden">
               {svc.faqItems.map((f, i) => (
                 <button
                   key={f.question}

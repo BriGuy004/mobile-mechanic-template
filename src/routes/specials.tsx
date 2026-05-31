@@ -35,7 +35,7 @@ function Specials() {
           ) : (
             <div className="grid md:grid-cols-3 gap-5">
               {c.currentSpecials.map((sp) => (
-                <div key={sp.title} className="relative bg-gradient-to-br from-brand-primary to-brand-dark text-white rounded-2xl p-7 overflow-hidden card-shadow">
+                <div key={sp.title} className="relative bg-gradient-to-br from-brand-primary to-brand-dark text-white rounded-xl p-7 overflow-hidden card-shadow">
                   <Tag className="absolute -top-3 -right-3 w-24 h-24 text-white/5" />
                   <div className="text-xs font-bold uppercase tracking-wider text-brand-accent mb-2">Limited Offer</div>
                   <h3 className="text-2xl font-extrabold mb-2">{sp.title}</h3>

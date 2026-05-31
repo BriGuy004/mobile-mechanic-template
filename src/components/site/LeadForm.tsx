@@ -23,7 +23,7 @@ export function LeadForm() {
   }
 
   return (
-    <form onSubmit={onSubmit} className="bg-white border border-slate-200 rounded-2xl p-6 card-shadow space-y-4">
+    <form onSubmit={onSubmit} className="bg-white border border-slate-200 rounded-xl p-6 card-shadow space-y-4">
       <div className="text-sm text-slate-600 mb-1">{c.leadFormSlaPromise}</div>
       {c.leadFormFields.map((f) => (
         <div key={f.name}>
@@ -36,7 +36,7 @@ export function LeadForm() {
               name={f.name}
               required={f.required}
               rows={3}
-              className="w-full rounded-lg border border-slate-300 px-3 py-2.5 text-sm focus:outline-none focus:ring-2 focus:ring-brand-primary/30 focus:border-brand-primary"
+              className="w-full rounded-xl border border-slate-300 px-3 py-2.5 text-sm focus:outline-none focus:ring-2 focus:ring-brand-primary/30 focus:border-brand-primary"
             />
           ) : f.type === "select" ? (
             <select
@@ -44,7 +44,7 @@ export function LeadForm() {
               name={f.name}
               required={f.required}
               defaultValue=""
-              className="w-full rounded-lg border border-slate-300 px-3 py-2.5 text-sm bg-white focus:outline-none focus:ring-2 focus:ring-brand-primary/30 focus:border-brand-primary"
+              className="w-full rounded-xl border border-slate-300 px-3 py-2.5 text-sm bg-white focus:outline-none focus:ring-2 focus:ring-brand-primary/30 focus:border-brand-primary"
             >
               <option value="" disabled>Select…</option>
               {f.options?.map((o) => <option key={o} value={o}>{o}</option>)}
@@ -55,7 +55,7 @@ export function LeadForm() {
               name={f.name}
               type={f.type}
               required={f.required}
-              className="w-full rounded-lg border border-slate-300 px-3 py-2.5 text-sm focus:outline-none focus:ring-2 focus:ring-brand-primary/30 focus:border-brand-primary"
+              className="w-full rounded-xl border border-slate-300 px-3 py-2.5 text-sm focus:outline-none focus:ring-2 focus:ring-brand-primary/30 focus:border-brand-primary"
             />
           )}
         </div>

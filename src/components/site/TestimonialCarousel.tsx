@@ -74,7 +74,7 @@ export function TestimonialCarousel() {
   return (
     <div
       ref={containerRef}
-      className="relative bg-white border border-slate-200 rounded-2xl p-6 md:p-10 card-shadow"
+      className="relative bg-white border border-slate-200 rounded-xl p-6 md:p-10 card-shadow"
       onMouseEnter={() => setIsPaused(true)}
       onMouseLeave={() => setIsPaused(false)}
       onFocusCapture={() => setIsPaused(true)}

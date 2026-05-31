@@ -16,7 +16,7 @@ export function ServiceCard({ service }: { service: Service }) {
           {t("services.emergencyBadge")}
         </span>
       )}
-      <div className="w-12 h-12 rounded-lg bg-brand-primary/10 text-brand-primary grid place-items-center mb-4">
+      <div className="w-12 h-12 rounded-xl bg-brand-primary/10 text-brand-primary grid place-items-center mb-4">
         <Icon name={service.icon} className="w-6 h-6" />
       </div>
       <h3 className="font-bold text-brand-dark text-lg mb-2">{service.name}</h3>

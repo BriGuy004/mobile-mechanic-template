@@ -127,7 +127,7 @@ function ServiceDetail() {
               </Button>
             </div>
           </div>
-          <div className="hidden md:flex w-32 h-32 rounded-2xl bg-brand-primary/10 text-brand-primary items-center justify-center">
+          <div className="hidden md:flex w-32 h-32 rounded-xl bg-brand-primary/10 text-brand-primary items-center justify-center">
             <Icon name={service.icon} className="w-16 h-16" />
           </div>
         </div>
@@ -155,7 +155,7 @@ function ServiceDetail() {
             <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-5">
               {siteConfig.trustPillars.slice(0, 4).map((tp) => (
                 <div key={tp.title} className="bg-white rounded-xl p-5 border border-slate-200 card-shadow">
-                  <div className="w-10 h-10 rounded-lg bg-brand-primary/10 text-brand-primary grid place-items-center mb-3">
+                  <div className="w-10 h-10 rounded-xl bg-brand-primary/10 text-brand-primary grid place-items-center mb-3">
                     <Icon name={tp.icon} className="w-5 h-5" />
                   </div>
                   <h3 className="font-bold text-brand-dark mb-1">{tp.title}</h3>
@@ -176,7 +176,7 @@ function ServiceDetail() {
             </h2>
             <div className="space-y-3">
               {service.faqItems.map((f, i) => (
-                <details key={i} className="group rounded-lg border border-slate-200 bg-white p-4">
+                <details key={i} className="group rounded-xl border border-slate-200 bg-white p-4">
                   <summary className="cursor-pointer font-semibold text-brand-dark flex items-start gap-2">
                     <Check className="w-5 h-5 text-brand-primary flex-none mt-0.5" />
                     <span>{f.question}</span>

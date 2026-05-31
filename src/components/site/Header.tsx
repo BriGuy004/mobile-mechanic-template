@@ -22,7 +22,7 @@ export function Header() {
     <header className="sticky top-0 z-40 bg-white/95 backdrop-blur border-b border-slate-200">
       <div className="mx-auto max-w-7xl px-4 sm:px-6 h-16 lg:h-20 flex items-center justify-between gap-4">
         <Link to="/" className="flex items-center gap-2 shrink-0">
-          <div className="w-10 h-10 rounded-lg bg-brand-primary text-white grid place-items-center font-black text-lg" aria-hidden>
+          <div className="w-10 h-10 rounded-xl bg-brand-primary text-white grid place-items-center font-black text-lg" aria-hidden>
             {c.businessName.charAt(0)}
           </div>
           <div className="leading-tight">
@@ -82,7 +82,7 @@ export function Header() {
                   key={n.to}
                   to={n.to}
                   onClick={() => setOpen(false)}
-                  className="px-4 py-3 text-base font-medium text-slate-800 hover:bg-slate-50 rounded-lg"
+                  className="px-4 py-3 text-base font-medium text-slate-800 hover:bg-slate-50 rounded-xl"
                 >
                   {t(n.labelKey)}
                 </Link>
@@ -91,7 +91,7 @@ export function Header() {
                 <Link
                   to="/emergency"
                   onClick={() => setOpen(false)}
-                  className="px-4 py-3 text-base font-medium text-brand-accent hover:bg-slate-50 rounded-lg"
+                  className="px-4 py-3 text-base font-medium text-brand-accent hover:bg-slate-50 rounded-xl"
                 >
                   {t("nav.emergency")}
                 </Link>
@@ -100,14 +100,14 @@ export function Header() {
             <div className="mt-auto p-4 space-y-3 border-t">
               <a
                 href={`tel:${c.mainPhoneTel}`}
-                className="flex items-center justify-center gap-2 w-full bg-brand-primary text-white font-semibold rounded-lg py-3"
+                className="flex items-center justify-center gap-2 w-full bg-brand-primary text-white font-semibold rounded-xl py-3"
               >
                 <Phone className="w-4 h-4" /> {c.mainPhone}
               </a>
               <Link
                 to="/contact"
                 onClick={() => setOpen(false)}
-                className="flex items-center justify-center w-full bg-brand-accent text-white font-semibold rounded-lg py-3"
+                className="flex items-center justify-center w-full bg-brand-accent text-white font-semibold rounded-xl py-3"
               >
                 {t("nav.scheduleService")}
               </Link>

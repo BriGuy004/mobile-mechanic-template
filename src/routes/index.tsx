@@ -37,7 +37,7 @@ function Home() {
             <h1 className="text-4xl sm:text-5xl lg:text-6xl font-extrabold text-white leading-[1.05] tracking-tight">
               {t("homepage.hero.headline")}
             </h1>
-            <p className="mt-5 text-lg md:text-xl text-white/85 max-w-xl leading-relaxed">
+            <p className="mt-5 text-lg md:text-xl text-white/90 max-w-xl leading-relaxed">
               {t("homepage.hero.subheadline")}
             </p>
 
@@ -50,7 +50,7 @@ function Home() {
               </Button>
             </div>
 
-            <div className="mt-10 flex flex-wrap items-center gap-x-6 gap-y-3 text-sm text-white/85">
+            <div className="mt-10 flex flex-wrap items-center gap-x-6 gap-y-3 text-sm text-white/70">
               {(() => {
                 const gbpUrl = c.googleBusinessProfileUrl;
                 const hasGbp =
@@ -90,32 +90,57 @@ function Home() {
           </div>
 
           <div className="lg:col-span-5">
-            <div className="bg-white text-brand-dark rounded-2xl p-6 md:p-7 card-shadow-lg">
-              <div className="text-xs font-bold uppercase tracking-wider text-brand-accent mb-1">{c.firstTimeCustomerOffer.amount} OFF</div>
-              <div className="font-bold text-lg mb-1">{c.firstTimeCustomerOffer.description}</div>
-              <div className="text-sm text-slate-600 mb-5">{c.leadFormSlaPromise}</div>
-              <div className="grid grid-cols-2 gap-3 text-center">
-                <div className="rounded-lg bg-slate-50 p-3">
-                  <div className="text-2xl font-extrabold text-brand-primary">{c.completedJobs.toLocaleString()}+</div>
-                  <div className="text-[11px] text-slate-500 uppercase tracking-wide">Jobs done</div>
+            {(() => {
+              const heroImg = c.heroImage;
+              const hasHeroImg =
+                typeof heroImg === "string" &&
+                heroImg.length > 0 &&
+                !heroImg.includes("[EDITOR");
+              if (hasHeroImg) {
+                return (
+                  <figure className="relative overflow-hidden rounded-xl card-shadow-lg aspect-[4/5] md:aspect-[4/3]">
+                    <img
+                      src={heroImg}
+                      alt={c.heroImageAlt ?? `${c.businessName} — ${c.primaryCity}, ${c.stateAbbr}`}
+                      className="absolute inset-0 w-full h-full object-cover"
+                      loading="eager"
+                      decoding="async"
+                    />
+                    {/* subtle bottom-up shading to anchor any caption / lift contrast */}
+                    <div className="absolute inset-x-0 bottom-0 h-1/3 bg-gradient-to-t from-black/40 to-transparent" aria-hidden />
+                  </figure>
+                );
+              }
+              // Graceful fallback — the original trust-stats card when no photo yet.
+              return (
+                <div className="bg-white text-brand-dark rounded-xl p-6 md:p-7 card-shadow-lg">
+                  <div className="text-xs font-bold uppercase tracking-wider text-brand-accent mb-1">{c.firstTimeCustomerOffer.amount} OFF</div>
+                  <div className="font-bold text-lg mb-1">{c.firstTimeCustomerOffer.description}</div>
+                  <div className="text-sm text-slate-600 mb-5">{c.leadFormSlaPromise}</div>
+                  <div className="grid grid-cols-2 gap-3 text-center">
+                    <div className="rounded-md bg-slate-50 p-3">
+                      <div className="text-2xl font-extrabold text-brand-primary">{c.completedJobs.toLocaleString()}+</div>
+                      <div className="text-[11px] text-slate-500 uppercase tracking-wide">Jobs done</div>
+                    </div>
+                    <div className="rounded-md bg-slate-50 p-3">
+                      <div className="text-2xl font-extrabold text-brand-primary">{c.technicianCount}</div>
+                      <div className="text-[11px] text-slate-500 uppercase tracking-wide">Technicians</div>
+                    </div>
+                    <div className="rounded-md bg-slate-50 p-3">
+                      <div className="text-2xl font-extrabold text-brand-primary">{yearsInBusiness()}</div>
+                      <div className="text-[11px] text-slate-500 uppercase tracking-wide">Years local</div>
+                    </div>
+                    <div className="rounded-md bg-slate-50 p-3">
+                      <div className="text-2xl font-extrabold text-brand-primary">{c.bbbAccreditation.rating}</div>
+                      <div className="text-[11px] text-slate-500 uppercase tracking-wide">BBB rating</div>
+                    </div>
+                  </div>
+                  <Button asChild className="mt-5 w-full bg-brand-primary hover:bg-brand-primary/90 text-white font-semibold h-12">
+                    <Link to="/contact">{t("nav.scheduleService")}</Link>
+                  </Button>
                 </div>
-                <div className="rounded-lg bg-slate-50 p-3">
-                  <div className="text-2xl font-extrabold text-brand-primary">{c.technicianCount}</div>
-                  <div className="text-[11px] text-slate-500 uppercase tracking-wide">Technicians</div>
-                </div>
-                <div className="rounded-lg bg-slate-50 p-3">
-                  <div className="text-2xl font-extrabold text-brand-primary">{yearsInBusiness()}</div>
-                  <div className="text-[11px] text-slate-500 uppercase tracking-wide">Years local</div>
-                </div>
-                <div className="rounded-lg bg-slate-50 p-3">
-                  <div className="text-2xl font-extrabold text-brand-primary">{c.bbbAccreditation.rating}</div>
-                  <div className="text-[11px] text-slate-500 uppercase tracking-wide">BBB rating</div>
-                </div>
-              </div>
-              <Button asChild className="mt-5 w-full bg-brand-primary hover:bg-brand-primary/90 text-white font-semibold h-12">
-                <Link to="/contact">{t("nav.scheduleService")}</Link>
-              </Button>
-            </div>
+              );
+            })()}
           </div>
         </div>
       </section>
@@ -149,7 +174,7 @@ function Home() {
           <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-5">
             {c.trustPillars.map((p) => (
               <div key={p.title} className="bg-white rounded-xl p-6 border border-slate-200">
-                <div className="w-12 h-12 rounded-lg bg-brand-primary text-white grid place-items-center mb-4">
+                <div className="w-12 h-12 rounded-xl bg-brand-primary text-white grid place-items-center mb-4">
                   <Icon name={p.icon} className="w-6 h-6" />
                 </div>
                 <h3 className="font-bold text-brand-dark mb-2">{p.title}</h3>
@@ -169,7 +194,7 @@ function Home() {
             <p className="mt-3 text-slate-600 text-lg">{t("homepage.serviceArea.subheading")}</p>
           </div>
           <div className="grid lg:grid-cols-2 gap-8 items-start">
-            <div className="aspect-[4/3] lg:aspect-auto lg:h-[460px] rounded-2xl overflow-hidden border border-slate-200 card-shadow">
+            <div className="aspect-[4/3] lg:aspect-auto lg:h-[460px] rounded-xl overflow-hidden border border-slate-200 card-shadow">
               <iframe
                 title="Service area map"
                 src={c.googleMapsEmbedUrl}
@@ -228,7 +253,7 @@ function Home() {
             </div>
             <div className="grid md:grid-cols-3 gap-5">
               {c.currentSpecials.map((sp) => (
-                <div key={sp.title} className="relative bg-gradient-to-br from-brand-primary to-brand-dark text-white rounded-2xl p-7 overflow-hidden card-shadow">
+                <div key={sp.title} className="relative bg-gradient-to-br from-brand-primary to-brand-dark text-white rounded-xl p-7 overflow-hidden card-shadow">
                   <Tag className="absolute -top-3 -right-3 w-24 h-24 text-white/5" />
                   <div className="text-xs font-bold uppercase tracking-wider text-brand-accent mb-2">Special Offer</div>
                   <h3 className="text-2xl font-extrabold mb-2">{sp.title}</h3>
@@ -253,7 +278,7 @@ function Home() {
           </div>
           <div className="flex flex-wrap items-center justify-center gap-x-8 gap-y-4">
             {c.brandsServiced.map((b) => (
-              <div key={b.name} className="px-5 py-3 bg-white border border-slate-200 rounded-lg text-slate-600 font-bold tracking-wide text-sm">
+              <div key={b.name} className="px-5 py-3 bg-white border border-slate-200 rounded-xl text-slate-600 font-bold tracking-wide text-sm">
                 {b.name}
               </div>
             ))}

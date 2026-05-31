@@ -21,7 +21,7 @@ export function Footer() {
       <div className="mx-auto max-w-7xl px-6 py-14 grid gap-10 md:grid-cols-2 lg:grid-cols-4">
         <div>
           <div className="flex items-center gap-2 mb-4">
-            <div className="w-10 h-10 rounded-lg bg-brand-accent grid place-items-center font-black text-lg">
+            <div className="w-10 h-10 rounded-xl bg-brand-accent grid place-items-center font-black text-lg">
               {c.businessName.charAt(0)}
             </div>
             <div className="font-bold text-white text-lg">{c.businessName}</div>

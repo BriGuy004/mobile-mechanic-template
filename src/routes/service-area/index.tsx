@@ -39,7 +39,7 @@ function ServiceAreaIndex() {
       </section>
       <section className="bg-white py-12 md:py-16">
         <div className="mx-auto max-w-7xl px-6 grid lg:grid-cols-2 gap-10 items-start">
-          <div className="rounded-2xl overflow-hidden border border-slate-200 card-shadow aspect-[4/3]">
+          <div className="rounded-xl overflow-hidden border border-slate-200 card-shadow aspect-[4/3]">
             <iframe
               title="Service area"
               src={c.googleMapsEmbedUrl}
@@ -57,7 +57,7 @@ function ServiceAreaIndex() {
                   <Link
                     to="/service-area/$citySlug"
                     params={{ citySlug: city.slug }}
-                    className="flex items-center justify-between gap-2 p-3 rounded-lg border border-slate-200 hover:border-brand-primary hover:bg-brand-light transition-colors"
+                    className="flex items-center justify-between gap-2 p-3 rounded-xl border border-slate-200 hover:border-brand-primary hover:bg-brand-light transition-colors"
                   >
                     <span className="inline-flex items-center gap-2 font-medium text-brand-dark">
                       <MapPin className="w-4 h-4 text-brand-primary" /> {city.name}, {c.stateAbbr}
