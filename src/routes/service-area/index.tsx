@@ -33,7 +33,7 @@ function ServiceAreaIndex() {
       <section className="bg-brand-light border-b border-slate-200">
         <div className="mx-auto max-w-7xl px-6 py-12 md:py-16">
           <div className="text-xs font-bold uppercase tracking-wider text-brand-accent mb-2">Service Area</div>
-          <h1 className="text-4xl md:text-5xl font-bold">HVAC service across {c.primaryCity} & beyond</h1>
+          <h1 className="text-4xl md:text-5xl font-bold">{c.verticalNoun} service across {c.primaryCity} & beyond</h1>
           <p className="mt-3 text-slate-600 text-lg max-w-2xl">{t("serviceArea.indexDescription")}</p>
         </div>
       </section>

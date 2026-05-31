@@ -30,6 +30,10 @@ export interface DayHours { open: string; close: string; closed?: boolean; }
 
 export interface SiteConfig {
   businessName: string; legalName: string; tagline: string;
+  // Vertical noun used in route-level page titles / H1s where the vertical
+  // appears as plain text (e.g. "Mobile Mechanic Service in Plano").
+  // Per-fork: "HVAC", "Plumbing", "Mobile Mechanic", "Roofing", etc.
+  verticalNoun: string;
   logoPath: string; logoAlt: string; foundedYear: number;
   licenseNumbers: string[]; bbbAccreditation: { accredited: boolean; rating: string };
   certifications: string[]; insuranceCarrier: string; awardsList: string[];
@@ -97,8 +101,9 @@ export const siteConfig: SiteConfig = {
   businessName: "DFW Mobile Mechanic",
   legalName: "DFW Mobile Mechanic LLC",
   tagline: "Mobile Auto Repair — We Come to Your Driveway",
+  verticalNoun: "Mobile Mechanic",
   logoPath: "/logo.svg",
-  logoAlt: "Brian's HVAC logo",
+  logoAlt: "DFW Mobile Mechanic logo",
   foundedYear: 2018,
   licenseNumbers: [],
   bbbAccreditation: { accredited: true, rating: "A+" },
@@ -110,8 +115,8 @@ export const siteConfig: SiteConfig = {
   mainPhoneTel: "+19725550142",
   emergencyPhone: "(972) 555-0142",
   emergencyPhoneTel: "+19725550142",
-  generalEmail: "hello@brianshvac.example",
-  serviceRequestEmail: "service@brianshvac.example",
+  generalEmail: "[EDITOR: insert real general email]",
+  serviceRequestEmail: "[EDITOR: insert real service request email]",
   smsTextNumber: "+19725550142",
 
   // Mobile service — no fixed street. ZIP 75201 = Dallas central (used for
@@ -124,7 +129,7 @@ export const siteConfig: SiteConfig = {
   geoLat: 32.7767,
   geoLng: -96.797,
   googleMapsEmbedUrl: "https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d107473!2d-96.87!3d32.82!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x864e99c1cd92a553%3A0x6b4c3b50e8e1f5b!2sDallas%2C%20TX!5e0!3m2!1sen!2sus!4v1700000000000",
-  googleBusinessProfileUrl: "https://g.page/brianshvac",
+  googleBusinessProfileUrl: "[EDITOR: paste real GBP shortlink from GBP > Share]",
 
   primaryCity: "Dallas",
   serviceCities: [
@@ -161,7 +166,11 @@ export const siteConfig: SiteConfig = {
   hispanicOwned: false,
   blackOwned: false,
   localFamily: "Family owned & operated",
-  spanishSpoken: true,
+  // Set to true ONLY when /es/ Spanish routes are actually shipped; the
+  // TopBar conditionally renders the "Se Habla Español" badge on this flag.
+  // Today: en.json + es.json exist but no /es/ URL surface or LanguageToggle
+  // component — flipping false keeps the badge from lying.
+  spanishSpoken: false,
 
   colorPrimary: "#991B1B",
   colorAccent: "#EF4444",
@@ -477,12 +486,14 @@ export const siteConfig: SiteConfig = {
   ],
 
   testimonials: [
-    { author: "Sarah M.", city: "Plano", rating: 5, text: "AC died on the hottest day of July. A tech was at my door in under three hours and we were cooling by dinnertime. Honest pricing and the tech explained everything.", service: "AC Repair", date: "2025-07-18" },
-    { author: "Mike R.", city: "Dallas", rating: 5, text: "Replaced our 22-year-old system. Crew was on time, clean, and respectful of the house. New system runs quieter and our electric bill dropped by a third.", service: "AC Installation", date: "2025-06-02" },
-    { author: "Jennifer K.", city: "Frisco", rating: 5, text: "Comfort Club member for two years. Worth every penny — priority scheduling alone has saved me twice during heatwaves.", service: "Maintenance", date: "2025-05-14" },
-    { author: "David L.", city: "McKinney", rating: 5, text: "Got three quotes for a new furnace. They weren't the cheapest, but they did a real load calculation while the others just measured the old unit. Glad I went with them.", service: "Furnace Installation", date: "2025-10-22" },
-    { author: "Maria G.", city: "Garland", rating: 5, text: "Hablan español, lo cual fue de gran ayuda para mis padres. Servicio profesional y precios justos.", service: "AC Repair", date: "2025-08-09" },
-    { author: "Tom B.", city: "Richardson", rating: 5, text: "Installed a UV light and media filter — allergies have noticeably improved. Great recommendation from the tech.", service: "Indoor Air Quality", date: "2025-04-30" },
+    // [EDITOR: replace with real GBP reviews before the client ships.
+    //  Plausible-but-placeholder reviews kept here for the demo.]
+    { author: "Sarah M.", city: "Plano", rating: 5, text: "Dead battery in the office parking lot at 5 p.m. They were there in 40 minutes, confirmed it was the battery (not the alternator), and swapped it on the spot. Old battery hauled away. Less than I'd have paid AAA + a shop diagnostic.", service: "Battery Replacement", date: "2025-07-18" },
+    { author: "Mike R.", city: "Dallas", rating: 5, text: "Brake pedal was pulsing at 60 mph. Tech came to the house, pulled the front wheels, measured the rotors, and replaced pads + rotors in the driveway in under 2 hours. No tow, no Saturday shop wait, and he showed me the worn parts.", service: "Brake Pads & Rotors", date: "2025-06-02" },
+    { author: "Jennifer K.", city: "Frisco", rating: 5, text: "Mobile Maintenance Club member — two annual driveway inspections caught a slow oil leak before it became a real problem. Priority scheduling saved me when my starter died right before a road trip.", service: "Maintenance Plan", date: "2025-05-14" },
+    { author: "David L.", city: "McKinney", rating: 5, text: "Bought a used Tacoma from a private seller. Met the mechanic at the seller's driveway — full scan tool diagnosis, frame inspection, test drive. Found a transmission code the seller had cleared. Walked away from a $14k mistake. Best $150 I've spent.", service: "Pre-Purchase Inspection", date: "2025-10-22" },
+    { author: "Maria G.", city: "Garland", rating: 5, text: "Check engine light, weird idle. Tech brought a real OEM-level scan tool to my driveway, not a parts-store reader. Found a failing mass-airflow sensor, replaced it the same visit. Honest, fast, no upsell.", service: "Mobile Diagnostics", date: "2025-08-09" },
+    { author: "Tom B.", city: "Richardson", rating: 5, text: "Stranded with a flat in a Kroger parking lot on a Saturday. They were there in 45 minutes, plug-patched the tire from the inside (proper repair, not just a plug), remounted and balanced. Way cheaper than a tow + tire shop visit.", service: "Mobile Tire Repair", date: "2025-04-30" },
   ],
 
   siteUrl: "",
@@ -498,16 +509,16 @@ export const siteConfig: SiteConfig = {
     { name: "phone", label: "Phone", type: "tel", required: true },
     { name: "email", label: "Email", type: "email", required: true },
     { name: "city", label: "City", type: "text", required: true },
-    { name: "service", label: "Service Needed", type: "select", required: true, options: ["AC Repair", "AC Installation", "Furnace Repair", "Furnace Installation", "Maintenance", "Indoor Air Quality", "Other"] },
+    { name: "service", label: "Service Needed", type: "select", required: true, options: ["Mobile Diagnostics", "Brake Pads & Rotors", "Battery / Won't Start", "Mobile Oil Change", "Alternator or Starter", "Roadside / Stranded", "Pre-Purchase Inspection", "Other"] },
     { name: "message", label: "Tell us about the issue", type: "textarea", required: false },
   ],
   leadFormSuccessMessage: "Thanks — we'll be in touch within one business hour.",
   leadFormSlaPromise: "We respond to every request within 60 minutes during business hours.",
 
-  facebookUrl: "https://facebook.com/brianshvac",
-  instagramUrl: "https://instagram.com/brianshvac",
-  googleBusinessUrl: "https://g.page/brianshvac",
-  yelpUrl: "https://yelp.com/biz/brianshvac",
+  facebookUrl: "[EDITOR: paste real Facebook URL]",
+  instagramUrl: "[EDITOR: paste real Instagram URL]",
+  googleBusinessUrl: "[EDITOR: paste real GBP shortlink]",
+  yelpUrl: "[EDITOR: paste real Yelp URL]",
 
   footerLinks: [
     { label: "Privacy Policy", href: "/privacy" },

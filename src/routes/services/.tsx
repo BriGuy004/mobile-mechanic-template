@@ -23,7 +23,7 @@ export const Route = createFileRoute("/services/$slug")({
     const desc = svc.shortDescription;
     return {
       meta: [
-        { title: `${svc.name} | ${siteConfig.businessName} | ${siteConfig.primaryCity} HVAC` },
+        { title: `${svc.name} | ${siteConfig.businessName} | ${siteConfig.primaryCity} ${siteConfig.verticalNoun}` },
         { name: "description", content: desc },
         { name: "keywords", content: svc.keywords.join(", ") },
         { property: "og:title", content: `${svc.name} | ${siteConfig.businessName}` },
