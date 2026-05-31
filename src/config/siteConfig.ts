@@ -181,8 +181,12 @@ export const siteConfig: SiteConfig = {
   colorLightBg: "#F8FAFC",
   colorTextDark: "#0F172A",
   colorTextLight: "#FFFFFF",
-  fontHeadline: "'Inter', system-ui, sans-serif",
-  fontBody: "'Inter', system-ui, sans-serif",
+  // Display: Fraunces (variable serif) — pairs the trustworthy-publication
+  // feel with the legibility of a contemporary face. Body: IBM Plex Sans —
+  // distinct from Inter, legible at every size, pairs with serifs. Forks
+  // override these per vertical. Both fonts are @imported in styles.css.
+  fontHeadline: "'Fraunces', 'Iowan Old Style', Georgia, serif",
+  fontBody: "'IBM Plex Sans', system-ui, -apple-system, 'Segoe UI', sans-serif",
 
   services: [
     {
