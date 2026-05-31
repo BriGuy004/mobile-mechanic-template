@@ -27,9 +27,58 @@ function Home() {
   return (
     <>
       {/* HERO */}
-      <section className="hero-gradient text-white relative overflow-hidden">
-        <div className="absolute inset-0 opacity-[0.07]" aria-hidden style={{ backgroundImage: "radial-gradient(circle at 1px 1px, white 1px, transparent 0)", backgroundSize: "32px 32px" }} />
-        <div className="relative mx-auto max-w-7xl px-6 py-16 md:py-24 lg:py-32 grid lg:grid-cols-12 gap-8 items-center">
+      {(() => {
+        const heroImg = c.heroImage;
+        const hasHeroImg =
+          typeof heroImg === "string" &&
+          heroImg.length > 0 &&
+          !heroImg.includes("[EDITOR");
+        return (
+          <section className={`text-white relative overflow-hidden ${hasHeroImg ? "" : "hero-gradient"}`}>
+            {hasHeroImg && (
+              <>
+                {/* Full-bleed background photo. object-position is biased toward
+                 * the right so the subject (technician / unit) typically lands
+                 * on the right side, leaving the left for the headline + CTAs. */}
+                <img
+                  src={heroImg}
+                  alt={c.heroImageAlt ?? `${c.businessName} — ${c.primaryCity}, ${c.stateAbbr}`}
+                  className="absolute inset-0 w-full h-full object-cover object-[80%_center] md:object-[70%_center]"
+                  loading="eager"
+                  decoding="async"
+                  fetchPriority="high"
+                />
+                {/* Scrim — strong left-side gradient so the headline + subhead +
+                 * trust strip stay legible. Heavier on mobile (text overlays the
+                 * full image), lighter on desktop where text sits in the left
+                 * column and the right shows more photo. */}
+                <div
+                  className="absolute inset-0 bg-gradient-to-r from-[color:var(--brand-dark-bg)]/95 via-[color:var(--brand-dark-bg)]/75 to-[color:var(--brand-dark-bg)]/35 md:via-[color:var(--brand-dark-bg)]/60 md:to-transparent"
+                  aria-hidden
+                />
+                {/* Subtle warm accent glow top-left for atmosphere */}
+                <div
+                  className="absolute inset-0 opacity-60 mix-blend-multiply"
+                  aria-hidden
+                  style={{
+                    background:
+                      "radial-gradient(ellipse at 10% 20%, color-mix(in oklab, var(--brand-accent) 25%, transparent) 0%, transparent 55%)",
+                  }}
+                />
+              </>
+            )}
+            {!hasHeroImg && (
+              <div
+                className="absolute inset-0 opacity-[0.07]"
+                aria-hidden
+                style={{
+                  backgroundImage:
+                    "radial-gradient(circle at 1px 1px, white 1px, transparent 0)",
+                  backgroundSize: "32px 32px",
+                }}
+              />
+            )}
+            <div className="relative mx-auto max-w-7xl px-6 py-16 md:py-24 lg:py-32 grid lg:grid-cols-12 gap-8 items-center">
           <div className="lg:col-span-7">
             <div className="inline-flex items-center gap-2 bg-white/10 backdrop-blur border border-white/20 text-white/90 text-xs font-medium px-3 py-1.5 rounded-full mb-5">
               <MapPin className="w-3.5 h-3.5" /> {t("homepage.hero.eyebrow")}
@@ -90,60 +139,41 @@ function Home() {
           </div>
 
           <div className="lg:col-span-5">
-            {(() => {
-              const heroImg = c.heroImage;
-              const hasHeroImg =
-                typeof heroImg === "string" &&
-                heroImg.length > 0 &&
-                !heroImg.includes("[EDITOR");
-              if (hasHeroImg) {
-                return (
-                  <figure className="relative overflow-hidden rounded-xl card-shadow-lg aspect-[4/5] md:aspect-[4/3]">
-                    <img
-                      src={heroImg}
-                      alt={c.heroImageAlt ?? `${c.businessName} — ${c.primaryCity}, ${c.stateAbbr}`}
-                      className="absolute inset-0 w-full h-full object-cover"
-                      loading="eager"
-                      decoding="async"
-                    />
-                    {/* subtle bottom-up shading to anchor any caption / lift contrast */}
-                    <div className="absolute inset-x-0 bottom-0 h-1/3 bg-gradient-to-t from-black/40 to-transparent" aria-hidden />
-                  </figure>
-                );
-              }
-              // Graceful fallback — the original trust-stats card when no photo yet.
-              return (
-                <div className="bg-white text-brand-dark rounded-xl p-6 md:p-7 card-shadow-lg">
-                  <div className="text-xs font-bold uppercase tracking-wider text-brand-accent mb-1">{c.firstTimeCustomerOffer.amount} OFF</div>
-                  <div className="font-bold text-lg mb-1">{c.firstTimeCustomerOffer.description}</div>
-                  <div className="text-sm text-slate-600 mb-5">{c.leadFormSlaPromise}</div>
-                  <div className="grid grid-cols-2 gap-3 text-center">
-                    <div className="rounded-md bg-slate-50 p-3">
-                      <div className="text-2xl font-extrabold text-brand-primary">{c.completedJobs.toLocaleString()}+</div>
-                      <div className="text-[11px] text-slate-500 uppercase tracking-wide">Jobs done</div>
-                    </div>
-                    <div className="rounded-md bg-slate-50 p-3">
-                      <div className="text-2xl font-extrabold text-brand-primary">{c.technicianCount}</div>
-                      <div className="text-[11px] text-slate-500 uppercase tracking-wide">Technicians</div>
-                    </div>
-                    <div className="rounded-md bg-slate-50 p-3">
-                      <div className="text-2xl font-extrabold text-brand-primary">{yearsInBusiness()}</div>
-                      <div className="text-[11px] text-slate-500 uppercase tracking-wide">Years local</div>
-                    </div>
-                    <div className="rounded-md bg-slate-50 p-3">
-                      <div className="text-2xl font-extrabold text-brand-primary">{c.bbbAccreditation.rating}</div>
-                      <div className="text-[11px] text-slate-500 uppercase tracking-wide">BBB rating</div>
-                    </div>
-                  </div>
-                  <Button asChild className="mt-5 w-full bg-brand-primary hover:bg-brand-primary/90 text-white font-semibold h-12">
-                    <Link to="/contact">{t("nav.scheduleService")}</Link>
-                  </Button>
+            {/* Offer / trust-stats card. Coexists with the bg photo above —
+             * the photo carries the emotional trust (real human, real work),
+             * the card carries the proof (numbers + offer) and the second
+             * conversion target. */}
+            <div className="bg-white text-brand-dark rounded-xl p-6 md:p-7 card-shadow-lg">
+              <div className="text-xs font-bold uppercase tracking-wider text-brand-accent mb-1">{c.firstTimeCustomerOffer.amount} OFF</div>
+              <div className="font-bold text-lg mb-1">{c.firstTimeCustomerOffer.description}</div>
+              <div className="text-sm text-slate-600 mb-5">{c.leadFormSlaPromise}</div>
+              <div className="grid grid-cols-2 gap-3 text-center">
+                <div className="rounded-md bg-slate-50 p-3">
+                  <div className="text-2xl font-extrabold text-brand-primary">{c.completedJobs.toLocaleString()}+</div>
+                  <div className="text-[11px] text-slate-500 uppercase tracking-wide">Jobs done</div>
                 </div>
-              );
-            })()}
+                <div className="rounded-md bg-slate-50 p-3">
+                  <div className="text-2xl font-extrabold text-brand-primary">{c.technicianCount}</div>
+                  <div className="text-[11px] text-slate-500 uppercase tracking-wide">Technicians</div>
+                </div>
+                <div className="rounded-md bg-slate-50 p-3">
+                  <div className="text-2xl font-extrabold text-brand-primary">{yearsInBusiness()}</div>
+                  <div className="text-[11px] text-slate-500 uppercase tracking-wide">Years local</div>
+                </div>
+                <div className="rounded-md bg-slate-50 p-3">
+                  <div className="text-2xl font-extrabold text-brand-primary">{c.bbbAccreditation.rating}</div>
+                  <div className="text-[11px] text-slate-500 uppercase tracking-wide">BBB rating</div>
+                </div>
+              </div>
+              <Button asChild className="mt-5 w-full bg-brand-primary hover:bg-brand-primary/90 text-white font-semibold h-12">
+                <Link to="/contact">{t("nav.scheduleService")}</Link>
+              </Button>
+            </div>
           </div>
         </div>
       </section>
+        );
+      })()}
 
       {/* SERVICES */}
       <section className="bg-white py-16 md:py-24">
