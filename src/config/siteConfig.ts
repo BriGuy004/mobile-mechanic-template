@@ -114,7 +114,10 @@ export const siteConfig: SiteConfig = {
   heroImageAlt: "HVAC technician inspecting an outdoor condenser unit",
   logoAlt: "Brian's HVAC logo",
   foundedYear: 2018,
-  licenseNumbers: ["TACLA00123456C"],
+  // Hidden by default — the "Lic #" badge (hero + footer) and the About
+  // "License" line render ONLY when a fork sets a real value here. Auto-shop
+  // forks (and any vertical without a state license) leave this empty.
+  licenseNumbers: [],
   bbbAccreditation: { accredited: true, rating: "A+" },
   certifications: ["NATE Certified", "EPA 608 Certified", "ACCA Member"],
   insuranceCarrier: "Fully insured & bonded",
@@ -124,8 +127,10 @@ export const siteConfig: SiteConfig = {
   mainPhoneTel: "+19725550142",
   emergencyPhone: "(972) 555-0142",
   emergencyPhoneTel: "+19725550142",
-  generalEmail: "hello@brianshvac.example",
-  serviceRequestEmail: "service@brianshvac.example",
+  // Hidden by default — email row (footer + contact + JSON-LD) renders ONLY
+  // when a fork sets a real address here.
+  generalEmail: "",
+  serviceRequestEmail: "",
   smsTextNumber: "+19725550142",
 
   street: "1234 Main Street",

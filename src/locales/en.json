@@ -25,7 +25,13 @@
       "subheadline": "Same-day repairs, expert installations, and honest pricing from a {localFamily} team your neighbors trust.",
       "primaryCta": "Get Free Estimate",
       "secondaryCta": "Call {phone}",
-      "trustStrip": "{rating}★ from {reviewCount}+ reviews • {years} years serving {primaryCity} • License #{license}"
+      "trustStrip": "{rating}★ from {reviewCount}+ reviews • {years} years serving {primaryCity}",
+      "stats": {
+        "rating": "Google rating",
+        "reviews": "Google reviews",
+        "years": "Years local",
+        "brands": "Brands serviced"
+      }
     },
     "services": {
       "eyebrow": "What We Do",
@@ -90,7 +96,7 @@
     "zipsHeading": "ZIPs we serve in {city}",
     "nearbyHeading": "Nearby cities we also serve",
     "whyHeading": "Why {city} chooses {businessName}",
-    "whyBody": "{technicianCount} certified technicians, serving {city} for over {years} years. Licensed, insured, and locally owned.",
+    "whyBody": "Serving {city} for over {years} years. Licensed, insured, and locally owned, with {rating}★ from {reviewCount}+ reviews.",
     "notFound": "City not found",
     "notFoundBody": "We couldn't find that city in our service area. See all cities we serve or call us at {phone}."
   },
@@ -98,7 +104,15 @@
     "title": "About {businessName}",
     "description": "Family-owned HVAC company serving {primaryCity} since {foundedYear}.",
     "heading": "Comfort you can count on",
-    "body": "{businessName} has been keeping {primaryCity}-area homes comfortable since {foundedYear}. We're {localFamily}, fully licensed and insured, and committed to doing the job right the first time — at a fair, upfront price."
+    "body": "{businessName} has been keeping {primaryCity}-area homes comfortable since {foundedYear}. We're {localFamily}, fully licensed and insured, and committed to doing the job right the first time — at a fair, upfront price.",
+    "credentialsHeading": "Credentials",
+    "licenseLabel": "License",
+    "stats": {
+      "years": "Years in business",
+      "rating": "Google rating",
+      "reviews": "Google reviews",
+      "brands": "Brands serviced"
+    }
   },
   "reviews": {
     "title": "Customer Reviews",

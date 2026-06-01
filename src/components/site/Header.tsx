@@ -19,6 +19,7 @@ export function Header() {
   const c = siteConfig;
 
   return (
+    <>
     <header className="sticky top-0 z-40 bg-white/95 backdrop-blur border-b border-slate-200">
       <div className="mx-auto max-w-7xl px-4 sm:px-6 h-16 lg:h-20 flex items-center justify-between gap-4">
         <Link to="/" className="flex items-center gap-2 shrink-0">
@@ -65,10 +66,15 @@ export function Header() {
           </button>
         </div>
       </div>
+    </header>
 
+      {/* Mobile menu lives OUTSIDE <header> — the header is sticky +
+        * backdrop-blur, which creates a stacking context that would trap an
+        * inner overlay beneath later page content. As a sibling at z-[100]
+        * with a solid opaque panel + dim scrim, it sits above everything. */}
       {open && (
-        <div className="fixed inset-0 z-50 lg:hidden">
-          <div className="absolute inset-0 bg-black/50" onClick={() => setOpen(false)} />
+        <div className="fixed inset-0 z-[100] lg:hidden">
+          <div className="absolute inset-0 bg-black/60" onClick={() => setOpen(false)} aria-hidden />
           <div className="absolute right-0 top-0 bottom-0 w-[85%] max-w-sm bg-white shadow-2xl flex flex-col">
             <div className="flex items-center justify-between p-4 border-b">
               <span className="font-bold">{c.businessName}</span>
@@ -115,6 +121,6 @@ export function Header() {
           </div>
         </div>
       )}
-    </header>
+    </>
   );
 }

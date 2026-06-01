@@ -133,8 +133,12 @@ function Home() {
               })()}
               <span className="text-white/30">|</span>
               <span>{yearsInBusiness()}+ years in {c.primaryCity}</span>
-              <span className="text-white/30">|</span>
-              <span className="inline-flex items-center gap-1.5"><ShieldCheck className="w-4 h-4" />Lic #{c.licenseNumbers[0]}</span>
+              {c.licenseNumbers[0] && !c.licenseNumbers[0].includes("[EDITOR") && (
+                <>
+                  <span className="text-white/30">|</span>
+                  <span className="inline-flex items-center gap-1.5"><ShieldCheck className="w-4 h-4" />Lic #{c.licenseNumbers[0]}</span>
+                </>
+              )}
             </div>
           </div>
 
@@ -147,22 +151,26 @@ function Home() {
               <div className="text-xs font-bold uppercase tracking-wider text-brand-accent mb-1">{c.firstTimeCustomerOffer.amount} OFF</div>
               <div className="font-bold text-lg mb-1">{c.firstTimeCustomerOffer.description}</div>
               <div className="text-sm text-slate-600 mb-5">{c.leadFormSlaPromise}</div>
+              {/* Proof stats are config-driven and non-fabricated: Google
+                * rating + review count, years in business (from foundedYear),
+                * and the number of brands serviced. No invented job/tech
+                * counts or BBB fallbacks. */}
               <div className="grid grid-cols-2 gap-3 text-center">
                 <div className="rounded-md bg-slate-50 p-3">
-                  <div className="text-2xl font-extrabold text-brand-primary">{c.completedJobs.toLocaleString()}+</div>
-                  <div className="text-[11px] text-slate-500 uppercase tracking-wide">Jobs done</div>
+                  <div className="text-2xl font-extrabold text-brand-primary">{c.googleAverageRating}★</div>
+                  <div className="text-[11px] text-slate-500 uppercase tracking-wide">{t("homepage.hero.stats.rating")}</div>
                 </div>
                 <div className="rounded-md bg-slate-50 p-3">
-                  <div className="text-2xl font-extrabold text-brand-primary">{c.technicianCount}</div>
-                  <div className="text-[11px] text-slate-500 uppercase tracking-wide">Technicians</div>
+                  <div className="text-2xl font-extrabold text-brand-primary">{c.googleReviewCount}</div>
+                  <div className="text-[11px] text-slate-500 uppercase tracking-wide">{t("homepage.hero.stats.reviews")}</div>
                 </div>
                 <div className="rounded-md bg-slate-50 p-3">
-                  <div className="text-2xl font-extrabold text-brand-primary">{yearsInBusiness()}</div>
-                  <div className="text-[11px] text-slate-500 uppercase tracking-wide">Years local</div>
+                  <div className="text-2xl font-extrabold text-brand-primary">{yearsInBusiness()}+</div>
+                  <div className="text-[11px] text-slate-500 uppercase tracking-wide">{t("homepage.hero.stats.years")}</div>
                 </div>
                 <div className="rounded-md bg-slate-50 p-3">
-                  <div className="text-2xl font-extrabold text-brand-primary">{c.bbbAccreditation.rating}</div>
-                  <div className="text-[11px] text-slate-500 uppercase tracking-wide">BBB rating</div>
+                  <div className="text-2xl font-extrabold text-brand-primary">{c.brandsServiced.length}</div>
+                  <div className="text-[11px] text-slate-500 uppercase tracking-wide">{t("homepage.hero.stats.brands")}</div>
                 </div>
               </div>
               <Button asChild className="mt-5 w-full bg-brand-primary hover:bg-brand-primary/90 text-white font-semibold h-12">
@@ -286,7 +294,7 @@ function Home() {
                 <div key={sp.title} className="relative bg-gradient-to-br from-brand-primary to-brand-dark text-white rounded-xl p-7 overflow-hidden card-shadow">
                   <Tag className="absolute -top-3 -right-3 w-24 h-24 text-white/5" />
                   <div className="text-xs font-bold uppercase tracking-wider text-brand-accent mb-2">Special Offer</div>
-                  <h3 className="text-2xl font-extrabold mb-2">{sp.title}</h3>
+                  <h3 className="text-2xl font-extrabold mb-2 text-white">{sp.title}</h3>
                   <p className="text-white/85 text-sm mb-4 leading-relaxed">{sp.description}</p>
                   <div className="text-[11px] text-white/60 mb-5">{t("homepage.specials.validThrough", { date: sp.validUntil })}</div>
                   <Link to="/contact" className="inline-flex items-center gap-1 text-brand-accent font-semibold text-sm hover:text-white">

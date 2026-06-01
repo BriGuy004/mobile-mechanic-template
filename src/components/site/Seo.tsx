@@ -23,7 +23,7 @@ export const localBusinessJsonLd = (): string => {
     legalName: c.legalName,
     description: c.defaultDescription,
     telephone: c.mainPhone,
-    email: c.generalEmail,
+    ...(c.generalEmail && !c.generalEmail.includes("[EDITOR") ? { email: c.generalEmail } : {}),
     address: {
       "@type": "PostalAddress",
       streetAddress: c.street,

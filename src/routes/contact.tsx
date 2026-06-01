@@ -43,13 +43,15 @@ function Contact() {
                   <a href={`tel:${c.mainPhoneTel}`} className="font-bold text-brand-dark text-lg">{c.mainPhone}</a>
                 </div>
               </div>
-              <div className="flex items-start gap-3">
-                <Mail className="w-5 h-5 text-brand-primary mt-0.5" />
-                <div>
-                  <div className="text-xs uppercase text-slate-500">{t("contact.emailHeading")}</div>
-                  <a href={`mailto:${c.generalEmail}`} className="font-semibold text-brand-dark break-all">{c.generalEmail}</a>
+              {c.generalEmail && !c.generalEmail.includes("[EDITOR") && (
+                <div className="flex items-start gap-3">
+                  <Mail className="w-5 h-5 text-brand-primary mt-0.5" />
+                  <div>
+                    <div className="text-xs uppercase text-slate-500">{t("contact.emailHeading")}</div>
+                    <a href={`mailto:${c.generalEmail}`} className="font-semibold text-brand-dark break-all">{c.generalEmail}</a>
+                  </div>
                 </div>
-              </div>
+              )}
               <div className="flex items-start gap-3">
                 <MapPin className="w-5 h-5 text-brand-primary mt-0.5" />
                 <div>

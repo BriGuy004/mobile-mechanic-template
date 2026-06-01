@@ -34,9 +34,11 @@ export function Footer() {
               BBB Accredited · {c.bbbAccreditation.rating}
             </div>
           )}
-          <div className="mt-3 text-xs text-white/60">
-            License #{c.licenseNumbers[0]}
-          </div>
+          {c.licenseNumbers[0] && !c.licenseNumbers[0].includes("[EDITOR") && (
+            <div className="mt-3 text-xs text-white/60">
+              License #{c.licenseNumbers[0]}
+            </div>
+          )}
         </div>
 
         <div>
@@ -85,12 +87,14 @@ export function Footer() {
                 <span className="font-semibold">{c.mainPhone}</span>
               </a>
             </li>
-            <li>
-              <a href={`mailto:${c.generalEmail}`} className="flex items-start gap-2 text-white/80 hover:text-white break-all">
-                <Mail className="w-4 h-4 mt-0.5 shrink-0" />
-                {c.generalEmail}
-              </a>
-            </li>
+            {c.generalEmail && !c.generalEmail.includes("[EDITOR") && (
+              <li>
+                <a href={`mailto:${c.generalEmail}`} className="flex items-start gap-2 text-white/80 hover:text-white break-all">
+                  <Mail className="w-4 h-4 mt-0.5 shrink-0" />
+                  {c.generalEmail}
+                </a>
+              </li>
+            )}
             <li className="flex items-start gap-2 text-white/80">
               <MapPin className="w-4 h-4 mt-0.5 shrink-0" />
               <span>{c.street}<br />{c.city}, {c.stateAbbr} {c.zip}</span>
