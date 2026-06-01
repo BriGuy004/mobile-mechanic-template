@@ -22,7 +22,9 @@ export const Route = createFileRoute("/")({
   component: Home,
 });
 
-function Home() {
+// Exported so the /es route can render the same homepage (the LocaleProvider
+// pins Spanish for the /es path).
+export function Home() {
   const c = siteConfig;
   return (
     <>

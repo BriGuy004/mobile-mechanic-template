@@ -4,6 +4,7 @@ import { Menu, Phone, X } from "lucide-react";
 import { siteConfig } from "@/config/siteConfig";
 import { t } from "@/lib/i18n";
 import { Button } from "@/components/ui/button";
+import { LanguageToggle } from "@/components/site/LanguageToggle";
 
 const NAV = [
   { to: "/services", labelKey: "nav.services" },
@@ -46,6 +47,8 @@ export function Header() {
         </nav>
 
         <div className="flex items-center gap-2">
+          {/* Language toggle — visible at every breakpoint (demo centerpiece) */}
+          <LanguageToggle />
           <a
             href={`tel:${c.mainPhoneTel}`}
             className="hidden md:inline-flex items-center gap-2 text-brand-primary font-bold text-sm lg:text-base"
@@ -78,9 +81,12 @@ export function Header() {
           <div className="absolute right-0 top-0 bottom-0 w-[85%] max-w-sm bg-white shadow-2xl flex flex-col">
             <div className="flex items-center justify-between p-4 border-b">
               <span className="font-bold">{c.businessName}</span>
-              <button onClick={() => setOpen(false)} aria-label="Close menu" className="p-2 -mr-2">
-                <X className="w-6 h-6" />
-              </button>
+              <div className="flex items-center gap-2">
+                <LanguageToggle />
+                <button onClick={() => setOpen(false)} aria-label="Close menu" className="p-2 -mr-2">
+                  <X className="w-6 h-6" />
+                </button>
+              </div>
             </div>
             <nav className="flex flex-col p-2">
               {NAV.map((n) => (

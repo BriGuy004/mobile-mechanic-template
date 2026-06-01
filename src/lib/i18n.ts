@@ -12,6 +12,18 @@ const dicts: Record<string, LocaleDict> = {
   es: es as LocaleDict,
 };
 
+// Runtime active locale. `t()` reads this instead of the static
+// siteConfig.defaultLanguage so the header toggle can switch the whole UI at
+// runtime. Set per-request (SSR) and per-session (client) by LocaleProvider
+// in src/lib/locale.tsx before children render; falls back to the config
+// default when unset (e.g. early module eval).
+let activeLocale: string | null = null;
+export const getActiveLocale = (): string => activeLocale ?? siteConfig.defaultLanguage;
+export const setActiveLocale = (loc: string): void => {
+  activeLocale = loc;
+};
+export const supportedLocales = (): string[] => siteConfig.supportedLanguages;
+
 const get = (dict: LocaleDict, path: string): string | undefined => {
   const parts = path.split(".");
   let cur: unknown = dict;
@@ -49,7 +61,7 @@ const interpolate = (s: string, vars: Record<string, string | number>): string =
   s.replace(/\{(\w+)\}/g, (_, k) => (k in vars ? String(vars[k]) : `{${k}}`));
 
 export const t = (key: string, vars: Record<string, string | number> = {}): string => {
-  const lang = siteConfig.defaultLanguage;
+  const lang = getActiveLocale();
   const dict = dicts[lang] ?? dicts.en;
   const raw = get(dict, key) ?? get(dicts.en, key) ?? key;
   return interpolate(raw, { ...defaultVars(), ...vars });

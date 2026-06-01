@@ -9,6 +9,7 @@ import { Header } from "@/components/site/Header";
 import { TopBar } from "@/components/site/TopBar";
 import { Footer } from "@/components/site/Footer";
 import { MobileStickyCTA } from "@/components/site/MobileStickyCTA";
+import { LocaleProvider, useLocale } from "@/lib/locale";
 
 function NotFoundComponent() {
   return (
@@ -66,6 +67,10 @@ export const Route = createRootRouteWithContext<{ queryClient: QueryClient }>()(
       { rel: "preconnect", href: "https://fonts.googleapis.com" },
       { rel: "preconnect", href: "https://fonts.gstatic.com", crossOrigin: "anonymous" },
       { rel: "stylesheet", href: "https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" },
+      // Bilingual alternates — English at the root, Mexican Spanish at /es.
+      { rel: "alternate", hrefLang: "en", href: `${siteConfig.siteUrl}/` },
+      { rel: "alternate", hrefLang: "es-mx", href: `${siteConfig.siteUrl}/es` },
+      { rel: "alternate", hrefLang: "x-default", href: `${siteConfig.siteUrl}/` },
     ],
     scripts: [
       {
@@ -102,15 +107,27 @@ function RootComponent() {
   const { queryClient } = Route.useRouteContext();
   return (
     <QueryClientProvider client={queryClient}>
-      <div className="min-h-screen flex flex-col pb-20 lg:pb-0">
-        <TopBar />
-        <Header />
-        <main className="flex-1">
-          <Outlet />
-        </main>
-        <Footer />
-        <MobileStickyCTA />
-      </div>
+      <LocaleProvider>
+        <LocaleShell />
+      </LocaleProvider>
     </QueryClientProvider>
+  );
+}
+
+// key={locale} remounts the whole tree on a language switch so every t() call
+// re-evaluates against the new locale. The provider sits ABOVE this so its
+// state survives the remount.
+function LocaleShell() {
+  const { locale } = useLocale();
+  return (
+    <div key={locale} className="min-h-screen flex flex-col pb-20 lg:pb-0">
+      <TopBar />
+      <Header />
+      <main className="flex-1">
+        <Outlet />
+      </main>
+      <Footer />
+      <MobileStickyCTA />
+    </div>
   );
 }

@@ -494,7 +494,9 @@ export const siteConfig: SiteConfig = {
   footerDisclaimers: ["Licensed in the State of Texas. License numbers available on request."],
 
   defaultLanguage: "en",
-  supportedLanguages: ["en"],
+  // Add/remove locales here. The EN/ES toggle renders only when >1 is listed,
+  // and each must have a matching locale file in src/locales/.
+  supportedLanguages: ["en", "es"],
 };
 
 export const yearsInBusiness = (): number => new Date().getFullYear() - siteConfig.foundedYear;
