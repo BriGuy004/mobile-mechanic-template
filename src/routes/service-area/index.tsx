@@ -32,14 +32,14 @@ function ServiceAreaIndex() {
     <>
       <section className="bg-brand-light border-b border-slate-200">
         <div className="mx-auto max-w-7xl px-6 py-12 md:py-16">
-          <div className="text-xs font-bold uppercase tracking-wider text-brand-accent mb-2">Service Area</div>
+          <div className="text-xs font-bold uppercase tracking-wider text-brand-accent mb-2">{t("nav.serviceArea")}</div>
           <h1 className="text-4xl md:text-5xl font-bold">{c.verticalNoun} service across {c.primaryCity} & beyond</h1>
           <p className="mt-3 text-slate-600 text-lg max-w-2xl">{t("serviceArea.indexDescription")}</p>
         </div>
       </section>
       <section className="bg-white py-12 md:py-16">
         <div className="mx-auto max-w-7xl px-6 grid lg:grid-cols-2 gap-10 items-start">
-          <div className="rounded-2xl overflow-hidden border border-slate-200 card-shadow aspect-[4/3]">
+          <div className="rounded-xl overflow-hidden border border-slate-200 card-shadow aspect-[4/3]">
             <iframe
               title="Service area"
               src={c.googleMapsEmbedUrl}
@@ -57,7 +57,7 @@ function ServiceAreaIndex() {
                   <Link
                     to="/service-area/$citySlug"
                     params={{ citySlug: city.slug }}
-                    className="flex items-center justify-between gap-2 p-3 rounded-lg border border-slate-200 hover:border-brand-primary hover:bg-brand-light transition-colors"
+                    className="flex items-center justify-between gap-2 p-3 rounded-xl border border-slate-200 hover:border-brand-primary hover:bg-brand-light transition-colors"
                   >
                     <span className="inline-flex items-center gap-2 font-medium text-brand-dark">
                       <MapPin className="w-4 h-4 text-brand-primary" /> {city.name}, {c.stateAbbr}

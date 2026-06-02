@@ -21,7 +21,7 @@ function Financing() {
     <>
       <section className="bg-brand-light border-b border-slate-200">
         <div className="mx-auto max-w-3xl px-6 py-12 md:py-20">
-          <div className="text-xs font-bold uppercase tracking-wider text-brand-accent mb-2">Financing</div>
+          <div className="text-xs font-bold uppercase tracking-wider text-brand-accent mb-2">{t("nav.financing")}</div>
           <h1 className="text-4xl md:text-5xl font-bold">{t("financing.heading")}</h1>
           <p className="mt-4 text-lg text-slate-600">{t("financing.body")}</p>
           <p className="mt-3 text-sm text-slate-500">Through {c.financingPartner}.</p>

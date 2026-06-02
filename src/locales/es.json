@@ -2,157 +2,199 @@
   "nav": {
     "home": "Inicio",
     "services": "Servicios",
-    "serviceArea": "Área de Servicio",
-    "about": "Acerca",
+    "serviceArea": "Zonas que atendemos",
+    "about": "Nosotros",
     "reviews": "Reseñas",
     "specials": "Ofertas",
     "contact": "Contacto",
     "emergency": "Emergencia",
     "financing": "Financiamiento",
     "membership": "Plan de Mantenimiento",
-    "scheduleService": "Agendar Servicio",
-    "callNow": "Llamar Ahora",
-    "getFreeEstimate": "Cotización Gratis"
+    "scheduleService": "Agenda tu cita",
+    "callNow": "Llámanos hoy",
+    "getFreeEstimate": "Solicita tu cotización"
   },
   "topBar": {
-    "emergencyPill": "[ES: 24/7 Emergency Service]",
-    "spanishBadge": "[ES: Se Habla Español]"
+    "emergencyPill": "Servicio de Emergencia 24/7",
+    "spanishBadge": "Se Habla Español"
   },
   "homepage": {
     "hero": {
-      "eyebrow": "[ES: {primaryCity}, {state} • Licensed & Insured]",
-      "headline": "[ES: {primaryCity}'s Trusted Mobile Mechanics]",
-      "subheadline": "[ES: Same-day repairs, expert installations, and honest pricing from a {localFamily} team your neighbors trust.]",
-      "primaryCta": "Cotización Gratis",
-      "secondaryCta": "[ES: Call {phone}]",
-      "trustStrip": "[ES: {rating}★ from {reviewCount}+ reviews • {years} years serving {primaryCity} • License #{license}]"
+      "eyebrow": "{primaryCity}, {state} • Con licencia y asegurados",
+      "subheadline": "Reparaciones el mismo día, instalaciones expertas y precios honestos de un equipo local en quien sus vecinos confían.",
+      "primaryCta": "Solicita tu cotización",
+      "secondaryCta": "Llama al {phone}",
+      "trustStrip": "{rating}★ de más de {reviewCount} reseñas • {years} años atendiendo {primaryCity}",
+      "stats": {
+        "rating": "Calificación Google",
+        "reviews": "Reseñas Google",
+        "years": "Años aquí",
+        "brands": "Marcas que atendemos"
+      },
+      "yearsBadge": "{years}+ años en {primaryCity}",
+      "reviewsBadge": "({reviewCount}+ reseñas de Google)"
     },
     "services": {
-      "eyebrow": "[ES: What We Do]",
-      "heading": "[ES: Mobile Auto Repair for Every Driveway]",
-      "subheading": "[ES: From emergency repair to whole-system replacement, our certified technicians handle it all.]",
-      "viewAll": "[ES: View all services]"
+      "eyebrow": "Lo que hacemos",
+      "subheading": "Desde reparaciones de emergencia hasta el cambio de sistema completo, nuestros técnicos certificados lo resuelven todo.",
+      "viewAll": "Ver todos los servicios"
     },
     "why": {
-      "eyebrow": "[ES: Why {businessName}]",
-      "heading": "[ES: Trusted by {primaryCity} families for over {years} years]"
+      "eyebrow": "Por qué elegirnos",
+      "heading": "La confianza de las familias de {primaryCity} por más de {years} años"
     },
     "serviceArea": {
-      "eyebrow": "[ES: Where We Work]",
-      "heading": "[ES: Proudly serving {primaryCity} & surrounding cities]",
-      "subheading": "[ES: Click your city for local service details, pricing, and reviews.]",
-      "radiusNote": "[ES: Within {radius} miles of {primaryCity}]"
+      "eyebrow": "Dónde trabajamos",
+      "heading": "Con orgullo atendemos {primaryCity} y ciudades cercanas",
+      "subheading": "Elija su ciudad para ver detalles del servicio local, precios y reseñas.",
+      "radiusNote": "A menos de {radius} millas de {primaryCity}",
+      "viewAll": "Ver todas las zonas"
     },
     "reviews": {
-      "eyebrow": "[ES: What Customers Say]",
-      "heading": "[ES: {rating}★ across {reviewCount}+ verified reviews]",
-      "readMore": "[ES: Read all reviews]"
+      "eyebrow": "Lo que dicen los clientes",
+      "heading": "{rating}★ en más de {reviewCount} reseñas verificadas",
+      "readMore": "Ver todas las reseñas",
+      "prevReview": "Reseña anterior",
+      "nextReview": "Reseña siguiente",
+      "goToReview": "Ir a la reseña {n}",
+      "viewOnGoogle": "Ver todas las reseñas en Google",
+      "googleBadgeAria": "{rating} estrellas de más de {reviewCount} reseñas de Google — abre el perfil de Google Business en una pestaña nueva"
     },
     "specials": {
-      "eyebrow": "[ES: Current Offers]",
-      "heading": "[ES: Save on service this season]",
-      "validThrough": "[ES: Valid through {date}]"
+      "eyebrow": "Ofertas actuales",
+      "heading": "Ahorre en su servicio esta temporada",
+      "validThrough": "Válido hasta el {date}",
+      "badge": "Oferta especial",
+      "claim": "Aprovecha esta oferta"
     },
     "brands": {
-      "eyebrow": "[ES: Brands We Service]",
-      "heading": "[ES: Every major brand, expertly serviced]"
+      "eyebrow": "Marcas que atendemos",
+      "heading": "Todas las marcas principales, con servicio experto"
     },
     "finalCta": {
-      "heading": "[ES: Ready for reliable comfort?]",
-      "subheading": "[ES: Schedule online or call {phone} — we answer 24/7.]"
+      "heading": "¿Listo para la comodidad de siempre?",
+      "subheading": "Agenda en línea o llama al {phone} — contestamos las 24 horas."
     }
   },
   "services": {
-    "indexTitle": "[ES: Mobile Auto Services]",
-    "indexDescription": "[ES: Complete mobile auto services across {primaryCity} driveways, offices, and parking lots — repair, installation, and maintenance.]",
     "emergencyBadge": "24/7",
-    "featuredBadge": "[ES: Popular]",
+    "featuredBadge": "Popular",
     "learnMore": "Más información",
-    "scheduleThis": "[ES: Schedule this service]",
-    "faqHeading": "[ES: Frequently asked questions]",
-    "relatedHeading": "[ES: Other services you might need]",
-    "detailWhyHeading": "[ES: Why {businessName} for this]",
-    "detailIncludedHeading": "[ES: What's included]",
-    "notFound": "[ES: Service not found]",
-    "notFoundBody": "[ES: We couldn't find that service. Browse all services or call us at {phone} and we'll help.]"
+    "scheduleThis": "Agenda este servicio",
+    "faqHeading": "Preguntas frecuentes",
+    "relatedHeading": "Otros servicios que podría necesitar",
+    "detailWhyHeading": "Por qué elegir a {businessName} para esto",
+    "detailIncludedHeading": "Qué incluye",
+    "notFound": "Servicio no encontrado",
+    "notFoundBody": "No encontramos ese servicio. Explore todos los servicios o llámenos al {phone} y con gusto le ayudamos.",
+    "categories": {
+      "maintenance": "Mantenimiento",
+      "installation": "Instalación",
+      "commercial": "Comercial",
+      "diagnostics": "Diagnóstico",
+      "repair": "Reparación",
+      "inspection": "Inspección",
+      "other": "Otros"
+    }
   },
   "serviceArea": {
-    "indexTitle": "Área de Servicio",
-    "indexDescription": "[ES: {businessName} provides mobile auto service to {primaryCity} and surrounding cities throughout the {state} metro area.]",
-    "cityTitle": "[ES: Mobile Auto Service in {city}, {stateAbbr}]",
-    "cityIntro": "[ES: Trusted {city} mobile auto repair, diagnostics, and maintenance from {businessName}. Same-day service, licensed technicians, and upfront pricing.]",
-    "servicesInCity": "[ES: mobile auto services in {city}]",
-    "zipsHeading": "[ES: ZIPs we serve in {city}]",
-    "nearbyHeading": "[ES: Nearby cities we also serve]",
-    "whyHeading": "[ES: Why {city} chooses {businessName}]",
-    "whyBody": "[ES: {technicianCount} certified technicians, serving {city} for over {years} years. Licensed, insured, and locally owned.]",
-    "notFound": "[ES: City not found]",
-    "notFoundBody": "[ES: We couldn't find that city in our service area. See all cities we serve or call us at {phone}.]"
+    "indexTitle": "Zonas que atendemos",
+    "zipsHeading": "Códigos postales que atendemos en {city}",
+    "nearbyHeading": "Ciudades cercanas que también atendemos",
+    "whyHeading": "Por qué {city} elige a {businessName}",
+    "whyBody": "Atendiendo {city} por más de {years} años. Con licencia, asegurados y de dueños locales, con {rating}★ de más de {reviewCount} reseñas.",
+    "notFound": "Ciudad no encontrada",
+    "notFoundBody": "No encontramos esa ciudad en nuestra zona de servicio. Vea todas las ciudades que atendemos o llámenos al {phone}."
   },
   "about": {
-    "title": "[ES: About {businessName}]",
-    "description": "[ES: Family-owned mobile mechanic serving {primaryCity} since {foundedYear}.]",
-    "heading": "[ES: Comfort you can count on]",
-    "body": "[ES: {businessName} has been keeping {primaryCity}-area homes comfortable since {foundedYear}. We're {localFamily}, fully licensed and insured, and committed to doing the job right the first time — at a fair, upfront price.]"
+    "title": "Acerca de {businessName}",
+    "heading": "Comodidad en la que puede confiar",
+    "body": "{businessName} mantiene cómodos los hogares del área de {primaryCity} desde {foundedYear}. Somos una empresa local, con licencia y asegurados, comprometidos a hacer el trabajo bien desde la primera vez, a un precio justo y claro.",
+    "credentialsHeading": "Credenciales",
+    "licenseLabel": "Licencia",
+    "stats": {
+      "years": "Años de experiencia",
+      "rating": "Calificación Google",
+      "reviews": "Reseñas Google",
+      "brands": "Marcas que atendemos"
+    }
   },
   "reviews": {
-    "title": "[ES: Customer Reviews]",
-    "description": "[ES: Read what {primaryCity} homeowners are saying about {businessName}.]",
-    "heading": "[ES: {rating}★ from {reviewCount}+ verified reviews]"
+    "title": "Reseñas de clientes",
+    "description": "Lea lo que dicen los vecinos de {primaryCity} sobre {businessName}.",
+    "heading": "{rating}★ de más de {reviewCount} reseñas verificadas"
   },
   "specials": {
-    "title": "[ES: Current Specials & Offers]",
-    "description": "[ES: Save on mobile auto service in {primaryCity} with these limited-time offers from {businessName}.]",
-    "heading": "[ES: This season's offers]",
-    "noOffers": "[ES: No active specials right now. Call {phone} for current pricing.]"
+    "title": "Ofertas y promociones actuales",
+    "heading": "Ofertas de esta temporada",
+    "noOffers": "No hay ofertas activas en este momento. Llame al {phone} para conocer los precios actuales."
   },
   "contact": {
-    "title": "[ES: Contact {businessName}]",
-    "description": "[ES: Schedule mobile auto service in {primaryCity}. Call {phone} or send a request — we respond within one business hour.]",
-    "heading": "[ES: Schedule service]",
-    "subheading": "[ES: {sla}]",
-    "hoursHeading": "Horarios",
+    "title": "Contacta a {businessName}",
+    "heading": "Agenda tu cita",
+    "subheading": "{sla}",
+    "hoursHeading": "Horario",
     "addressHeading": "Dirección",
     "phoneHeading": "Teléfono",
     "emailHeading": "Correo"
   },
   "emergency": {
-    "title": "[ES: Emergency Roadside Service]",
-    "description": "[ES: Stranded in {primaryCity}? Won't start, dead battery, or flat tire? Call {phone} — we answer 24/7.]",
-    "heading": "[ES: {emergencyText}]",
-    "body": "[ES: Heat or AC out? Don't wait. We answer the phone day and night, and our technicians are on call 24/7 across the {primaryCity} metro.]",
-    "callCta": "[ES: Call now: {phone}]"
+    "heading": "Servicio de emergencia 24/7",
+    "callCta": "Llame ahora: {phone}"
   },
   "financing": {
-    "title": "[ES: Auto Repair Financing]",
-    "description": "[ES: Flexible monthly payments on major repairs and roadside emergencies in {primaryCity}.]",
-    "heading": "[ES: Comfort now, pay over time]",
-    "body": "[ES: {financingDetails} Apply in minutes through our financing partner.]"
+    "description": "Pagos mensuales flexibles para sistemas nuevos y reparaciones mayores en {primaryCity}.",
+    "heading": "Disfrute ahora, pague con el tiempo",
+    "body": "Pregúntenos por las opciones de pago. Solicite en minutos con nuestro socio financiero."
   },
   "membership": {
-    "title": "[ES: {membershipName} Maintenance Plan]",
-    "description": "[ES: Mobile Maintenance Club with priority service, repair discounts, and on-the-spot diagnostics.]",
-    "heading": "[ES: Join the {membershipName} — ${price}/month]",
-    "benefitsHeading": "[ES: Member benefits]"
+    "title": "Plan de Mantenimiento {membershipName}",
+    "heading": "Únase al {membershipName} — ${price}/mes",
+    "benefitsHeading": "Beneficios para miembros",
+    "joinCta": "Únete al {membershipName}"
   },
   "footer": {
-    "tagline": "[ES: {primaryCity}'s trusted mobile mechanics since {foundedYear}.]",
     "servicesHeading": "Servicios",
-    "serviceAreaHeading": "Área de Servicio",
-    "contactHeading": "[ES: Get in touch]",
-    "followHeading": "[ES: Follow us]",
-    "copyright": "[ES: © {year} {legalName}. All rights reserved.]"
+    "serviceAreaHeading": "Zonas que atendemos",
+    "contactHeading": "Contáctanos",
+    "followHeading": "Síguenos",
+    "hoursHeading": "Horario",
+    "copyright": "© {year} {legalName}. Todos los derechos reservados."
+  },
+  "days": {
+    "mon": "Lun",
+    "tue": "Mar",
+    "wed": "Mié",
+    "thu": "Jue",
+    "fri": "Vie",
+    "sat": "Sáb",
+    "sun": "Dom"
   },
   "form": {
-    "submit": "[ES: Request Service]",
-    "submitting": "[ES: Sending…]",
-    "required": "[ES: Required]"
+    "submit": "Solicitar servicio",
+    "submitting": "Enviando…",
+    "required": "Obligatorio",
+    "select": "Seleccione…",
+    "received": "✓ Solicitud recibida",
+    "fields": {
+      "name": "Nombre completo",
+      "phone": "Teléfono",
+      "email": "Correo",
+      "city": "Ciudad",
+      "service": "Servicio que necesita",
+      "message": "Cuéntenos sobre el problema"
+    },
+    "options": {
+      "Maintenance": "Mantenimiento",
+      "Indoor Air Quality": "Calidad del Aire",
+      "Other": "Otro"
+    }
   },
   "common": {
-    "callNow": "Llamar Ahora",
-    "scheduleNow": "[ES: Schedule Now]",
-    "getQuote": "Cotización Gratis",
-    "back": "[ES: Back]",
-    "viewMore": "[ES: View More]"
+    "callNow": "Llámanos hoy",
+    "scheduleNow": "Agenda ahora",
+    "getQuote": "Solicita tu cotización",
+    "back": "Atrás",
+    "viewMore": "Ver más"
   }
 }

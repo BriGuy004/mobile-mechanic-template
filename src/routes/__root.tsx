@@ -1,6 +1,6 @@
 import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
 import {
-  Outlet, Link, createRootRouteWithContext, useRouter, HeadContent, Scripts,
+  Outlet, Link, createRootRouteWithContext, useRouter, useRouterState, HeadContent, Scripts,
 } from "@tanstack/react-router";
 import appCss from "../styles.css?url";
 import { siteConfig } from "@/config/siteConfig";
@@ -9,6 +9,7 @@ import { Header } from "@/components/site/Header";
 import { TopBar } from "@/components/site/TopBar";
 import { Footer } from "@/components/site/Footer";
 import { MobileStickyCTA } from "@/components/site/MobileStickyCTA";
+import { LocaleProvider, useLocale } from "@/lib/locale";
 
 function NotFoundComponent() {
   return (
@@ -66,6 +67,10 @@ export const Route = createRootRouteWithContext<{ queryClient: QueryClient }>()(
       { rel: "preconnect", href: "https://fonts.googleapis.com" },
       { rel: "preconnect", href: "https://fonts.gstatic.com", crossOrigin: "anonymous" },
       { rel: "stylesheet", href: "https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" },
+      // Bilingual alternates — English at the root, Mexican Spanish at /es.
+      { rel: "alternate", hrefLang: "en", href: `${siteConfig.siteUrl}/` },
+      { rel: "alternate", hrefLang: "es-mx", href: `${siteConfig.siteUrl}/es` },
+      { rel: "alternate", hrefLang: "x-default", href: `${siteConfig.siteUrl}/` },
     ],
     scripts: [
       {
@@ -82,10 +87,15 @@ export const Route = createRootRouteWithContext<{ queryClient: QueryClient }>()(
 
 function RootShell({ children }: { children: React.ReactNode }) {
   const c = siteConfig;
+  // SSR locale: derived from the URL (same rule as LocaleProvider) so the
+  // server emits the correct <html lang> for crawlers — the /es path renders
+  // lang="es" on the server, not just after client hydration.
+  const pathname = useRouterState({ select: (s) => s.location.pathname });
+  const lang = pathname.startsWith("/es") ? "es" : c.defaultLanguage;
   // Inject brand tokens at runtime from config
   const brandVars = `:root{--brand-primary:${c.colorPrimary};--brand-accent:${c.colorAccent};--brand-dark-bg:${c.colorDarkBg};--brand-light-bg:${c.colorLightBg};--brand-text-dark:${c.colorTextDark};--brand-text-light:${c.colorTextLight};--font-headline:${c.fontHeadline};--font-body:${c.fontBody};}`;
   return (
-    <html lang={c.defaultLanguage}>
+    <html lang={lang}>
       <head>
         <HeadContent />
         <style dangerouslySetInnerHTML={{ __html: brandVars }} />
@@ -102,15 +112,27 @@ function RootComponent() {
   const { queryClient } = Route.useRouteContext();
   return (
     <QueryClientProvider client={queryClient}>
-      <div className="min-h-screen flex flex-col pb-20 lg:pb-0">
-        <TopBar />
-        <Header />
-        <main className="flex-1">
-          <Outlet />
-        </main>
-        <Footer />
-        <MobileStickyCTA />
-      </div>
+      <LocaleProvider>
+        <LocaleShell />
+      </LocaleProvider>
     </QueryClientProvider>
+  );
+}
+
+// key={locale} remounts the whole tree on a language switch so every t() call
+// re-evaluates against the new locale. The provider sits ABOVE this so its
+// state survives the remount.
+function LocaleShell() {
+  const { locale } = useLocale();
+  return (
+    <div key={locale} className="min-h-screen flex flex-col pb-20 lg:pb-0">
+      <TopBar />
+      <Header />
+      <main className="flex-1">
+        <Outlet />
+      </main>
+      <Footer />
+      <MobileStickyCTA />
+    </div>
   );
 }

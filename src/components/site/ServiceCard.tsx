@@ -2,7 +2,7 @@ import { Link } from "@tanstack/react-router";
 import { ArrowRight } from "lucide-react";
 import type { Service } from "@/config/siteConfig";
 import { Icon } from "./Icon";
-import { t } from "@/lib/i18n";
+import { t, tx } from "@/lib/i18n";
 
 export function ServiceCard({ service }: { service: Service }) {
   return (
@@ -16,11 +16,11 @@ export function ServiceCard({ service }: { service: Service }) {
           {t("services.emergencyBadge")}
         </span>
       )}
-      <div className="w-12 h-12 rounded-lg bg-brand-primary/10 text-brand-primary grid place-items-center mb-4">
+      <div className="w-12 h-12 rounded-xl bg-brand-primary/10 text-brand-primary grid place-items-center mb-4">
         <Icon name={service.icon} className="w-6 h-6" />
       </div>
-      <h3 className="font-bold text-brand-dark text-lg mb-2">{service.name}</h3>
-      <p className="text-sm text-slate-600 leading-relaxed mb-4">{service.shortDescription}</p>
+      <h3 className="font-bold text-brand-dark text-lg mb-2">{tx(service.name, service.es?.name)}</h3>
+      <p className="text-sm text-slate-600 leading-relaxed mb-4">{tx(service.shortDescription, service.es?.shortDescription)}</p>
       <div className="flex items-center justify-between mt-auto">
         {service.priceDisplay && (
           <span className="text-xs font-semibold text-brand-primary">{service.priceDisplay}</span>

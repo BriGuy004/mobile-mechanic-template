@@ -14,6 +14,7 @@ import { Route as SitemapDotxmlRouteImport } from './routes/sitemap[.]xml'
 import { Route as ReviewsRouteImport } from './routes/reviews'
 import { Route as MaintenancePlanRouteImport } from './routes/maintenance-plan'
 import { Route as FinancingRouteImport } from './routes/financing'
+import { Route as EsRouteImport } from './routes/es'
 import { Route as EmergencyRouteImport } from './routes/emergency'
 import { Route as ContactRouteImport } from './routes/contact'
 import { Route as AboutRouteImport } from './routes/about'
@@ -46,6 +47,11 @@ const MaintenancePlanRoute = MaintenancePlanRouteImport.update({
 const FinancingRoute = FinancingRouteImport.update({
   id: '/financing',
   path: '/financing',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const EsRoute = EsRouteImport.update({
+  id: '/es',
+  path: '/es',
   getParentRoute: () => rootRouteImport,
 } as any)
 const EmergencyRoute = EmergencyRouteImport.update({
@@ -94,6 +100,7 @@ export interface FileRoutesByFullPath {
   '/about': typeof AboutRoute
   '/contact': typeof ContactRoute
   '/emergency': typeof EmergencyRoute
+  '/es': typeof EsRoute
   '/financing': typeof FinancingRoute
   '/maintenance-plan': typeof MaintenancePlanRoute
   '/reviews': typeof ReviewsRoute
@@ -109,6 +116,7 @@ export interface FileRoutesByTo {
   '/about': typeof AboutRoute
   '/contact': typeof ContactRoute
   '/emergency': typeof EmergencyRoute
+  '/es': typeof EsRoute
   '/financing': typeof FinancingRoute
   '/maintenance-plan': typeof MaintenancePlanRoute
   '/reviews': typeof ReviewsRoute
@@ -125,6 +133,7 @@ export interface FileRoutesById {
   '/about': typeof AboutRoute
   '/contact': typeof ContactRoute
   '/emergency': typeof EmergencyRoute
+  '/es': typeof EsRoute
   '/financing': typeof FinancingRoute
   '/maintenance-plan': typeof MaintenancePlanRoute
   '/reviews': typeof ReviewsRoute
@@ -142,6 +151,7 @@ export interface FileRouteTypes {
     | '/about'
     | '/contact'
     | '/emergency'
+    | '/es'
     | '/financing'
     | '/maintenance-plan'
     | '/reviews'
@@ -157,6 +167,7 @@ export interface FileRouteTypes {
     | '/about'
     | '/contact'
     | '/emergency'
+    | '/es'
     | '/financing'
     | '/maintenance-plan'
     | '/reviews'
@@ -172,6 +183,7 @@ export interface FileRouteTypes {
     | '/about'
     | '/contact'
     | '/emergency'
+    | '/es'
     | '/financing'
     | '/maintenance-plan'
     | '/reviews'
@@ -188,6 +200,7 @@ export interface RootRouteChildren {
   AboutRoute: typeof AboutRoute
   ContactRoute: typeof ContactRoute
   EmergencyRoute: typeof EmergencyRoute
+  EsRoute: typeof EsRoute
   FinancingRoute: typeof FinancingRoute
   MaintenancePlanRoute: typeof MaintenancePlanRoute
   ReviewsRoute: typeof ReviewsRoute
@@ -234,6 +247,13 @@ declare module '@tanstack/react-router' {
       path: '/financing'
       fullPath: '/financing'
       preLoaderRoute: typeof FinancingRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/es': {
+      id: '/es'
+      path: '/es'
+      fullPath: '/es'
+      preLoaderRoute: typeof EsRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/emergency': {
@@ -300,6 +320,7 @@ const rootRouteChildren: RootRouteChildren = {
   AboutRoute: AboutRoute,
   ContactRoute: ContactRoute,
   EmergencyRoute: EmergencyRoute,
+  EsRoute: EsRoute,
   FinancingRoute: FinancingRoute,
   MaintenancePlanRoute: MaintenancePlanRoute,
   ReviewsRoute: ReviewsRoute,

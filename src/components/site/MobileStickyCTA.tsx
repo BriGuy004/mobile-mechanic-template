@@ -10,14 +10,14 @@ export function MobileStickyCTA() {
       <div className="grid grid-cols-2 gap-2 p-2">
         <a
           href={`tel:${c.mainPhoneTel}`}
-          className="inline-flex items-center justify-center gap-2 bg-brand-primary text-white font-semibold rounded-lg py-3 text-sm"
+          className="inline-flex items-center justify-center gap-2 bg-brand-primary text-white font-semibold rounded-xl py-3 text-sm"
         >
           <Phone className="w-4 h-4" />
           {t("common.callNow")}
         </a>
         <Link
           to="/contact"
-          className="inline-flex items-center justify-center gap-2 bg-brand-accent text-white font-semibold rounded-lg py-3 text-sm"
+          className="inline-flex items-center justify-center gap-2 bg-brand-accent text-white font-semibold rounded-xl py-3 text-sm"
         >
           <CalendarClock className="w-4 h-4" />
           {t("common.scheduleNow")}

@@ -6,6 +6,15 @@ export type ServiceCategory =
 
 export interface FaqItem { question: string; answer: string; }
 
+// Bilingual overlay: English lives in the base fields; a fork adds Spanish (or
+// any locale) here. Read in components via tx()/isEs() from "@/lib/i18n".
+export interface ServiceEs {
+  name?: string;
+  shortDescription?: string;
+  longDescription?: string;
+  faqItems?: FaqItem[];
+}
+
 export interface Service {
   slug: string;
   name: string;
@@ -19,22 +28,30 @@ export interface Service {
   featured: boolean;
   keywords: string[];
   faqItems: FaqItem[];
+  es?: ServiceEs;
 }
 
 export interface ServiceCity { name: string; slug: string; zip: string[]; population?: number; }
 export interface Brand { name: string; logoPath?: string; tier?: "premium" | "standard" | "value"; }
-export interface Special { title: string; description: string; validUntil: string; legalDisclaimer: string; }
+export interface Special { title: string; description: string; validUntil: string; legalDisclaimer: string; es?: { title?: string; description?: string }; }
 export interface Testimonial { author: string; city: string; rating: number; text: string; service?: string; date: string; }
-export interface TrustPillar { icon: string; title: string; description: string; }
+export interface TrustPillar { icon: string; title: string; description: string; es?: { title?: string; description?: string }; }
 export interface DayHours { open: string; close: string; closed?: boolean; }
 
 export interface SiteConfig {
   businessName: string; legalName: string; tagline: string;
   // Vertical noun used in route-level page titles / H1s where the vertical
-  // appears as plain text (e.g. "Mobile Mechanic Service in Plano").
-  // Per-fork: "HVAC", "Plumbing", "Mobile Mechanic", "Roofing", etc.
+  // appears as plain text (e.g. "HVAC Service in Plano" / "Plumbing Service
+  // in Plano"). Forks override per vertical: "HVAC", "Plumbing", "Mobile
+  // Mechanic", "Roofing", etc.
   verticalNoun: string;
   logoPath: string; logoAlt: string; foundedYear: number;
+  // Hero photo slot — drop a real shop / truck / team photo here. Aspect
+  // ratio is enforced by the hero container (4:5 portrait on mobile, 4:3 on
+  // desktop). If empty or "[EDITOR:]", the hero falls back to the original
+  // quick-contact card layout — no broken image, no awkward placeholder.
+  heroImage?: string;
+  heroImageAlt?: string;
   licenseNumbers: string[]; bbbAccreditation: { accredited: boolean; rating: string };
   certifications: string[]; insuranceCarrier: string; awardsList: string[];
 
@@ -66,10 +83,10 @@ export interface SiteConfig {
 
   currentSpecials: Special[];
   financingPartner: string; financingDetails: string;
-  membershipProgram: { name: string; monthlyPrice: number; benefits: string[] };
+  membershipProgram: { name: string; monthlyPrice: number; benefits: string[]; es?: { name?: string; benefits?: string[] } };
   seniorDiscount: { enabled: boolean; percentage: number };
   militaryDiscount: { enabled: boolean; percentage: number };
-  firstTimeCustomerOffer: { description: string; amount: string };
+  firstTimeCustomerOffer: { description: string; amount: string; es?: { description?: string } };
   taxCreditCallout: string;
 
   googleReviewCount: number; googleAverageRating: number;
@@ -87,6 +104,7 @@ export interface SiteConfig {
   leadFormEndpoint: string;
   leadFormFields: Array<{ name: string; label: string; type: "text" | "email" | "tel" | "select" | "textarea"; required: boolean; options?: string[] }>;
   leadFormSuccessMessage: string; leadFormSlaPromise: string;
+  leadFormSuccessMessageEs?: string; leadFormSlaPromiseEs?: string;
 
   facebookUrl?: string; instagramUrl?: string; youtubeUrl?: string; tiktokUrl?: string;
   googleBusinessUrl?: string; yelpUrl?: string; angiUrl?: string; nextdoorUrl?: string;
@@ -115,8 +133,8 @@ export const siteConfig: SiteConfig = {
   mainPhoneTel: "+19725550142",
   emergencyPhone: "(972) 555-0142",
   emergencyPhoneTel: "+19725550142",
-  generalEmail: "[EDITOR: insert real general email]",
-  serviceRequestEmail: "[EDITOR: insert real service request email]",
+  generalEmail: "",
+  serviceRequestEmail: "",
   smsTextNumber: "+19725550142",
 
   // Mobile service — no fixed street. ZIP 75201 = Dallas central (used for
@@ -529,7 +547,7 @@ export const siteConfig: SiteConfig = {
   footerDisclaimers: ["Licensed in the State of Texas. License numbers available on request."],
 
   defaultLanguage: "en",
-  supportedLanguages: ["en"],
+  supportedLanguages: ["en", "es"],
 };
 
 export const yearsInBusiness = (): number => new Date().getFullYear() - siteConfig.foundedYear;
