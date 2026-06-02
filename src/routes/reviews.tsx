@@ -24,7 +24,7 @@ function Reviews() {
     <>
       <section className="bg-brand-light border-b border-slate-200">
         <div className="mx-auto max-w-4xl px-6 py-12 md:py-16 text-center">
-          <div className="text-xs font-bold uppercase tracking-wider text-brand-accent mb-2">Reviews</div>
+          <div className="text-xs font-bold uppercase tracking-wider text-brand-accent mb-2">{t("nav.reviews")}</div>
           <h1 className="text-4xl md:text-5xl font-bold">{t("reviews.heading")}</h1>
           <div className="mt-4 flex items-center justify-center gap-1">
             {Array.from({length:5}).map((_,i) => <Star key={i} className="w-6 h-6 fill-amber-400 text-amber-400" />)}

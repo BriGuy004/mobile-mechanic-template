@@ -24,7 +24,7 @@ function About() {
     <>
       <section className="bg-brand-light border-b border-slate-200">
         <div className="mx-auto max-w-4xl px-6 py-12 md:py-20">
-          <div className="text-xs font-bold uppercase tracking-wider text-brand-accent mb-2">About</div>
+          <div className="text-xs font-bold uppercase tracking-wider text-brand-accent mb-2">{t("nav.about")}</div>
           <h1 className="text-4xl md:text-5xl font-bold">{t("about.heading")}</h1>
           <p className="mt-4 text-lg text-slate-600 leading-relaxed">{t("about.body")}</p>
         </div>

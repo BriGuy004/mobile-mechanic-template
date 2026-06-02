@@ -1,7 +1,7 @@
 import { createFileRoute, Link } from "@tanstack/react-router";
 import { Phone, Star, MapPin, ShieldCheck, ArrowRight, Tag, Check } from "lucide-react";
 import { siteConfig, featuredServices, yearsInBusiness } from "@/config/siteConfig";
-import { t, pageTitle } from "@/lib/i18n";
+import { t, tx, pageTitle } from "@/lib/i18n";
 import { Button } from "@/components/ui/button";
 import { ServiceCard } from "@/components/site/ServiceCard";
 import { TestimonialCarousel } from "@/components/site/TestimonialCarousel";
@@ -115,7 +115,7 @@ export function Home() {
                     ))}
                     <span className="ml-1 font-semibold">{c.googleAverageRating}</span>
                     <span className="text-white/60">
-                      ({c.googleReviewCount}+ Google reviews)
+                      {t("homepage.hero.reviewsBadge")}
                     </span>
                   </>
                 );
@@ -134,7 +134,7 @@ export function Home() {
                 );
               })()}
               <span className="text-white/30">|</span>
-              <span>{yearsInBusiness()}+ years in {c.primaryCity}</span>
+              <span>{t("homepage.hero.yearsBadge")}</span>
               {c.licenseNumbers[0] && !c.licenseNumbers[0].includes("[EDITOR") && (
                 <>
                   <span className="text-white/30">|</span>
@@ -151,8 +151,8 @@ export function Home() {
              * conversion target. */}
             <div className="bg-white text-brand-dark rounded-xl p-6 md:p-7 card-shadow-lg">
               <div className="text-xs font-bold uppercase tracking-wider text-brand-accent mb-1">{c.firstTimeCustomerOffer.amount} OFF</div>
-              <div className="font-bold text-lg mb-1">{c.firstTimeCustomerOffer.description}</div>
-              <div className="text-sm text-slate-600 mb-5">{c.leadFormSlaPromise}</div>
+              <div className="font-bold text-lg mb-1">{tx(c.firstTimeCustomerOffer.description, c.firstTimeCustomerOffer.es?.description)}</div>
+              <div className="text-sm text-slate-600 mb-5">{tx(c.leadFormSlaPromise, c.leadFormSlaPromiseEs)}</div>
               {/* Proof stats are config-driven and non-fabricated: Google
                 * rating + review count, years in business (from foundedYear),
                 * and the number of brands serviced. No invented job/tech
@@ -217,8 +217,8 @@ export function Home() {
                 <div className="w-12 h-12 rounded-xl bg-brand-primary text-white grid place-items-center mb-4">
                   <Icon name={p.icon} className="w-6 h-6" />
                 </div>
-                <h3 className="font-bold text-brand-dark mb-2">{p.title}</h3>
-                <p className="text-sm text-slate-600 leading-relaxed">{p.description}</p>
+                <h3 className="font-bold text-brand-dark mb-2">{tx(p.title, p.es?.title)}</h3>
+                <p className="text-sm text-slate-600 leading-relaxed">{tx(p.description, p.es?.description)}</p>
               </div>
             ))}
           </div>
@@ -260,7 +260,7 @@ export function Home() {
                 ))}
               </div>
               <Link to="/service-area" className="mt-6 inline-flex items-center gap-2 text-brand-primary font-semibold">
-                View all service areas <ArrowRight className="w-4 h-4" />
+                {t("homepage.serviceArea.viewAll")} <ArrowRight className="w-4 h-4" />
               </Link>
             </div>
           </div>
@@ -295,12 +295,12 @@ export function Home() {
               {c.currentSpecials.map((sp) => (
                 <div key={sp.title} className="relative bg-gradient-to-br from-brand-primary to-brand-dark text-white rounded-xl p-7 overflow-hidden card-shadow">
                   <Tag className="absolute -top-3 -right-3 w-24 h-24 text-white/5" />
-                  <div className="text-xs font-bold uppercase tracking-wider text-brand-accent mb-2">Special Offer</div>
-                  <h3 className="text-2xl font-extrabold mb-2 text-white">{sp.title}</h3>
-                  <p className="text-white/85 text-sm mb-4 leading-relaxed">{sp.description}</p>
+                  <div className="text-xs font-bold uppercase tracking-wider text-brand-accent mb-2">{t("homepage.specials.badge")}</div>
+                  <h3 className="text-2xl font-extrabold mb-2 text-white">{tx(sp.title, sp.es?.title)}</h3>
+                  <p className="text-white/85 text-sm mb-4 leading-relaxed">{tx(sp.description, sp.es?.description)}</p>
                   <div className="text-[11px] text-white/60 mb-5">{t("homepage.specials.validThrough", { date: sp.validUntil })}</div>
                   <Link to="/contact" className="inline-flex items-center gap-1 text-brand-accent font-semibold text-sm hover:text-white">
-                    Claim this offer <ArrowRight className="w-4 h-4" />
+                    {t("homepage.specials.claim")} <ArrowRight className="w-4 h-4" />
                   </Link>
                 </div>
               ))}

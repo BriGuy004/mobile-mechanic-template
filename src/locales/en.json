@@ -31,7 +31,9 @@
         "reviews": "Google reviews",
         "years": "Years local",
         "brands": "Brands serviced"
-      }
+      },
+      "yearsBadge": "{years}+ years in {primaryCity}",
+      "reviewsBadge": "({reviewCount}+ Google reviews)"
     },
     "services": {
       "eyebrow": "What We Do",
@@ -47,7 +49,8 @@
       "eyebrow": "Where We Work",
       "heading": "Proudly serving {primaryCity} & surrounding cities",
       "subheading": "Click your city for local service details, pricing, and reviews.",
-      "radiusNote": "Within {radius} miles of {primaryCity}"
+      "radiusNote": "Within {radius} miles of {primaryCity}",
+      "viewAll": "View all service areas"
     },
     "reviews": {
       "eyebrow": "What Customers Say",
@@ -62,7 +65,9 @@
     "specials": {
       "eyebrow": "Current Offers",
       "heading": "Save on service this season",
-      "validThrough": "Valid through {date}"
+      "validThrough": "Valid through {date}",
+      "badge": "Special Offer",
+      "claim": "Claim this offer"
     },
     "brands": {
       "eyebrow": "Brands We Service",
@@ -85,7 +90,19 @@
     "detailWhyHeading": "Why {businessName} for this",
     "detailIncludedHeading": "What's included",
     "notFound": "Service not found",
-    "notFoundBody": "We couldn't find that service. Browse all services or call us at {phone} and we'll help."
+    "notFoundBody": "We couldn't find that service. Browse all services or call us at {phone} and we'll help.",
+    "categories": {
+      "cooling": "Cooling",
+      "heating": "Heating",
+      "iaq": "Indoor Air Quality",
+      "maintenance": "Maintenance",
+      "installation": "Installation",
+      "commercial": "Commercial",
+      "diagnostics": "Diagnostics",
+      "repair": "Repair",
+      "inspection": "Inspection",
+      "other": "Other"
+    }
   },
   "serviceArea": {
     "indexTitle": "Service Area",
@@ -152,7 +169,8 @@
     "title": "{membershipName} Maintenance Plan",
     "description": "Annual HVAC maintenance plan with priority service, repair discounts, and tune-ups.",
     "heading": "Join the {membershipName} — ${price}/month",
-    "benefitsHeading": "Member benefits"
+    "benefitsHeading": "Member benefits",
+    "joinCta": "Join {membershipName}"
   },
   "footer": {
     "tagline": "{primaryCity}'s trusted HVAC team since {foundedYear}.",
@@ -160,12 +178,36 @@
     "serviceAreaHeading": "Service Area",
     "contactHeading": "Get in touch",
     "followHeading": "Follow us",
+    "hoursHeading": "Hours",
     "copyright": "© {year} {legalName}. All rights reserved."
+  },
+  "days": {
+    "mon": "Mon", "tue": "Tue", "wed": "Wed", "thu": "Thu",
+    "fri": "Fri", "sat": "Sat", "sun": "Sun"
   },
   "form": {
     "submit": "Request Service",
     "submitting": "Sending…",
-    "required": "Required"
+    "required": "Required",
+    "select": "Select…",
+    "received": "✓ Request received",
+    "fields": {
+      "name": "Full Name",
+      "phone": "Phone",
+      "email": "Email",
+      "city": "City",
+      "service": "Service Needed",
+      "message": "Tell us about the issue"
+    },
+    "options": {
+      "AC Repair": "AC Repair",
+      "AC Installation": "AC Installation",
+      "Furnace Repair": "Furnace Repair",
+      "Furnace Installation": "Furnace Installation",
+      "Maintenance": "Maintenance",
+      "Indoor Air Quality": "Indoor Air Quality",
+      "Other": "Other"
+    }
   },
   "common": {
     "callNow": "Call Now",

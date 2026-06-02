@@ -23,6 +23,20 @@ export const setActiveLocale = (loc: string): void => {
   activeLocale = loc;
 };
 export const supportedLocales = (): string[] => siteConfig.supportedLanguages;
+export const isEs = (): boolean => getActiveLocale() === "es";
+
+// Picks localized SHOP content. English lives in the base config field; each
+// fork supplies Spanish via an optional `es` overlay on the same entity. When
+// the ES value is missing it falls back to English (graceful, never blank).
+export const tx = (en: string, es?: string | null): string => (isEs() && es ? es : en);
+
+// Translate-with-fallback: returns the localized string for `key`, or
+// `fallback` when the key is missing (t() returns the key verbatim when not
+// found). Used for config-driven labels/options that forks may customize.
+export const tf = (key: string, fallback: string, vars: Record<string, string | number> = {}): string => {
+  const v = t(key, vars);
+  return v === key ? fallback : v;
+};
 
 const get = (dict: LocaleDict, path: string): string | undefined => {
   const parts = path.split(".");
@@ -50,7 +64,7 @@ const defaultVars = (): Record<string, string | number> => ({
   foundedYear: siteConfig.foundedYear,
   year: new Date().getFullYear(),
   radius: siteConfig.serviceRadiusMiles,
-  sla: siteConfig.leadFormSlaPromise,
+  sla: isEs() && siteConfig.leadFormSlaPromiseEs ? siteConfig.leadFormSlaPromiseEs : siteConfig.leadFormSlaPromise,
   emergencyText: siteConfig.emergencyHoursText,
   financingDetails: siteConfig.financingDetails,
   membershipName: siteConfig.membershipProgram.name,

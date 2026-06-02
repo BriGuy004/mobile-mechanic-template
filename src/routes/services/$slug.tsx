@@ -1,7 +1,8 @@
 import { createFileRoute, Link, notFound } from "@tanstack/react-router";
 import { Phone, ArrowRight, Check } from "lucide-react";
 import { siteConfig } from "@/config/siteConfig";
-import { t, pageTitle } from "@/lib/i18n";
+import { t, tx, isEs } from "@/lib/i18n";
+import { pageTitle } from "@/lib/i18n";
 import { ServiceCard } from "@/components/site/ServiceCard";
 import { CtaBand } from "@/components/site/CtaBand";
 import { Icon } from "@/components/site/Icon";
@@ -95,7 +96,7 @@ function ServiceDetail() {
           <span className="mx-2 text-slate-300">/</span>
           <Link to="/services" className="hover:text-brand-primary">{t("nav.services")}</Link>
           <span className="mx-2 text-slate-300">/</span>
-          <span className="text-slate-700 font-medium">{service.name}</span>
+          <span className="text-slate-700 font-medium">{tx(service.name, service.es?.name)}</span>
         </div>
       </nav>
 
@@ -111,8 +112,8 @@ function ServiceDetail() {
                 </span>
               )}
             </div>
-            <h1 className="text-4xl md:text-5xl font-bold text-brand-dark">{service.name}</h1>
-            <p className="mt-3 text-slate-700 text-lg max-w-2xl">{service.shortDescription}</p>
+            <h1 className="text-4xl md:text-5xl font-bold text-brand-dark">{tx(service.name, service.es?.name)}</h1>
+            <p className="mt-3 text-slate-700 text-lg max-w-2xl">{tx(service.shortDescription, service.es?.shortDescription)}</p>
             {service.priceDisplay && (
               <p className="mt-2 text-brand-primary font-semibold">{service.priceDisplay}</p>
             )}
@@ -140,7 +141,7 @@ function ServiceDetail() {
             {t("services.detailIncludedHeading")}
           </h2>
           <p className="text-slate-700 leading-relaxed text-lg whitespace-pre-line">
-            {service.longDescription}
+            {tx(service.longDescription, service.es?.longDescription)}
           </p>
         </div>
       </section>
@@ -175,7 +176,7 @@ function ServiceDetail() {
               {t("services.faqHeading")}
             </h2>
             <div className="space-y-3">
-              {service.faqItems.map((f, i) => (
+              {(isEs() && service.es?.faqItems?.length ? service.es.faqItems : service.faqItems).map((f, i) => (
                 <details key={i} className="group rounded-xl border border-slate-200 bg-white p-4">
                   <summary className="cursor-pointer font-semibold text-brand-dark flex items-start gap-2">
                     <Check className="w-5 h-5 text-brand-primary flex-none mt-0.5" />

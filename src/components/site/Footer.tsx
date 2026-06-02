@@ -1,11 +1,9 @@
 import { Link } from "@tanstack/react-router";
 import { Phone, Mail, MapPin, Facebook, Instagram, Youtube, Star } from "lucide-react";
 import { siteConfig, copyrightYear, formatHours } from "@/config/siteConfig";
-import { t } from "@/lib/i18n";
+import { t, tx } from "@/lib/i18n";
 
-const dayLabels: Record<string, string> = {
-  mon: "Mon", tue: "Tue", wed: "Wed", thu: "Thu", fri: "Fri", sat: "Sat", sun: "Sun",
-};
+const dayKeys = ["mon", "tue", "wed", "thu", "fri", "sat", "sun"] as const;
 
 export function Footer() {
   const c = siteConfig;
@@ -49,7 +47,7 @@ export function Footer() {
             {c.services.slice(0, 8).map((s) => (
               <li key={s.slug}>
                 <Link to="/services/$slug" params={{ slug: s.slug }} className="text-white/70 hover:text-white">
-                  {s.name}
+                  {tx(s.name, s.es?.name)}
                 </Link>
               </li>
             ))}
@@ -101,12 +99,12 @@ export function Footer() {
             </li>
           </ul>
 
-          <h4 className="text-white font-semibold mt-6 mb-2 text-xs uppercase tracking-wider">Hours</h4>
+          <h4 className="text-white font-semibold mt-6 mb-2 text-xs uppercase tracking-wider">{t("footer.hoursHeading")}</h4>
           <ul className="text-xs text-white/70 space-y-1">
-            {Object.entries(c.regularHours).map(([d, h]) => (
+            {dayKeys.map((d) => (
               <li key={d} className="flex justify-between">
-                <span>{dayLabels[d]}</span>
-                <span>{formatHours(h)}</span>
+                <span>{t(`days.${d}`)}</span>
+                <span>{formatHours(c.regularHours[d])}</span>
               </li>
             ))}
           </ul>

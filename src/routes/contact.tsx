@@ -26,7 +26,7 @@ function Contact() {
     <>
       <section className="bg-brand-light border-b border-slate-200">
         <div className="mx-auto max-w-7xl px-6 py-12 md:py-16">
-          <div className="text-xs font-bold uppercase tracking-wider text-brand-accent mb-2">Contact</div>
+          <div className="text-xs font-bold uppercase tracking-wider text-brand-accent mb-2">{t("nav.contact")}</div>
           <h1 className="text-4xl md:text-5xl font-bold">{t("contact.heading")}</h1>
           <p className="mt-3 text-slate-600 text-lg max-w-xl">{t("contact.subheading")}</p>
         </div>

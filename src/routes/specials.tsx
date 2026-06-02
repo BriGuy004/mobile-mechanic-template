@@ -1,7 +1,7 @@
 import { createFileRoute, Link } from "@tanstack/react-router";
 import { Tag, ArrowRight } from "lucide-react";
 import { siteConfig } from "@/config/siteConfig";
-import { t, pageTitle } from "@/lib/i18n";
+import { t, tx, pageTitle } from "@/lib/i18n";
 import { CtaBand } from "@/components/site/CtaBand";
 
 export const Route = createFileRoute("/specials")({
@@ -24,7 +24,7 @@ function Specials() {
     <>
       <section className="bg-brand-light border-b border-slate-200">
         <div className="mx-auto max-w-4xl px-6 py-12 md:py-16">
-          <div className="text-xs font-bold uppercase tracking-wider text-brand-accent mb-2">Specials</div>
+          <div className="text-xs font-bold uppercase tracking-wider text-brand-accent mb-2">{t("nav.specials")}</div>
           <h1 className="text-4xl md:text-5xl font-bold">{t("specials.heading")}</h1>
         </div>
       </section>
@@ -37,13 +37,13 @@ function Specials() {
               {c.currentSpecials.map((sp) => (
                 <div key={sp.title} className="relative bg-gradient-to-br from-brand-primary to-brand-dark text-white rounded-xl p-7 overflow-hidden card-shadow">
                   <Tag className="absolute -top-3 -right-3 w-24 h-24 text-white/5" />
-                  <div className="text-xs font-bold uppercase tracking-wider text-brand-accent mb-2">Limited Offer</div>
-                  <h3 className="text-2xl font-extrabold mb-2">{sp.title}</h3>
-                  <p className="text-white/85 text-sm mb-4">{sp.description}</p>
-                  <div className="text-[11px] text-white/60 mb-2">Valid through {sp.validUntil}</div>
+                  <div className="text-xs font-bold uppercase tracking-wider text-brand-accent mb-2">{t("homepage.specials.badge")}</div>
+                  <h3 className="text-2xl font-extrabold mb-2 text-white">{tx(sp.title, sp.es?.title)}</h3>
+                  <p className="text-white/85 text-sm mb-4">{tx(sp.description, sp.es?.description)}</p>
+                  <div className="text-[11px] text-white/60 mb-2">{t("homepage.specials.validThrough", { date: sp.validUntil })}</div>
                   <div className="text-[10px] text-white/40 mb-4">{sp.legalDisclaimer}</div>
                   <Link to="/contact" className="inline-flex items-center gap-1 text-brand-accent font-semibold text-sm">
-                    Claim offer <ArrowRight className="w-4 h-4" />
+                    {t("homepage.specials.claim")} <ArrowRight className="w-4 h-4" />
                   </Link>
                 </div>
               ))}

@@ -6,6 +6,15 @@ export type ServiceCategory =
 
 export interface FaqItem { question: string; answer: string; }
 
+// Bilingual overlay: English lives in the base fields; a fork adds Spanish (or
+// any locale) here. Read in components via tx()/isEs() from "@/lib/i18n".
+export interface ServiceEs {
+  name?: string;
+  shortDescription?: string;
+  longDescription?: string;
+  faqItems?: FaqItem[];
+}
+
 export interface Service {
   slug: string;
   name: string;
@@ -19,13 +28,14 @@ export interface Service {
   featured: boolean;
   keywords: string[];
   faqItems: FaqItem[];
+  es?: ServiceEs;
 }
 
 export interface ServiceCity { name: string; slug: string; zip: string[]; population?: number; }
 export interface Brand { name: string; logoPath?: string; tier?: "premium" | "standard" | "value"; }
-export interface Special { title: string; description: string; validUntil: string; legalDisclaimer: string; }
+export interface Special { title: string; description: string; validUntil: string; legalDisclaimer: string; es?: { title?: string; description?: string }; }
 export interface Testimonial { author: string; city: string; rating: number; text: string; service?: string; date: string; }
-export interface TrustPillar { icon: string; title: string; description: string; }
+export interface TrustPillar { icon: string; title: string; description: string; es?: { title?: string; description?: string }; }
 export interface DayHours { open: string; close: string; closed?: boolean; }
 
 export interface SiteConfig {
@@ -73,10 +83,10 @@ export interface SiteConfig {
 
   currentSpecials: Special[];
   financingPartner: string; financingDetails: string;
-  membershipProgram: { name: string; monthlyPrice: number; benefits: string[] };
+  membershipProgram: { name: string; monthlyPrice: number; benefits: string[]; es?: { name?: string; benefits?: string[] } };
   seniorDiscount: { enabled: boolean; percentage: number };
   militaryDiscount: { enabled: boolean; percentage: number };
-  firstTimeCustomerOffer: { description: string; amount: string };
+  firstTimeCustomerOffer: { description: string; amount: string; es?: { description?: string } };
   taxCreditCallout: string;
 
   googleReviewCount: number; googleAverageRating: number;
@@ -94,6 +104,7 @@ export interface SiteConfig {
   leadFormEndpoint: string;
   leadFormFields: Array<{ name: string; label: string; type: "text" | "email" | "tel" | "select" | "textarea"; required: boolean; options?: string[] }>;
   leadFormSuccessMessage: string; leadFormSlaPromise: string;
+  leadFormSuccessMessageEs?: string; leadFormSlaPromiseEs?: string;
 
   facebookUrl?: string; instagramUrl?: string; youtubeUrl?: string; tiktokUrl?: string;
   googleBusinessUrl?: string; yelpUrl?: string; angiUrl?: string; nextdoorUrl?: string;
@@ -197,6 +208,7 @@ export const siteConfig: SiteConfig = {
     {
       slug: "ac-repair",
       name: "AC Repair",
+      es: { name: "Reparación de A/C", shortDescription: "Reparación rápida y precisa de aire acondicionado para todas las marcas y sistemas." },
       category: "cooling",
       shortDescription: "Fast, accurate air conditioning repair for every brand and system.",
       longDescription: "When your AC stops cooling, our NATE-certified technicians diagnose the real issue — capacitor, contactor, refrigerant, compressor, or control board — and repair it the same day in most cases. We carry common parts on every truck so you don't wait days for cool air.",
@@ -215,6 +227,7 @@ export const siteConfig: SiteConfig = {
     {
       slug: "ac-installation",
       name: "AC Installation",
+      es: { name: "Instalación de A/C", shortDescription: "Instalación de aire acondicionado nuevo de alta eficiencia, con garantía del fabricante." },
       category: "installation",
       shortDescription: "New high-efficiency air conditioner installation with manufacturer warranty.",
       longDescription: "Replacing an aging AC? We perform a full Manual J load calculation, recommend the right SEER2 system for your home, and complete most installs in a single day. Every install includes startup verification, performance testing, and a workmanship warranty.",
@@ -233,6 +246,7 @@ export const siteConfig: SiteConfig = {
     {
       slug: "ac-maintenance",
       name: "AC Maintenance",
+      es: { name: "Mantenimiento de A/C", shortDescription: "Afinaciones de temporada que detectan problemas a tiempo y mantienen alta la eficiencia." },
       category: "maintenance",
       shortDescription: "Seasonal tune-ups that catch problems early and keep efficiency high.",
       longDescription: "A spring tune-up is the single best way to prevent summer breakdowns. We check refrigerant charge, clean condenser coils, test capacitors, inspect electrical connections, and verify temperature split — 21 checkpoints in total.",
@@ -250,6 +264,7 @@ export const siteConfig: SiteConfig = {
     {
       slug: "furnace-repair",
       name: "Furnace Repair",
+      es: { name: "Reparación de Calefactor", shortDescription: "Reparación de calefactores de gas, eléctricos y de alta eficiencia — calor rápido garantizado." },
       category: "heating",
       shortDescription: "Gas, electric, and high-efficiency furnace repair — fast warm-up guaranteed.",
       longDescription: "Cold house? We repair ignition failures, flame sensor issues, blower problems, gas valves, and control boards on every major brand. Safety is first — we always test for carbon monoxide and cracked heat exchangers.",
@@ -267,6 +282,7 @@ export const siteConfig: SiteConfig = {
     {
       slug: "furnace-installation",
       name: "Furnace Installation",
+      es: { name: "Instalación de Calefactor", shortDescription: "Instalación de calefactor de alta eficiencia, con la capacidad correcta para su hogar." },
       category: "installation",
       shortDescription: "High-efficiency furnace installation sized correctly for your home.",
       longDescription: "Modern 95%+ AFUE furnaces dramatically cut winter gas bills. We size every install with a proper load calculation, never just match the old unit. All installs include new venting inspection, gas pressure test, and combustion analysis.",
@@ -283,6 +299,7 @@ export const siteConfig: SiteConfig = {
     {
       slug: "furnace-maintenance",
       name: "Furnace Maintenance",
+      es: { name: "Mantenimiento de Calefactor", shortDescription: "Afinaciones de otoño que previenen quedarse sin calor en invierno y lo mantienen seguro." },
       category: "maintenance",
       shortDescription: "Fall tune-ups that prevent winter no-heat calls and keep you safe.",
       longDescription: "Annual furnace maintenance verifies combustion safety, tests carbon monoxide levels, cleans burners, replaces filters, and lubricates moving parts. Most manufacturer warranties require it.",
@@ -299,6 +316,7 @@ export const siteConfig: SiteConfig = {
     {
       slug: "heat-pump-repair",
       name: "Heat Pump Repair",
+      es: { name: "Reparación de Bomba de Calor", shortDescription: "Diagnóstico experto de bombas de calor para sistemas split, por ductos y mini-split." },
       category: "heating",
       shortDescription: "Expert heat pump diagnostics for split, ducted, and mini-split systems.",
       longDescription: "Heat pumps are more complex than straight-cool ACs. We diagnose reversing valves, defrost controls, refrigerant issues, and auxiliary heat strips on all major brands including modern variable-speed inverter systems.",
@@ -315,6 +333,7 @@ export const siteConfig: SiteConfig = {
     {
       slug: "heat-pump-installation",
       name: "Heat Pump Installation",
+      es: { name: "Instalación de Bomba de Calor", shortDescription: "Bombas de calor de alta eficiencia con hasta $2,000 de crédito fiscal federal." },
       category: "installation",
       shortDescription: "High-efficiency heat pumps with up to $2,000 federal tax credit.",
       longDescription: "Modern heat pumps heat and cool more efficiently than ever — and qualifying systems are eligible for federal Inflation Reduction Act tax credits. We install ducted central systems and ductless mini-splits.",
@@ -331,6 +350,7 @@ export const siteConfig: SiteConfig = {
     {
       slug: "ductwork-cleaning",
       name: "Ductwork & Duct Cleaning",
+      es: { name: "Ductos y Limpieza de Ductos", shortDescription: "Sellado, reparación y limpieza profesional de ductos para mejorar el flujo y la calidad del aire." },
       category: "iaq",
       shortDescription: "Duct sealing, repair, and professional cleaning to improve airflow and air quality.",
       longDescription: "Leaky or dirty ductwork can waste 20–30% of your conditioned air. We test duct performance, seal leaks with mastic, and offer professional cleaning that removes years of dust and allergens.",
@@ -347,6 +367,7 @@ export const siteConfig: SiteConfig = {
     {
       slug: "indoor-air-quality",
       name: "Indoor Air Quality",
+      es: { name: "Calidad del Aire Interior", shortDescription: "Luces UV, filtración HEPA, humidificadores y purificadores de aire para toda la casa." },
       category: "iaq",
       shortDescription: "UV lights, HEPA filtration, humidifiers, and whole-home air purifiers.",
       longDescription: "Indoor air can be 2–5x more polluted than outdoor air. We install UV germicidal lights, media filtration, whole-home humidifiers, and HEPA-grade air purifiers integrated directly into your HVAC system.",
@@ -363,6 +384,7 @@ export const siteConfig: SiteConfig = {
     {
       slug: "smart-thermostat",
       name: "Smart Thermostat Installation",
+      es: { name: "Instalación de Termostato Inteligente", shortDescription: "Instalación profesional de termostatos inteligentes Nest, Ecobee, Honeywell y más." },
       category: "other",
       shortDescription: "Professional installation of Nest, Ecobee, Honeywell, and other smart thermostats.",
       longDescription: "A smart thermostat can save 10–15% on heating and cooling. We install and configure all major brands, verify HVAC compatibility, and walk you through the app setup before we leave.",
@@ -379,6 +401,7 @@ export const siteConfig: SiteConfig = {
     {
       slug: "commercial-hvac",
       name: "Commercial HVAC",
+      es: { name: "Climatización Comercial", shortDescription: "Servicio e instalación de sistemas comerciales ligeros RTU, split y VRF." },
       category: "commercial",
       shortDescription: "Light commercial RTU, split system, and VRF service and installation.",
       longDescription: "We service restaurants, offices, retail, and light industrial spaces across the Dallas metro. Maintenance agreements, emergency response, and capital planning for property managers.",
@@ -413,9 +436,9 @@ export const siteConfig: SiteConfig = {
   ],
 
   currentSpecials: [
-    { title: "$79 AC Tune-Up", description: "21-point precision tune-up to keep your system running efficiently all summer.", validUntil: "2026-08-31", legalDisclaimer: "One per household. Standard residential systems only." },
-    { title: "$500 Off New HVAC Installation", description: "Save on a qualifying complete heating and cooling system replacement.", validUntil: "2026-12-31", legalDisclaimer: "Not valid with other offers. Minimum system requirements apply." },
-    { title: "Free Indoor Air Quality Assessment", description: "Complimentary in-home assessment of air quality, humidity, and filtration.", validUntil: "2026-12-31", legalDisclaimer: "Service area customers only. No purchase required." },
+    { title: "$79 AC Tune-Up", description: "21-point precision tune-up to keep your system running efficiently all summer.", validUntil: "2026-08-31", legalDisclaimer: "One per household. Standard residential systems only.", es: { title: "Afinación de A/C por $79", description: "Afinación de precisión de 21 puntos para mantener su sistema funcionando eficientemente todo el verano." } },
+    { title: "$500 Off New HVAC Installation", description: "Save on a qualifying complete heating and cooling system replacement.", validUntil: "2026-12-31", legalDisclaimer: "Not valid with other offers. Minimum system requirements apply.", es: { title: "$500 de Descuento en Instalación Nueva", description: "Ahorra en el cambio completo de un sistema de calefacción y enfriamiento que califique." } },
+    { title: "Free Indoor Air Quality Assessment", description: "Complimentary in-home assessment of air quality, humidity, and filtration.", validUntil: "2026-12-31", legalDisclaimer: "Service area customers only. No purchase required.", es: { title: "Evaluación Gratis de Calidad del Aire", description: "Evaluación gratuita a domicilio de la calidad del aire, la humedad y la filtración." } },
   ],
   financingPartner: "Synchrony / GreenSky",
   financingDetails: "Flexible monthly payments with approved credit. 0% APR options on qualifying systems.",
@@ -430,10 +453,20 @@ export const siteConfig: SiteConfig = {
       "Equipment lifespan extension",
       "Transferable to new home",
     ],
+    es: {
+      benefits: [
+        "2 afinaciones al año (A/C en primavera + calefactor en otoño)",
+        "15% de descuento en todas las reparaciones",
+        "Agenda prioritaria",
+        "Sin cargos fuera de horario",
+        "Mayor vida útil del equipo",
+        "Transferible a su nueva casa",
+      ],
+    },
   },
   seniorDiscount: { enabled: true, percentage: 10 },
   militaryDiscount: { enabled: true, percentage: 10 },
-  firstTimeCustomerOffer: { description: "$25 off your first service call", amount: "$25" },
+  firstTimeCustomerOffer: { description: "$25 off your first service call", amount: "$25", es: { description: "$25 de descuento en su primera visita de servicio" } },
   taxCreditCallout: "Federal tax credits up to $2,000 available for qualifying heat pump installations through the Inflation Reduction Act.",
 
   googleReviewCount: 287,
@@ -442,10 +475,10 @@ export const siteConfig: SiteConfig = {
   technicianCount: 14,
 
   trustPillars: [
-    { icon: "Award", title: "Licensed & Certified", description: "TACLA-licensed in Texas, NATE-certified technicians, EPA 608 compliant." },
-    { icon: "Clock", title: "Same-Day Service", description: "Most repair calls placed before noon are completed the same day." },
-    { icon: "Heart", title: "Family Owned", description: "Locally owned and operated — your neighbors, not a national chain." },
-    { icon: "ThumbsUp", title: "Upfront Pricing", description: "Flat-rate pricing approved before any work begins. No surprises." },
+    { icon: "Award", title: "Licensed & Certified", description: "TACLA-licensed in Texas, NATE-certified technicians, EPA 608 compliant.", es: { title: "Con Licencia y Certificados", description: "Con licencia TACLA en Texas, técnicos certificados NATE y cumplimiento EPA 608." } },
+    { icon: "Clock", title: "Same-Day Service", description: "Most repair calls placed before noon are completed the same day.", es: { title: "Servicio el Mismo Día", description: "La mayoría de las reparaciones solicitadas antes del mediodía se completan el mismo día." } },
+    { icon: "Heart", title: "Family Owned", description: "Locally owned and operated — your neighbors, not a national chain.", es: { title: "Empresa Familiar", description: "De dueños locales — sus vecinos, no una cadena nacional." } },
+    { icon: "ThumbsUp", title: "Upfront Pricing", description: "Flat-rate pricing approved before any work begins. No surprises.", es: { title: "Precios Claros", description: "Precio fijo aprobado antes de empezar cualquier trabajo. Sin sorpresas." } },
   ],
 
   // Per-fork: replace each entry with a real client review pulled from the
@@ -479,6 +512,8 @@ export const siteConfig: SiteConfig = {
   ],
   leadFormSuccessMessage: "Thanks — we'll be in touch within one business hour.",
   leadFormSlaPromise: "We respond to every request within 60 minutes during business hours.",
+  leadFormSuccessMessageEs: "Gracias — le contactaremos en menos de una hora hábil.",
+  leadFormSlaPromiseEs: "Respondemos a cada solicitud en menos de 60 minutos en horario hábil.",
 
   facebookUrl: "https://facebook.com/brianshvac",
   instagramUrl: "https://instagram.com/brianshvac",
