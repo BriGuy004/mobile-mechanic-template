@@ -1,7 +1,7 @@
 import { createFileRoute, Link, notFound } from "@tanstack/react-router";
 import { Phone, ArrowRight, Check } from "lucide-react";
 import { siteConfig } from "@/config/siteConfig";
-import { t, tx, isEs } from "@/lib/i18n";
+import { t, tx } from "@/lib/i18n";
 import { pageTitle } from "@/lib/i18n";
 import { ServiceCard } from "@/components/site/ServiceCard";
 import { CtaBand } from "@/components/site/CtaBand";
@@ -176,15 +176,21 @@ function ServiceDetail() {
               {t("services.faqHeading")}
             </h2>
             <div className="space-y-3">
-              {(isEs() && service.es?.faqItems?.length ? service.es.faqItems : service.faqItems).map((f, i) => (
-                <details key={i} className="group rounded-xl border border-slate-200 bg-white p-4">
-                  <summary className="cursor-pointer font-semibold text-brand-dark flex items-start gap-2">
-                    <Check className="w-5 h-5 text-brand-primary flex-none mt-0.5" />
-                    <span>{f.question}</span>
-                  </summary>
-                  <p className="mt-3 ml-7 text-slate-700 leading-relaxed">{f.answer}</p>
-                </details>
-              ))}
+              {service.faqItems.map((f, i) => {
+                // Per-field tx() by index: the English faqItems drive the count
+                // and order; a fork's es.faqItems[i] overlays question/answer,
+                // each falling back to English independently if absent.
+                const esf = service.es?.faqItems?.[i];
+                return (
+                  <details key={i} className="group rounded-xl border border-slate-200 bg-white p-4">
+                    <summary className="cursor-pointer font-semibold text-brand-dark flex items-start gap-2">
+                      <Check className="w-5 h-5 text-brand-primary flex-none mt-0.5" />
+                      <span>{tx(f.question, esf?.question)}</span>
+                    </summary>
+                    <p className="mt-3 ml-7 text-slate-700 leading-relaxed">{tx(f.answer, esf?.answer)}</p>
+                  </details>
+                );
+              })}
             </div>
           </div>
         </section>

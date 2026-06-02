@@ -1,6 +1,6 @@
 import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
 import {
-  Outlet, Link, createRootRouteWithContext, useRouter, HeadContent, Scripts,
+  Outlet, Link, createRootRouteWithContext, useRouter, useRouterState, HeadContent, Scripts,
 } from "@tanstack/react-router";
 import appCss from "../styles.css?url";
 import { siteConfig } from "@/config/siteConfig";
@@ -87,10 +87,15 @@ export const Route = createRootRouteWithContext<{ queryClient: QueryClient }>()(
 
 function RootShell({ children }: { children: React.ReactNode }) {
   const c = siteConfig;
+  // SSR locale: derived from the URL (same rule as LocaleProvider) so the
+  // server emits the correct <html lang> for crawlers — the /es path renders
+  // lang="es" on the server, not just after client hydration.
+  const pathname = useRouterState({ select: (s) => s.location.pathname });
+  const lang = pathname.startsWith("/es") ? "es" : c.defaultLanguage;
   // Inject brand tokens at runtime from config
   const brandVars = `:root{--brand-primary:${c.colorPrimary};--brand-accent:${c.colorAccent};--brand-dark-bg:${c.colorDarkBg};--brand-light-bg:${c.colorLightBg};--brand-text-dark:${c.colorTextDark};--brand-text-light:${c.colorTextLight};--font-headline:${c.fontHeadline};--font-body:${c.fontBody};}`;
   return (
-    <html lang={c.defaultLanguage}>
+    <html lang={lang}>
       <head>
         <HeadContent />
         <style dangerouslySetInnerHTML={{ __html: brandVars }} />
