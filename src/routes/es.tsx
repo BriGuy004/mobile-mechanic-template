@@ -12,6 +12,7 @@ export const Route = createFileRoute("/es")({
       { title: pageTitle("nav.home") },
       { name: "description", content: siteConfig.defaultDescription },
       { property: "og:title", content: pageTitle("nav.home") },
+      { property: "og:description", content: siteConfig.defaultDescription },
       { property: "og:url", content: "/es" },
     ],
     links: [{ rel: "canonical", href: "/es" }],

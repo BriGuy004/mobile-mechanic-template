@@ -37,17 +37,37 @@ async function normalizeCatastrophicSsrResponse(response: Response): Promise<Res
   });
 }
 
+// Edge-cache fix: never serve a stale HTML document. Cloudflare was edge-caching
+// the SSR HTML, so updated pages served the OLD build until a manual purge. Mark
+// HTML responses no-cache so every request revalidates. Static assets
+// (/images/*, /assets/*) are served by the Cloudflare assets layer with their own
+// long cache and never pass through this worker — so this only touches documents.
+function withHtmlCacheControl(response: Response): Response {
+  const contentType = response.headers.get("content-type") ?? "";
+  if (!contentType.includes("text/html")) return response;
+  const headers = new Headers(response.headers);
+  headers.set("Cache-Control", "no-cache, must-revalidate");
+  return new Response(response.body, {
+    status: response.status,
+    statusText: response.statusText,
+    headers,
+  });
+}
+
 export default {
   async fetch(request: Request, env: unknown, ctx: unknown) {
     try {
       const handler = await getServerEntry();
       const response = await handler.fetch(request, env, ctx);
-      return await normalizeCatastrophicSsrResponse(response);
+      return withHtmlCacheControl(await normalizeCatastrophicSsrResponse(response));
     } catch (error) {
       console.error(error);
       return new Response(renderErrorPage(), {
         status: 500,
-        headers: { "content-type": "text/html; charset=utf-8" },
+        headers: {
+          "content-type": "text/html; charset=utf-8",
+          "cache-control": "no-cache, must-revalidate",
+        },
       });
     }
   },
