@@ -7,6 +7,7 @@ import { ServiceCard } from "@/components/site/ServiceCard";
 import { TestimonialCarousel } from "@/components/site/TestimonialCarousel";
 import { CtaBand } from "@/components/site/CtaBand";
 import { Icon } from "@/components/site/Icon";
+import { DEFAULT_HERO_IMAGE } from "@/lib/serviceImages";
 
 export const Route = createFileRoute("/")({
   head: () => ({
@@ -30,11 +31,17 @@ export function Home() {
     <>
       {/* HERO */}
       {(() => {
-        const heroImg = c.heroImage;
-        const hasHeroImg =
-          typeof heroImg === "string" &&
-          heroImg.length > 0 &&
-          !heroImg.includes("[EDITOR");
+        // Shop's own hero photo wins; otherwise fall back to the shared
+        // vertical-default shop image (license-clean, self-hosted). The
+        // gradient branch below stays as a last-resort safety net.
+        const configHero =
+          typeof c.heroImage === "string" &&
+          c.heroImage.length > 0 &&
+          !c.heroImage.includes("[EDITOR")
+            ? c.heroImage
+            : "";
+        const heroImg = configHero || DEFAULT_HERO_IMAGE;
+        const hasHeroImg = heroImg.length > 0;
         return (
           <section className={`text-white relative overflow-hidden ${hasHeroImg ? "" : "hero-gradient"}`}>
             {hasHeroImg && (

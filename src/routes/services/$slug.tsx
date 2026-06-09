@@ -6,6 +6,7 @@ import { pageTitle } from "@/lib/i18n";
 import { ServiceCard } from "@/components/site/ServiceCard";
 import { CtaBand } from "@/components/site/CtaBand";
 import { Icon } from "@/components/site/Icon";
+import { getServiceImage, getServiceImageAlt } from "@/lib/serviceImages";
 import { breadcrumbJsonLd, serviceJsonLd, faqJsonLd } from "@/components/site/Seo";
 import { Button } from "@/components/ui/button";
 
@@ -83,6 +84,8 @@ function ServiceNotFound() {
 
 function ServiceDetail() {
   const { service } = Route.useLoaderData();
+  const heroImg = getServiceImage(service.slug);
+  const heroImgAlt = getServiceImageAlt(service.slug) ?? "";
   const related = siteConfig.services
     .filter((s) => s.category === service.category && s.slug !== service.slug)
     .slice(0, 3);
@@ -128,9 +131,24 @@ function ServiceDetail() {
               </Button>
             </div>
           </div>
-          <div className="hidden md:flex w-32 h-32 rounded-xl bg-brand-primary/10 text-brand-primary items-center justify-center">
-            <Icon name={service.icon} className="w-16 h-16" />
-          </div>
+          {heroImg ? (
+            <div className="hidden md:block w-80 lg:w-96 aspect-[4/3] rounded-2xl overflow-hidden border border-slate-200 card-shadow-lg">
+              <img
+                src={heroImg}
+                alt={heroImgAlt}
+                className="w-full h-full object-cover"
+                loading="eager"
+                decoding="async"
+                fetchPriority="high"
+                width={1100}
+                height={825}
+              />
+            </div>
+          ) : (
+            <div className="hidden md:flex w-32 h-32 rounded-xl bg-brand-primary/10 text-brand-primary items-center justify-center">
+              <Icon name={service.icon} className="w-16 h-16" />
+            </div>
+          )}
         </div>
       </section>
 
