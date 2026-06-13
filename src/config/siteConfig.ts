@@ -514,7 +514,7 @@ export const siteConfig: SiteConfig = {
     { author: "Tom B.", city: "Richardson", rating: 5, text: "Stranded with a flat in a Kroger parking lot on a Saturday. They were there in 45 minutes, plug-patched the tire from the inside (proper repair, not just a plug), remounted and balanced. Way cheaper than a tow + tire shop visit.", service: "Mobile Tire Repair", date: "2025-04-30" },
   ],
 
-  siteUrl: "",
+  siteUrl: "https://mobile-mechanic-demo.jumpstartgrowth.biz",
   siteTitleTemplate: "{pageTitle} | {businessName} | {primaryCity} Mobile Mechanic",
   defaultDescription: "Mobile auto repair across Dallas-Fort Worth. ASE master technicians come to your driveway for diagnostics, brakes, batteries, oil, and emergency roadside service. No tow, no shop wait.",
   defaultOgImagePath: "/og-image.jpg",

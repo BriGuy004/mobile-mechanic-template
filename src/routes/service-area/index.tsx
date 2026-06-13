@@ -1,4 +1,5 @@
 import { createFileRoute, Link } from "@tanstack/react-router";
+import { altLinks } from "@/lib/seo-links";
 import { MapPin } from "lucide-react";
 import { siteConfig } from "@/config/siteConfig";
 import { t, pageTitle } from "@/lib/i18n";
@@ -14,7 +15,7 @@ export const Route = createFileRoute("/service-area/")({
       { property: "og:description", content: t("serviceArea.indexDescription") },
       { property: "og:url", content: "/service-area" },
     ],
-    links: [{ rel: "canonical", href: "/service-area" }],
+    links: altLinks("/service-area"),
     scripts: [{
       type: "application/ld+json",
       children: breadcrumbJsonLd([
@@ -26,7 +27,7 @@ export const Route = createFileRoute("/service-area/")({
   component: ServiceAreaIndex,
 });
 
-function ServiceAreaIndex() {
+export function ServiceAreaIndex() {
   const c = siteConfig;
   return (
     <>

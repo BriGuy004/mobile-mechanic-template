@@ -1,4 +1,5 @@
 import { createFileRoute, Link, notFound } from "@tanstack/react-router";
+import { altLinks } from "@/lib/seo-links";
 import { Phone, ArrowRight, Check } from "lucide-react";
 import { siteConfig } from "@/config/siteConfig";
 import { t, tx } from "@/lib/i18n";
@@ -38,7 +39,7 @@ export const Route = createFileRoute("/services/$slug")({
         { property: "og:url", content: url },
         { property: "og:type", content: "website" },
       ],
-      links: [{ rel: "canonical", href: url }],
+      links: altLinks(url),
       scripts: [
         {
           type: "application/ld+json",
@@ -84,6 +85,11 @@ function ServiceNotFound() {
 
 function ServiceDetail() {
   const { service } = Route.useLoaderData();
+  return <ServiceDetailView service={service} />;
+}
+
+// Exported so the /es/services/$slug twin can reuse it (locale pinned by path).
+export function ServiceDetailView({ service }: { service: (typeof siteConfig.services)[number] }) {
   const heroImg = getServiceImage(service.slug);
   const heroImgAlt = getServiceImageAlt(service.slug) ?? "";
   const related = siteConfig.services

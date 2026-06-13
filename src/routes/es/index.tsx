@@ -1,12 +1,12 @@
 import { createFileRoute } from "@tanstack/react-router";
 import { siteConfig } from "@/config/siteConfig";
 import { pageTitle } from "@/lib/i18n";
+import { altLinks } from "@/lib/seo-links";
 import { Home } from "@/routes/index";
 
-// Spanish homepage. The locale itself is pinned to "es" by LocaleProvider
-// (it sees the /es path), so rendering <Home /> here produces the fully
-// translated page server-side — the hreflang target for es-mx.
-export const Route = createFileRoute("/es")({
+// Spanish homepage (/es). LocaleProvider pins "es" from the path, so <Home/>
+// renders fully translated server-side. Replaces the former flat es.tsx.
+export const Route = createFileRoute("/es/")({
   head: () => ({
     meta: [
       { title: pageTitle("nav.home") },
@@ -15,7 +15,7 @@ export const Route = createFileRoute("/es")({
       { property: "og:description", content: siteConfig.defaultDescription },
       { property: "og:url", content: "/es" },
     ],
-    links: [{ rel: "canonical", href: "/es" }],
+    links: altLinks("/", "es"),
   }),
   component: Home,
 });

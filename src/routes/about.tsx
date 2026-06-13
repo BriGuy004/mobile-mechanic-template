@@ -1,4 +1,5 @@
 import { createFileRoute } from "@tanstack/react-router";
+import { altLinks } from "@/lib/seo-links";
 import { Award, Star, Users, Wrench } from "lucide-react";
 import { siteConfig, yearsInBusiness } from "@/config/siteConfig";
 import { t, pageTitle } from "@/lib/i18n";
@@ -13,12 +14,12 @@ export const Route = createFileRoute("/about")({
       { property: "og:description", content: t("about.description") },
       { property: "og:url", content: "/about" },
     ],
-    links: [{ rel: "canonical", href: "/about" }],
+    links: altLinks("/about"),
   }),
   component: About,
 });
 
-function About() {
+export function About() {
   const c = siteConfig;
   return (
     <>

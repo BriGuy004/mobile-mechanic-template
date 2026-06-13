@@ -1,4 +1,5 @@
 import { createFileRoute } from "@tanstack/react-router";
+import { altLinks } from "@/lib/seo-links";
 import { Star } from "lucide-react";
 import { siteConfig } from "@/config/siteConfig";
 import { t, pageTitle } from "@/lib/i18n";
@@ -13,12 +14,12 @@ export const Route = createFileRoute("/reviews")({
       { property: "og:description", content: t("reviews.description") },
       { property: "og:url", content: "/reviews" },
     ],
-    links: [{ rel: "canonical", href: "/reviews" }],
+    links: altLinks("/reviews"),
   }),
   component: Reviews,
 });
 
-function Reviews() {
+export function Reviews() {
   const c = siteConfig;
   return (
     <>

@@ -42,11 +42,16 @@ export const localBusinessJsonLd = (): string => {
       name: city.name,
     })),
     openingHoursSpecification,
-    aggregateRating: {
-      "@type": "AggregateRating",
-      ratingValue: c.googleAverageRating,
-      reviewCount: c.googleReviewCount,
-    },
+    // Only emit a rating when there are real reviews — never a 0/0 AggregateRating.
+    ...(c.googleReviewCount > 0
+      ? {
+          aggregateRating: {
+            "@type": "AggregateRating",
+            ratingValue: c.googleAverageRating,
+            reviewCount: c.googleReviewCount,
+          },
+        }
+      : {}),
     priceRange: "$$",
   });
 };

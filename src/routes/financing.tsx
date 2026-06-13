@@ -1,4 +1,5 @@
 import { createFileRoute } from "@tanstack/react-router";
+import { altLinks } from "@/lib/seo-links";
 import { siteConfig } from "@/config/siteConfig";
 import { t, pageTitle } from "@/lib/i18n";
 import { CtaBand } from "@/components/site/CtaBand";
@@ -10,12 +11,12 @@ export const Route = createFileRoute("/financing")({
       { name: "description", content: t("financing.description") },
       { property: "og:url", content: "/financing" },
     ],
-    links: [{ rel: "canonical", href: "/financing" }],
+    links: altLinks("/financing"),
   }),
   component: Financing,
 });
 
-function Financing() {
+export function Financing() {
   const c = siteConfig;
   return (
     <>

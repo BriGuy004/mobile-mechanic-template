@@ -1,4 +1,5 @@
 import { createFileRoute, Link } from "@tanstack/react-router";
+import { altLinks } from "@/lib/seo-links";
 import { Phone, Star, MapPin, ShieldCheck, ArrowRight, Tag, Check } from "lucide-react";
 import { siteConfig, featuredServices, yearsInBusiness } from "@/config/siteConfig";
 import { t, tx, pageTitle } from "@/lib/i18n";
@@ -18,7 +19,7 @@ export const Route = createFileRoute("/")({
       { property: "og:description", content: siteConfig.defaultDescription },
       { property: "og:url", content: "/" },
     ],
-    links: [{ rel: "canonical", href: "/" }],
+    links: altLinks("/"),
   }),
   component: Home,
 });

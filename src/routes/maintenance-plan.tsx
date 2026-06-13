@@ -1,4 +1,5 @@
 import { createFileRoute, Link } from "@tanstack/react-router";
+import { altLinks } from "@/lib/seo-links";
 import { Check } from "lucide-react";
 import { siteConfig } from "@/config/siteConfig";
 import { t, isEs, pageTitle } from "@/lib/i18n";
@@ -12,12 +13,12 @@ export const Route = createFileRoute("/maintenance-plan")({
       { name: "description", content: t("membership.description") },
       { property: "og:url", content: "/maintenance-plan" },
     ],
-    links: [{ rel: "canonical", href: "/maintenance-plan" }],
+    links: altLinks("/maintenance-plan"),
   }),
   component: Membership,
 });
 
-function Membership() {
+export function Membership() {
   const m = siteConfig.membershipProgram;
   return (
     <>

@@ -1,4 +1,5 @@
 import { createFileRoute, Link } from "@tanstack/react-router";
+import { altLinks } from "@/lib/seo-links";
 import { Tag, ArrowRight } from "lucide-react";
 import { siteConfig } from "@/config/siteConfig";
 import { t, tx, pageTitle } from "@/lib/i18n";
@@ -13,12 +14,12 @@ export const Route = createFileRoute("/specials")({
       { property: "og:description", content: t("specials.description") },
       { property: "og:url", content: "/specials" },
     ],
-    links: [{ rel: "canonical", href: "/specials" }],
+    links: altLinks("/specials"),
   }),
   component: Specials,
 });
 
-function Specials() {
+export function Specials() {
   const c = siteConfig;
   return (
     <>

@@ -1,4 +1,5 @@
 import { createFileRoute } from "@tanstack/react-router";
+import { altLinks } from "@/lib/seo-links";
 import { siteConfig } from "@/config/siteConfig";
 import { t, pageTitle } from "@/lib/i18n";
 import { ServiceCard } from "@/components/site/ServiceCard";
@@ -14,7 +15,7 @@ export const Route = createFileRoute("/services/")({
       { property: "og:description", content: t("services.indexDescription") },
       { property: "og:url", content: "/services" },
     ],
-    links: [{ rel: "canonical", href: "/services" }],
+    links: altLinks("/services"),
     scripts: [{
       type: "application/ld+json",
       children: breadcrumbJsonLd([
@@ -26,7 +27,7 @@ export const Route = createFileRoute("/services/")({
   component: ServicesIndex,
 });
 
-function ServicesIndex() {
+export function ServicesIndex() {
   const cats = Array.from(new Set(siteConfig.services.map((s) => s.category)));
   return (
     <>

@@ -1,4 +1,5 @@
 import { createFileRoute } from "@tanstack/react-router";
+import { altLinks } from "@/lib/seo-links";
 import { Phone, AlertTriangle } from "lucide-react";
 import { siteConfig } from "@/config/siteConfig";
 import { t, pageTitle } from "@/lib/i18n";
@@ -11,12 +12,12 @@ export const Route = createFileRoute("/emergency")({
       { name: "description", content: t("emergency.description") },
       { property: "og:url", content: "/emergency" },
     ],
-    links: [{ rel: "canonical", href: "/emergency" }],
+    links: altLinks("/emergency"),
   }),
   component: Emergency,
 });
 
-function Emergency() {
+export function Emergency() {
   const c = siteConfig;
   return (
     <section className="hero-gradient text-white min-h-[70vh]">

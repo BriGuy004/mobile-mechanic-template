@@ -1,4 +1,5 @@
 import { createFileRoute } from "@tanstack/react-router";
+import { altLinks } from "@/lib/seo-links";
 import { Phone, Mail, MapPin, Clock } from "lucide-react";
 import { siteConfig, formatHours } from "@/config/siteConfig";
 import { t, pageTitle } from "@/lib/i18n";
@@ -15,12 +16,12 @@ export const Route = createFileRoute("/contact")({
       { property: "og:description", content: t("contact.description") },
       { property: "og:url", content: "/contact" },
     ],
-    links: [{ rel: "canonical", href: "/contact" }],
+    links: altLinks("/contact"),
   }),
   component: Contact,
 });
 
-function Contact() {
+export function Contact() {
   const c = siteConfig;
   return (
     <>

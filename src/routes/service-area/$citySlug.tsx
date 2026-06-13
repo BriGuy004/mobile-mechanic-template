@@ -1,4 +1,5 @@
 import { createFileRoute, Link, notFound } from "@tanstack/react-router";
+import { altLinks } from "@/lib/seo-links";
 import { MapPin, Phone, Star } from "lucide-react";
 import { siteConfig } from "@/config/siteConfig";
 import { t, pageTitle } from "@/lib/i18n";
@@ -54,7 +55,7 @@ export const Route = createFileRoute("/service-area/$citySlug")({
         { property: "og:url", content: url },
         { property: "og:type", content: "website" },
       ],
-      links: [{ rel: "canonical", href: url }],
+      links: altLinks(url),
       scripts: [
         {
           type: "application/ld+json",
@@ -97,6 +98,11 @@ function CityNotFound() {
 
 function CityPage() {
   const { city } = Route.useLoaderData();
+  return <CityPageView city={city} />;
+}
+
+// Exported so the /es/service-area/$citySlug twin can reuse it (locale by path).
+export function CityPageView({ city }: { city: (typeof siteConfig.serviceCities)[number] }) {
   const c = siteConfig;
   const featuredServices = c.services.filter((s) => s.featured).slice(0, 6);
   const fallbackServices = featuredServices.length ? featuredServices : c.services.slice(0, 6);

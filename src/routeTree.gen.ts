@@ -14,15 +14,26 @@ import { Route as SitemapDotxmlRouteImport } from './routes/sitemap[.]xml'
 import { Route as ReviewsRouteImport } from './routes/reviews'
 import { Route as MaintenancePlanRouteImport } from './routes/maintenance-plan'
 import { Route as FinancingRouteImport } from './routes/financing'
-import { Route as EsRouteImport } from './routes/es'
 import { Route as EmergencyRouteImport } from './routes/emergency'
 import { Route as ContactRouteImport } from './routes/contact'
 import { Route as AboutRouteImport } from './routes/about'
 import { Route as IndexRouteImport } from './routes/index'
 import { Route as ServicesIndexRouteImport } from './routes/services/index'
 import { Route as ServiceAreaIndexRouteImport } from './routes/service-area/index'
+import { Route as EsIndexRouteImport } from './routes/es/index'
 import { Route as ServicesSlugRouteImport } from './routes/services/$slug'
 import { Route as ServiceAreaCitySlugRouteImport } from './routes/service-area/$citySlug'
+import { Route as EsSpecialsRouteImport } from './routes/es/specials'
+import { Route as EsReviewsRouteImport } from './routes/es/reviews'
+import { Route as EsMaintenancePlanRouteImport } from './routes/es/maintenance-plan'
+import { Route as EsFinancingRouteImport } from './routes/es/financing'
+import { Route as EsEmergencyRouteImport } from './routes/es/emergency'
+import { Route as EsContactRouteImport } from './routes/es/contact'
+import { Route as EsAboutRouteImport } from './routes/es/about'
+import { Route as EsServicesIndexRouteImport } from './routes/es/services/index'
+import { Route as EsServiceAreaIndexRouteImport } from './routes/es/service-area/index'
+import { Route as EsServicesSlugRouteImport } from './routes/es/services/$slug'
+import { Route as EsServiceAreaCitySlugRouteImport } from './routes/es/service-area/$citySlug'
 
 const SpecialsRoute = SpecialsRouteImport.update({
   id: '/specials',
@@ -47,11 +58,6 @@ const MaintenancePlanRoute = MaintenancePlanRouteImport.update({
 const FinancingRoute = FinancingRouteImport.update({
   id: '/financing',
   path: '/financing',
-  getParentRoute: () => rootRouteImport,
-} as any)
-const EsRoute = EsRouteImport.update({
-  id: '/es',
-  path: '/es',
   getParentRoute: () => rootRouteImport,
 } as any)
 const EmergencyRoute = EmergencyRouteImport.update({
@@ -84,6 +90,11 @@ const ServiceAreaIndexRoute = ServiceAreaIndexRouteImport.update({
   path: '/service-area/',
   getParentRoute: () => rootRouteImport,
 } as any)
+const EsIndexRoute = EsIndexRouteImport.update({
+  id: '/es/',
+  path: '/es/',
+  getParentRoute: () => rootRouteImport,
+} as any)
 const ServicesSlugRoute = ServicesSlugRouteImport.update({
   id: '/services/$slug',
   path: '/services/$slug',
@@ -94,38 +105,115 @@ const ServiceAreaCitySlugRoute = ServiceAreaCitySlugRouteImport.update({
   path: '/service-area/$citySlug',
   getParentRoute: () => rootRouteImport,
 } as any)
+const EsSpecialsRoute = EsSpecialsRouteImport.update({
+  id: '/es/specials',
+  path: '/es/specials',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const EsReviewsRoute = EsReviewsRouteImport.update({
+  id: '/es/reviews',
+  path: '/es/reviews',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const EsMaintenancePlanRoute = EsMaintenancePlanRouteImport.update({
+  id: '/es/maintenance-plan',
+  path: '/es/maintenance-plan',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const EsFinancingRoute = EsFinancingRouteImport.update({
+  id: '/es/financing',
+  path: '/es/financing',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const EsEmergencyRoute = EsEmergencyRouteImport.update({
+  id: '/es/emergency',
+  path: '/es/emergency',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const EsContactRoute = EsContactRouteImport.update({
+  id: '/es/contact',
+  path: '/es/contact',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const EsAboutRoute = EsAboutRouteImport.update({
+  id: '/es/about',
+  path: '/es/about',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const EsServicesIndexRoute = EsServicesIndexRouteImport.update({
+  id: '/es/services/',
+  path: '/es/services/',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const EsServiceAreaIndexRoute = EsServiceAreaIndexRouteImport.update({
+  id: '/es/service-area/',
+  path: '/es/service-area/',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const EsServicesSlugRoute = EsServicesSlugRouteImport.update({
+  id: '/es/services/$slug',
+  path: '/es/services/$slug',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const EsServiceAreaCitySlugRoute = EsServiceAreaCitySlugRouteImport.update({
+  id: '/es/service-area/$citySlug',
+  path: '/es/service-area/$citySlug',
+  getParentRoute: () => rootRouteImport,
+} as any)
 
 export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
   '/about': typeof AboutRoute
   '/contact': typeof ContactRoute
   '/emergency': typeof EmergencyRoute
-  '/es': typeof EsRoute
   '/financing': typeof FinancingRoute
   '/maintenance-plan': typeof MaintenancePlanRoute
   '/reviews': typeof ReviewsRoute
   '/sitemap.xml': typeof SitemapDotxmlRoute
   '/specials': typeof SpecialsRoute
+  '/es/about': typeof EsAboutRoute
+  '/es/contact': typeof EsContactRoute
+  '/es/emergency': typeof EsEmergencyRoute
+  '/es/financing': typeof EsFinancingRoute
+  '/es/maintenance-plan': typeof EsMaintenancePlanRoute
+  '/es/reviews': typeof EsReviewsRoute
+  '/es/specials': typeof EsSpecialsRoute
   '/service-area/$citySlug': typeof ServiceAreaCitySlugRoute
   '/services/$slug': typeof ServicesSlugRoute
+  '/es/': typeof EsIndexRoute
   '/service-area/': typeof ServiceAreaIndexRoute
   '/services/': typeof ServicesIndexRoute
+  '/es/service-area/$citySlug': typeof EsServiceAreaCitySlugRoute
+  '/es/services/$slug': typeof EsServicesSlugRoute
+  '/es/service-area/': typeof EsServiceAreaIndexRoute
+  '/es/services/': typeof EsServicesIndexRoute
 }
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
   '/about': typeof AboutRoute
   '/contact': typeof ContactRoute
   '/emergency': typeof EmergencyRoute
-  '/es': typeof EsRoute
   '/financing': typeof FinancingRoute
   '/maintenance-plan': typeof MaintenancePlanRoute
   '/reviews': typeof ReviewsRoute
   '/sitemap.xml': typeof SitemapDotxmlRoute
   '/specials': typeof SpecialsRoute
+  '/es/about': typeof EsAboutRoute
+  '/es/contact': typeof EsContactRoute
+  '/es/emergency': typeof EsEmergencyRoute
+  '/es/financing': typeof EsFinancingRoute
+  '/es/maintenance-plan': typeof EsMaintenancePlanRoute
+  '/es/reviews': typeof EsReviewsRoute
+  '/es/specials': typeof EsSpecialsRoute
   '/service-area/$citySlug': typeof ServiceAreaCitySlugRoute
   '/services/$slug': typeof ServicesSlugRoute
+  '/es': typeof EsIndexRoute
   '/service-area': typeof ServiceAreaIndexRoute
   '/services': typeof ServicesIndexRoute
+  '/es/service-area/$citySlug': typeof EsServiceAreaCitySlugRoute
+  '/es/services/$slug': typeof EsServicesSlugRoute
+  '/es/service-area': typeof EsServiceAreaIndexRoute
+  '/es/services': typeof EsServicesIndexRoute
 }
 export interface FileRoutesById {
   __root__: typeof rootRouteImport
@@ -133,16 +221,27 @@ export interface FileRoutesById {
   '/about': typeof AboutRoute
   '/contact': typeof ContactRoute
   '/emergency': typeof EmergencyRoute
-  '/es': typeof EsRoute
   '/financing': typeof FinancingRoute
   '/maintenance-plan': typeof MaintenancePlanRoute
   '/reviews': typeof ReviewsRoute
   '/sitemap.xml': typeof SitemapDotxmlRoute
   '/specials': typeof SpecialsRoute
+  '/es/about': typeof EsAboutRoute
+  '/es/contact': typeof EsContactRoute
+  '/es/emergency': typeof EsEmergencyRoute
+  '/es/financing': typeof EsFinancingRoute
+  '/es/maintenance-plan': typeof EsMaintenancePlanRoute
+  '/es/reviews': typeof EsReviewsRoute
+  '/es/specials': typeof EsSpecialsRoute
   '/service-area/$citySlug': typeof ServiceAreaCitySlugRoute
   '/services/$slug': typeof ServicesSlugRoute
+  '/es/': typeof EsIndexRoute
   '/service-area/': typeof ServiceAreaIndexRoute
   '/services/': typeof ServicesIndexRoute
+  '/es/service-area/$citySlug': typeof EsServiceAreaCitySlugRoute
+  '/es/services/$slug': typeof EsServicesSlugRoute
+  '/es/service-area/': typeof EsServiceAreaIndexRoute
+  '/es/services/': typeof EsServicesIndexRoute
 }
 export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
@@ -151,48 +250,81 @@ export interface FileRouteTypes {
     | '/about'
     | '/contact'
     | '/emergency'
-    | '/es'
     | '/financing'
     | '/maintenance-plan'
     | '/reviews'
     | '/sitemap.xml'
     | '/specials'
+    | '/es/about'
+    | '/es/contact'
+    | '/es/emergency'
+    | '/es/financing'
+    | '/es/maintenance-plan'
+    | '/es/reviews'
+    | '/es/specials'
     | '/service-area/$citySlug'
     | '/services/$slug'
+    | '/es/'
     | '/service-area/'
     | '/services/'
+    | '/es/service-area/$citySlug'
+    | '/es/services/$slug'
+    | '/es/service-area/'
+    | '/es/services/'
   fileRoutesByTo: FileRoutesByTo
   to:
     | '/'
     | '/about'
     | '/contact'
     | '/emergency'
-    | '/es'
     | '/financing'
     | '/maintenance-plan'
     | '/reviews'
     | '/sitemap.xml'
     | '/specials'
+    | '/es/about'
+    | '/es/contact'
+    | '/es/emergency'
+    | '/es/financing'
+    | '/es/maintenance-plan'
+    | '/es/reviews'
+    | '/es/specials'
     | '/service-area/$citySlug'
     | '/services/$slug'
+    | '/es'
     | '/service-area'
     | '/services'
+    | '/es/service-area/$citySlug'
+    | '/es/services/$slug'
+    | '/es/service-area'
+    | '/es/services'
   id:
     | '__root__'
     | '/'
     | '/about'
     | '/contact'
     | '/emergency'
-    | '/es'
     | '/financing'
     | '/maintenance-plan'
     | '/reviews'
     | '/sitemap.xml'
     | '/specials'
+    | '/es/about'
+    | '/es/contact'
+    | '/es/emergency'
+    | '/es/financing'
+    | '/es/maintenance-plan'
+    | '/es/reviews'
+    | '/es/specials'
     | '/service-area/$citySlug'
     | '/services/$slug'
+    | '/es/'
     | '/service-area/'
     | '/services/'
+    | '/es/service-area/$citySlug'
+    | '/es/services/$slug'
+    | '/es/service-area/'
+    | '/es/services/'
   fileRoutesById: FileRoutesById
 }
 export interface RootRouteChildren {
@@ -200,16 +332,27 @@ export interface RootRouteChildren {
   AboutRoute: typeof AboutRoute
   ContactRoute: typeof ContactRoute
   EmergencyRoute: typeof EmergencyRoute
-  EsRoute: typeof EsRoute
   FinancingRoute: typeof FinancingRoute
   MaintenancePlanRoute: typeof MaintenancePlanRoute
   ReviewsRoute: typeof ReviewsRoute
   SitemapDotxmlRoute: typeof SitemapDotxmlRoute
   SpecialsRoute: typeof SpecialsRoute
+  EsAboutRoute: typeof EsAboutRoute
+  EsContactRoute: typeof EsContactRoute
+  EsEmergencyRoute: typeof EsEmergencyRoute
+  EsFinancingRoute: typeof EsFinancingRoute
+  EsMaintenancePlanRoute: typeof EsMaintenancePlanRoute
+  EsReviewsRoute: typeof EsReviewsRoute
+  EsSpecialsRoute: typeof EsSpecialsRoute
   ServiceAreaCitySlugRoute: typeof ServiceAreaCitySlugRoute
   ServicesSlugRoute: typeof ServicesSlugRoute
+  EsIndexRoute: typeof EsIndexRoute
   ServiceAreaIndexRoute: typeof ServiceAreaIndexRoute
   ServicesIndexRoute: typeof ServicesIndexRoute
+  EsServiceAreaCitySlugRoute: typeof EsServiceAreaCitySlugRoute
+  EsServicesSlugRoute: typeof EsServicesSlugRoute
+  EsServiceAreaIndexRoute: typeof EsServiceAreaIndexRoute
+  EsServicesIndexRoute: typeof EsServicesIndexRoute
 }
 
 declare module '@tanstack/react-router' {
@@ -247,13 +390,6 @@ declare module '@tanstack/react-router' {
       path: '/financing'
       fullPath: '/financing'
       preLoaderRoute: typeof FinancingRouteImport
-      parentRoute: typeof rootRouteImport
-    }
-    '/es': {
-      id: '/es'
-      path: '/es'
-      fullPath: '/es'
-      preLoaderRoute: typeof EsRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/emergency': {
@@ -298,6 +434,13 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof ServiceAreaIndexRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/es/': {
+      id: '/es/'
+      path: '/es'
+      fullPath: '/es/'
+      preLoaderRoute: typeof EsIndexRouteImport
+      parentRoute: typeof rootRouteImport
+    }
     '/services/$slug': {
       id: '/services/$slug'
       path: '/services/$slug'
@@ -312,6 +455,83 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof ServiceAreaCitySlugRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/es/specials': {
+      id: '/es/specials'
+      path: '/es/specials'
+      fullPath: '/es/specials'
+      preLoaderRoute: typeof EsSpecialsRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/es/reviews': {
+      id: '/es/reviews'
+      path: '/es/reviews'
+      fullPath: '/es/reviews'
+      preLoaderRoute: typeof EsReviewsRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/es/maintenance-plan': {
+      id: '/es/maintenance-plan'
+      path: '/es/maintenance-plan'
+      fullPath: '/es/maintenance-plan'
+      preLoaderRoute: typeof EsMaintenancePlanRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/es/financing': {
+      id: '/es/financing'
+      path: '/es/financing'
+      fullPath: '/es/financing'
+      preLoaderRoute: typeof EsFinancingRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/es/emergency': {
+      id: '/es/emergency'
+      path: '/es/emergency'
+      fullPath: '/es/emergency'
+      preLoaderRoute: typeof EsEmergencyRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/es/contact': {
+      id: '/es/contact'
+      path: '/es/contact'
+      fullPath: '/es/contact'
+      preLoaderRoute: typeof EsContactRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/es/about': {
+      id: '/es/about'
+      path: '/es/about'
+      fullPath: '/es/about'
+      preLoaderRoute: typeof EsAboutRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/es/services/': {
+      id: '/es/services/'
+      path: '/es/services'
+      fullPath: '/es/services/'
+      preLoaderRoute: typeof EsServicesIndexRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/es/service-area/': {
+      id: '/es/service-area/'
+      path: '/es/service-area'
+      fullPath: '/es/service-area/'
+      preLoaderRoute: typeof EsServiceAreaIndexRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/es/services/$slug': {
+      id: '/es/services/$slug'
+      path: '/es/services/$slug'
+      fullPath: '/es/services/$slug'
+      preLoaderRoute: typeof EsServicesSlugRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/es/service-area/$citySlug': {
+      id: '/es/service-area/$citySlug'
+      path: '/es/service-area/$citySlug'
+      fullPath: '/es/service-area/$citySlug'
+      preLoaderRoute: typeof EsServiceAreaCitySlugRouteImport
+      parentRoute: typeof rootRouteImport
+    }
   }
 }
 
@@ -320,16 +540,27 @@ const rootRouteChildren: RootRouteChildren = {
   AboutRoute: AboutRoute,
   ContactRoute: ContactRoute,
   EmergencyRoute: EmergencyRoute,
-  EsRoute: EsRoute,
   FinancingRoute: FinancingRoute,
   MaintenancePlanRoute: MaintenancePlanRoute,
   ReviewsRoute: ReviewsRoute,
   SitemapDotxmlRoute: SitemapDotxmlRoute,
   SpecialsRoute: SpecialsRoute,
+  EsAboutRoute: EsAboutRoute,
+  EsContactRoute: EsContactRoute,
+  EsEmergencyRoute: EsEmergencyRoute,
+  EsFinancingRoute: EsFinancingRoute,
+  EsMaintenancePlanRoute: EsMaintenancePlanRoute,
+  EsReviewsRoute: EsReviewsRoute,
+  EsSpecialsRoute: EsSpecialsRoute,
   ServiceAreaCitySlugRoute: ServiceAreaCitySlugRoute,
   ServicesSlugRoute: ServicesSlugRoute,
+  EsIndexRoute: EsIndexRoute,
   ServiceAreaIndexRoute: ServiceAreaIndexRoute,
   ServicesIndexRoute: ServicesIndexRoute,
+  EsServiceAreaCitySlugRoute: EsServiceAreaCitySlugRoute,
+  EsServicesSlugRoute: EsServicesSlugRoute,
+  EsServiceAreaIndexRoute: EsServiceAreaIndexRoute,
+  EsServicesIndexRoute: EsServicesIndexRoute,
 }
 export const routeTree = rootRouteImport
   ._addFileChildren(rootRouteChildren)
