@@ -59,6 +59,7 @@ export function Footer() {
           </ul>
         </div>
 
+        {c.serviceCities.length > 0 && (
         <div>
           <h3 className="text-white font-semibold mb-4 text-sm uppercase tracking-wider">
             {t("footer.serviceAreaHeading")}
@@ -73,6 +74,7 @@ export function Footer() {
             ))}
           </ul>
         </div>
+        )}
 
         <div>
           <h3 className="text-white font-semibold mb-4 text-sm uppercase tracking-wider">
@@ -95,10 +97,12 @@ export function Footer() {
             )}
             <li className="flex items-start gap-2 text-white/80">
               <MapPin className="w-4 h-4 mt-0.5 shrink-0" />
-              <span>{c.street}<br />{c.city}, {c.stateAbbr} {c.zip}</span>
+              <span>{c.street && <>{c.street}<br /></>}{c.city}, {c.stateAbbr} {c.zip}</span>
             </li>
           </ul>
 
+          {Object.keys(c.regularHours).length > 0 && (
+          <>
           <h4 className="text-white font-semibold mt-6 mb-2 text-xs uppercase tracking-wider">{t("footer.hoursHeading")}</h4>
           <ul className="text-xs text-white/70 space-y-1">
             {dayKeys.map((d) => (
@@ -108,6 +112,8 @@ export function Footer() {
               </li>
             ))}
           </ul>
+          </>
+          )}
 
           {socials.length > 0 && (
             <>

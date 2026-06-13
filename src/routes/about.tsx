@@ -33,10 +33,10 @@ export function About() {
       <section className="bg-white py-12 md:py-16">
         <div className="mx-auto max-w-5xl px-6 grid sm:grid-cols-2 lg:grid-cols-4 gap-5">
           {[
-            { Icon: Award, label: t("about.stats.years"), value: `${yearsInBusiness()}+` },
-            { Icon: Star, label: t("about.stats.rating"), value: `${c.googleAverageRating}★` },
-            { Icon: Users, label: t("about.stats.reviews"), value: c.googleReviewCount },
-            { Icon: Wrench, label: t("about.stats.brands"), value: c.brandsServiced.length },
+            ...(c.foundedYear > 0 ? [{ Icon: Award, label: t("about.stats.years"), value: `${yearsInBusiness()}+` }] : []),
+            ...(c.googleReviewCount > 0 ? [{ Icon: Star, label: t("about.stats.rating"), value: `${c.googleAverageRating}★` }] : []),
+            ...(c.googleReviewCount > 0 ? [{ Icon: Users, label: t("about.stats.reviews"), value: c.googleReviewCount }] : []),
+            ...(c.brandsServiced.length > 0 ? [{ Icon: Wrench, label: t("about.stats.brands"), value: c.brandsServiced.length }] : []),
           ].map(({ Icon, label, value }) => (
             <div key={label} className="bg-brand-light rounded-xl p-6 text-center">
               <Icon className="w-7 h-7 mx-auto text-brand-primary mb-3" />

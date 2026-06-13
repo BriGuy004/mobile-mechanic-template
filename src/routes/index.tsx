@@ -110,7 +110,7 @@ export function Home() {
             </div>
 
             <div className="mt-10 flex flex-wrap items-center gap-x-6 gap-y-3 text-sm text-white/70">
-              {(() => {
+              {c.googleReviewCount > 0 && (() => {
                 const gbpUrl = c.googleBusinessProfileUrl;
                 const hasGbp =
                   typeof gbpUrl === "string" &&
@@ -141,7 +141,7 @@ export function Home() {
                   <div className="inline-flex items-center gap-1.5">{inner}</div>
                 );
               })()}
-              <span className="text-white/30">|</span>
+              {c.googleReviewCount > 0 && <span className="text-white/30">|</span>}
               <span>{t("homepage.hero.yearsBadge")}</span>
               {c.licenseNumbers[0] && !c.licenseNumbers[0].includes("[EDITOR") && (
                 <>
@@ -166,22 +166,30 @@ export function Home() {
                 * and the number of brands serviced. No invented job/tech
                 * counts or BBB fallbacks. */}
               <div className="grid grid-cols-2 gap-3 text-center">
+                {c.googleReviewCount > 0 && (
                 <div className="rounded-md bg-slate-50 p-3">
                   <div className="text-2xl font-extrabold text-brand-primary">{c.googleAverageRating}★</div>
                   <div className="text-[11px] text-slate-500 uppercase tracking-wide">{t("homepage.hero.stats.rating")}</div>
                 </div>
+                )}
+                {c.googleReviewCount > 0 && (
                 <div className="rounded-md bg-slate-50 p-3">
                   <div className="text-2xl font-extrabold text-brand-primary">{c.googleReviewCount}</div>
                   <div className="text-[11px] text-slate-500 uppercase tracking-wide">{t("homepage.hero.stats.reviews")}</div>
                 </div>
+                )}
+                {c.foundedYear > 0 && (
                 <div className="rounded-md bg-slate-50 p-3">
                   <div className="text-2xl font-extrabold text-brand-primary">{yearsInBusiness()}+</div>
                   <div className="text-[11px] text-slate-500 uppercase tracking-wide">{t("homepage.hero.stats.years")}</div>
                 </div>
+                )}
+                {c.brandsServiced.length > 0 && (
                 <div className="rounded-md bg-slate-50 p-3">
                   <div className="text-2xl font-extrabold text-brand-primary">{c.brandsServiced.length}</div>
                   <div className="text-[11px] text-slate-500 uppercase tracking-wide">{t("homepage.hero.stats.brands")}</div>
                 </div>
+                )}
               </div>
               <Button asChild className="mt-5 w-full bg-brand-primary hover:bg-brand-primary/90 text-white font-semibold h-12">
                 <Link to="/contact">{t("nav.scheduleService")}</Link>
@@ -213,6 +221,7 @@ export function Home() {
       </section>
 
       {/* WHY US */}
+      {c.trustPillars.length > 0 && (
       <section className="bg-brand-light py-16 md:py-24">
         <div className="mx-auto max-w-7xl px-6">
           <div className="max-w-2xl mb-12">
@@ -232,8 +241,10 @@ export function Home() {
           </div>
         </div>
       </section>
+      )}
 
       {/* SERVICE AREA */}
+      {c.serviceCities.length > 0 && (
       <section className="bg-white py-16 md:py-24">
         <div className="mx-auto max-w-7xl px-6">
           <div className="max-w-2xl mb-10">
@@ -274,8 +285,10 @@ export function Home() {
           </div>
         </div>
       </section>
+      )}
 
       {/* REVIEWS */}
+      {c.testimonials.length > 0 && (
       <section className="bg-brand-light py-16 md:py-24">
         <div className="mx-auto max-w-5xl px-6">
           <div className="text-center mb-10">
@@ -290,6 +303,7 @@ export function Home() {
           </div>
         </div>
       </section>
+      )}
 
       {/* SPECIALS */}
       {c.currentSpecials.length > 0 && (
@@ -318,12 +332,14 @@ export function Home() {
       )}
 
       {/* BRANDS */}
+      {(c.brandsServiced.length > 0 || c.certifications.length > 0) && (
       <section className="bg-brand-light py-12 md:py-16 border-y border-slate-200">
         <div className="mx-auto max-w-7xl px-6">
           <div className="text-center mb-8">
             <div className="text-xs font-bold uppercase tracking-wider text-brand-accent mb-2">{t("homepage.brands.eyebrow")}</div>
             <h2 className="text-2xl md:text-3xl font-bold">{t("homepage.brands.heading")}</h2>
           </div>
+          {c.brandsServiced.length > 0 && (
           <div className="flex flex-wrap items-center justify-center gap-x-8 gap-y-4">
             {c.brandsServiced.map((b) => (
               <div key={b.name} className="px-5 py-3 bg-white border border-slate-200 rounded-xl text-slate-600 font-bold tracking-wide text-sm">
@@ -331,13 +347,17 @@ export function Home() {
               </div>
             ))}
           </div>
+          )}
+          {c.certifications.length > 0 && (
           <div className="mt-6 text-center text-sm text-slate-500 flex flex-wrap justify-center gap-x-4 gap-y-1">
             {c.certifications.map((cert) => (
               <span key={cert} className="inline-flex items-center gap-1"><Check className="w-4 h-4 text-brand-primary" />{cert}</span>
             ))}
           </div>
+          )}
         </div>
       </section>
+      )}
 
       <CtaBand />
     </>

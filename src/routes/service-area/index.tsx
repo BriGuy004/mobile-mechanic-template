@@ -50,6 +50,7 @@ export function ServiceAreaIndex() {
               referrerPolicy="no-referrer-when-downgrade"
             />
           </div>
+          {c.serviceCities.length > 0 && (
           <div>
             <h2 className="text-2xl font-bold mb-4">Cities we serve</h2>
             <ul className="grid sm:grid-cols-2 gap-2">
@@ -69,6 +70,7 @@ export function ServiceAreaIndex() {
               ))}
             </ul>
           </div>
+          )}
         </div>
       </section>
       <CtaBand />

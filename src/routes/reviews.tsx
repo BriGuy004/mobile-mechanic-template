@@ -27,11 +27,14 @@ export function Reviews() {
         <div className="mx-auto max-w-4xl px-6 py-12 md:py-16 text-center">
           <div className="text-xs font-bold uppercase tracking-wider text-brand-accent mb-2">{t("nav.reviews")}</div>
           <h1 className="text-4xl md:text-5xl font-bold">{t("reviews.heading")}</h1>
+          {c.googleReviewCount > 0 && (
           <div className="mt-4 flex items-center justify-center gap-1">
             {Array.from({length:5}).map((_,i) => <Star key={i} className="w-6 h-6 fill-amber-400 text-amber-400" />)}
           </div>
+          )}
         </div>
       </section>
+      {c.testimonials.length > 0 && (
       <section className="bg-white py-12 md:py-16">
         <div className="mx-auto max-w-5xl px-6 grid md:grid-cols-2 gap-5">
           {c.testimonials.map((tst, i) => (
@@ -48,6 +51,7 @@ export function Reviews() {
           ))}
         </div>
       </section>
+      )}
       <CtaBand />
     </>
   );

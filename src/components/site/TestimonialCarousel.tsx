@@ -69,6 +69,8 @@ export function TestimonialCarousel() {
     return () => window.clearInterval(id);
   }, [items.length, isPaused, resetTick, advance]);
 
+  // Graceful-hide: render nothing when there are no testimonials.
+  if (items.length === 0) return null;
   const it = items[i];
 
   return (
