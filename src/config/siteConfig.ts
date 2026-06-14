@@ -196,8 +196,8 @@ export const siteConfig: SiteConfig = {
   colorLightBg: "#F8FAFC",
   colorTextDark: "#0F172A",
   colorTextLight: "#FFFFFF",
-  fontHeadline: "'Inter', system-ui, sans-serif",
-  fontBody: "'Inter', system-ui, sans-serif",
+  fontHeadline: "'Fraunces', 'Iowan Old Style', Georgia, serif",
+  fontBody: "'IBM Plex Sans', system-ui, -apple-system, 'Segoe UI', sans-serif",
 
   services: [
     {
