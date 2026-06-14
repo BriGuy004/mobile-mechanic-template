@@ -66,7 +66,8 @@ export const Route = createRootRouteWithContext<{ queryClient: QueryClient }>()(
       { rel: "stylesheet", href: appCss },
       { rel: "preconnect", href: "https://fonts.googleapis.com" },
       { rel: "preconnect", href: "https://fonts.gstatic.com", crossOrigin: "anonymous" },
-      { rel: "stylesheet", href: "https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" },
+      // Fonts (Fraunces display + IBM Plex Sans body) are loaded via styles.css.
+      // No Inter — it contradicts the type system and cost a render-blocking request.
       // Per-page hreflang now comes from each route's altLinks() (en/es-mx/x-default
       // pointing at that page's own ES twin) — the old root-only alternates here
       // wrongly pointed every page's ES alternate at the homepage.
